@@ -1,0 +1,40 @@
+[
+    {
+      "id": 1,
+      "name": "Rotary Park",
+      "description": "Rotary Park consists of 10.4 acres and is one of Johnson City’s most popular parks, featuring six covered picnic shelters, restrooms, picnic tables, a multi-use playing field, and a brand new inclusive playground area. ‘Splash town’ is the newest addition to the playground and offers a play area where kids can experience 10 different water sequences. Rotary park is open daily from 9 a.m. to 9 p.m. and the splash pad operates daily from 10 am to 7pm, weather permitting from Memorial Day through Labor Day.",
+      "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+      "type": "Playground",
+      "location": "1001 N Broadway St, Johnson City, TN 37601",
+      "reviews": {
+        "rating": 4.7,
+        "reviews": ">1,000",
+        "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
+      },
+      "price": "Free",
+      "hours": {
+        "mon": "9am - 9pm",
+        "tue": "9am - 9pm",
+        "wed": "9am - 9pm",
+        "thu": "9am - 9pm",
+        "fri": "9am - 9pm",
+        "sat": "9am - 9pm",
+        "sun": "9am - 9pm"
+      },
+      "bathrooms": "",
+      "swings": {
+        "bucket": 4,
+        "regular": 4
+      }
+    },
+    {
+      "id": 2,
+      "name": "Metro Kiwanis"
+    },
+    {
+      "id": 3,
+      "name": "South Side Elementary School"
+    }
+  
+  ]
+  

@@ -8,7 +8,7 @@
 
 
 <script>
-import locationData from "../database/locations.json";
+import locationData from "../db/data/locations.json";
 
 export default {
   data() {
@@ -17,8 +17,7 @@ export default {
     };
   },
   created() {
-    console.log(this.locations)
-    // this.getLocations();
+
   },
   methods: {
     
