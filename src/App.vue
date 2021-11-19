@@ -1,28 +1,53 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="content">
+    <div class="content__top">
+      <Nav />
+    </div>
+    <div class="content__bottom">
+      <div class="content__bottom__left">
+        <Listings />
+      </div>
+      <div class="content__bottom__right">
+        <Map />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Listings from "./components/Listings";
+import Map from "./components/Map";
+import Nav from "./components/Nav";
 
 export default {
-  name: 'App',
+  name: "App",
+
   components: {
-    HelloWorld
-  }
-}
+    Nav,
+    Listings,
+    Map,
+  },
+
+  data: () => ({
+    //
+  }),
+};
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.content {
+  background: #fff;
+  .content__bottom {
+    display: flex;
+    .content__bottom__left {
+      width: 60vw;
+      height: calc(100vh - 72px);
+    }
+
+    .content__bottom__right {
+      width: 40vw;
+      height: calc(100vh - 72px);
+    }
+  }
 }
 </style>
