@@ -35,6 +35,13 @@ export default {
 </script>
 
 <style lang="scss">
+
+body {
+  margin: 0;
+  font-family: "avenir";
+  font-size: 14px;
+}
+
 .content {
   background: #fff;
   .content__bottom {
