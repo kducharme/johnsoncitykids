@@ -44,16 +44,21 @@ body {
 
 .content {
   background: #fff;
+  .content__top {
+    position: fixed;
+    top: 0;
+    width: 100vw;
+  }
   .content__bottom {
     display: flex;
+    margin-top: 72px;
     .content__bottom__left {
       width: 60vw;
       height: calc(100vh - 72px);
     }
-
     .content__bottom__right {
       width: 40vw;
-      height: calc(100vh - 72px);
+      // height: calc(100vh - 72px);
     }
   }
 }
