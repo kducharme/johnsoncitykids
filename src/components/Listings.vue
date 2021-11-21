@@ -1,25 +1,12 @@
 <template>
   <div class="listings">
-    <div class="title">
+    <section class="title">
       <h1 class="title__header">Kids Activities in Johnson City, TN</h1>
       <p class="title__sub">{{ locations.length }} results</p>
-    </div>
-    <div class="filters">Filters & search go here</div>
+    </section>
+    <section class="filters">Filters & search go here</section>
     <div class="locations">
-      <div class="card" v-for="location in locations" :key="location.id">
-        <div class="card__left">
-          <img class="card__image" :src="`${location.image}`" />
-          <!-- <img class="card__image" src="../../db/images/rotary/rotary__primary.jpeg" /> -->
-        </div>
-        <div class="card__right">
-          <p class="card__subtitle">
-            {{ location.type }} · {{ location.price }} ·
-            {{ location.distance }} from JC center
-          </p>
-          <p class="card__title">{{ location.name }}</p>
-          <p class="card__details">{{ location.description }}</p>
-        </div>
-      </div>
+      <Card />
     </div>
   </div>
 </template>
@@ -27,8 +14,12 @@
 
 <script>
 import locationData from "../../public/db/data/locations.json";
+import Card from "./Card";
 
 export default {
+  components: {
+    Card
+  },
   data() {
     return {
       locations: locationData,
