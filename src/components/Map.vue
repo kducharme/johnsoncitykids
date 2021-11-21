@@ -1,8 +1,23 @@
 <template>
   <MglMap :accessToken="accessToken" :mapStyle="mapStyle" class="map">
-    <MglMarker :coordinates="coordinates" color="blue" />
+    <MglMarker
+      color="#009478"
+      v-for="(l, key) in locations"
+      :key="key"
+      :coordinates="l.coordinates"
+      @click="activateMarker(l)"
+    >
+      <MglPopup>
+        <!-- <VCard>
+      <div>{{ l.country }}</div>
+      <div>{{ l.latest.confirmed }}</div>
+    </VCard> -->
+      </MglPopup>
+    </MglMarker>
   </MglMap>
 </template>
+
+
 
 
 <script>
@@ -19,24 +34,18 @@ export default {
     return {
       accessToken:
         "pk.eyJ1IjoiZHVjaGFybWUta3lsZSIsImEiOiJja3c3NGtwdG5jZDQ5Mm9xMTd6NnA0eGIzIn0.UeLLcHA6s3e_hxm2sLJ-oA", // your access token. Needed if you using Mapbox maps
-      mapStyle: "mapbox://styles/ducharme-kyle/ckw75hvb10b9s15qbycu986x6", // your map style
-      coordinates: [],
+      mapStyle: "mapbox://styles/ducharme-kyle/ckw8kgsay15ht14plvwgxbect", // your map style
+      // center: [-82.336482, 36.313824],
       locations: locationData,
     };
   },
   methods: {
     // TODO - combine coordinates
-    gatherCoordinates() {
-      this.locations.forEach((l) => {
-
-        this.coordinates.push((`${l.coordinates.lat}, ${l.coordinates.long}`));
-        console.log(this.coordinates);
-      });
+    addMarkers() {},
+    created() {
+      this.mapbox = Mapbox;
+      this.addMarkers();
     },
-  },
-  created() {
-    this.mapbox = Mapbox;
-    this.gatherCoordinates();
   },
 };
 </script>
