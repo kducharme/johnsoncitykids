@@ -13,7 +13,24 @@
           <p class="card__title">{{ location.name }}</p>
           <p class="card__details">{{ location.description }}</p>
         </article>
-        <article class="card__right__bottom">hewwo</article>
+        <article class="card__right__bottom">
+          <star-rating
+            class="rating"
+            v-model="location.reviews.rating"
+            star-rating
+            :increment="0.1"
+            active-color="#009478"
+            :star-size="16"
+          >
+          </star-rating>
+          <a
+            target="_blank"
+            class="reviews__count"
+            :href="`${location.reviews.link}`"
+          >
+            ({{ location.reviews.count }} reviews)
+          </a>
+        </article>
       </section>
     </section>
   </div>
@@ -22,8 +39,12 @@
 
 <script>
 import locationData from "../../public/db/data/locations.json";
+import StarRating from "vue-star-rating";
 
 export default {
+  components: {
+    StarRating,
+  },
   data() {
     return {
       locations: locationData,
@@ -55,6 +76,9 @@ export default {
   .card__right {
     width: 70%;
     padding: 0 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     .card__subtitle {
       font-size: 12px;
       color: #6b6b6b;
@@ -69,6 +93,14 @@ export default {
       font-size: 14px;
       line-height: 1.8;
       margin: 12px 0;
+    }
+  }
+
+  .card__right__bottom {
+    display: flex;
+    .reviews__count {
+      margin-left: 8px;
+      color: #6b6b6b;
     }
   }
 }
