@@ -100,5 +100,141 @@
       "bucket": 4,
       "regular": 4
     }
+  },
+  {
+    "id": 4,
+    "name": "Carver Park",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/willowSprings/willow__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Playground",
+    "address": "322 W Watauga Ave, Johnson City, TN 37604",
+    "coordinates": {
+      "lat": 36.317430,
+      "lon": -82.360620
+    },
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 4.7,
+      "reviews": ">1,000",
+      "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
+    },
+    "price": "Free",
+    "hours": {
+      "mon": "9am - 9pm",
+      "tue": "9am - 9pm",
+      "wed": "9am - 9pm",
+      "thu": "9am - 9pm",
+      "fri": "9am - 9pm",
+      "sat": "9am - 9pm",
+      "sun": "9am - 9pm"
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 4,
+      "regular": 4
+    }
+  },
+  {
+    "id": 5,
+    "name": "Kings Common Park",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/willowSprings/willow__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Playground",
+    "address": "12 N Commerce St, Johnson City, TN 37604",
+    "coordinates": {
+      "lat": 36.318100,
+      "lon": -82.353280
+    },
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 4.7,
+      "reviews": ">1,000",
+      "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
+    },
+    "price": "Free",
+    "hours": {
+      "mon": "9am - 9pm",
+      "tue": "9am - 9pm",
+      "wed": "9am - 9pm",
+      "thu": "9am - 9pm",
+      "fri": "9am - 9pm",
+      "sat": "9am - 9pm",
+      "sun": "9am - 9pm"
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 4,
+      "regular": 4
+    }
+  },
+  {
+    "id": 6,
+    "name": "Lions Park",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/willowSprings/willow__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Playground",
+    "address": "817 Country Club Dr, Johnson City, TN 37601",
+    "coordinates": {
+      "lat": 36.347000,
+      "lon": -82.336830
+    },
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 4.7,
+      "reviews": ">1,000",
+      "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
+    },
+    "price": "Free",
+    "hours": {
+      "mon": "9am - 9pm",
+      "tue": "9am - 9pm",
+      "wed": "9am - 9pm",
+      "thu": "9am - 9pm",
+      "fri": "9am - 9pm",
+      "sat": "9am - 9pm",
+      "sun": "9am - 9pm"
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 4,
+      "regular": 4
+    }
+  },
+  {
+    "id": 7,
+    "name": "Johnson City Public Library",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/willowSprings/willow__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Library",
+    "address": "100 W Millard St, Johnson City, TN 37604",
+    "coordinates": {
+      "lat": 36.319600,
+      "lon": -82.354260
+    },
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 4.7,
+      "reviews": ">1,000",
+      "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
+    },
+    "price": "Free",
+    "hours": {
+      "mon": "9am - 9pm",
+      "tue": "9am - 9pm",
+      "wed": "9am - 9pm",
+      "thu": "9am - 9pm",
+      "fri": "9am - 9pm",
+      "sat": "9am - 9pm",
+      "sun": "9am - 9pm"
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 4,
+      "regular": 4
+    }
   }
 ]

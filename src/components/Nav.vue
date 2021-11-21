@@ -4,7 +4,9 @@
       <img class="logo" src="../assets/logo.png">
       <p class="logo__text">Kids</p>
       </div>
-    <div class="navigation__right">Nav links go here</div>
+    <div class="navigation__right">
+      <button class="btn__contact">Add listing</button>
+    </div>
   </div>
 </template>
 
@@ -43,5 +45,15 @@ export default {};
     font-weight: 600;
     color: #009478;
   }
+}
+
+.btn__contact {
+  color: white;
+  padding: 12px 16px;
+  background: #009478;
+  border: none;
+  font-weight: 600;
+  border-radius: 3px;
+  font-family: 'avenir';
 }
 </style>
