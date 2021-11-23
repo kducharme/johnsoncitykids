@@ -18,18 +18,11 @@
             class="rating"
             v-model="location.reviews.rating"
             star-rating
-            :increment="0.1"
+            :increment="0.2"
             active-color="#009478"
             :star-size="16"
           >
           </star-rating>
-          <a
-            target="_blank"
-            class="reviews__count"
-            :href="`${location.reviews.link}`"
-          >
-            ({{ location.reviews.count }} reviews)
-          </a>
         </article>
       </section>
     </section>

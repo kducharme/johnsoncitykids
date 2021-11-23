@@ -7,12 +7,12 @@
       :coordinates="l.coordinates"
       @click="activateMarker(l)"
     >
-      <MglPopup>
+      <!-- <MglPopup> -->
         <!-- <VCard>
       <div>{{ l.country }}</div>
       <div>{{ l.latest.confirmed }}</div>
     </VCard> -->
-      </MglPopup>
+      <!-- </MglPopup> -->
     </MglMarker>
   </MglMap>
 </template>
@@ -34,10 +34,10 @@ export default {
     return {
       accessToken:
         "pk.eyJ1IjoiZHVjaGFybWUta3lsZSIsImEiOiJja3c3NGtwdG5jZDQ5Mm9xMTd6NnA0eGIzIn0.UeLLcHA6s3e_hxm2sLJ-oA", // your access token. Needed if you using Mapbox maps
-      mapStyle: "mapbox://styles/ducharme-kyle/ckw8l8ywd1ycz15rzxqwofb17", // your map style
+      mapStyle: "mapbox://styles/ducharme-kyle/ckwbdgjia157o14jv1u3e1oue", // your map style
       center: [-71.61373, 42.13024],
       zoom: 100,
-      locations: locationData,
+      locations: locationData
     };
   },
   methods: {
