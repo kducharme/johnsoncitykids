@@ -4,7 +4,7 @@
       <h1 class="title__header">Kids Activities in Johnson City, TN</h1>
       <p class="title__sub">{{ locations.length }} results</p>
     </section>
-    <section class="filters">Filters & search go here</section>
+    <Filters />
     <div class="locations">
       <Card />
     </div>
@@ -15,10 +15,12 @@
 <script>
 import locationData from "../../public/db/data/locations.json";
 import Card from "./Card";
+import Filters from "./Filters";
 
 export default {
   components: {
-    Card
+    Card,
+    Filters
   },
   data() {
     return {
@@ -40,19 +42,15 @@ export default {
     padding: 0 0 24px 0;
     .title__sub {
       font-size: 13px;
-      margin: 12px 0 0;
+      margin: 8px 0 0;
     }
     .title__header {
       font-size: 28px;
       font-weight: 600;
+      margin: 0 0 16px;
     }
   }
 
-  // filters section
-  .filters {
-    padding: 16px 0;
-    margin: 0 0 24px;
-  }
 
   // listings section
 

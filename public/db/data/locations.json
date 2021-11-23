@@ -5,7 +5,7 @@
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/rotary/rotary__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Playground (Fenced)",
+    "type": "Playground",
     "fenced": "True",
     "address": "1001 N Broadway St, Johnson City, TN 37601",
     "coordinates": {
@@ -36,11 +36,11 @@
   },
   {
     "id": 2,
-    "name": "West Side Elementary School",
+    "name": "West Side Elementary Playground",
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/westSide/westSide__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Playground (Fenced)",
+    "type": "Playground",
     "fenced": "True",
     "address": "1310 Burgie St, Elizabethton, TN 37643",
     "coordinates": {
@@ -75,7 +75,7 @@
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/willowSprings/willow__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Playground (Not Fenced)",
+    "type": "Playground",
     "fenced": "False",
     "address": "817 Guaranda Dr, Johnson City, TN 37604",
     "coordinates": {
@@ -110,7 +110,7 @@
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/carvers/carvers__primary.jpg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Playground (Fenced)",
+    "type": "Playground",
     "fenced": "True",
     "address": "322 W Watauga Ave, Johnson City, TN 37604",
     "coordinates": {
@@ -145,7 +145,7 @@
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/kingsCommon/kings__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Playground (Not Fenced)",
+    "type": "Playground",
     "fenced": "False",
     "address": "12 N Commerce St, Johnson City, TN 37604",
     "coordinates": {
@@ -180,7 +180,7 @@
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/willowSprings/willow__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Playground (Not Fenced)",
+    "type": "Playground",
     "fenced": "False",
     "address": "817 Country Club Dr, Johnson City, TN 37601",
     "coordinates": {
@@ -249,7 +249,7 @@
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/kiwanis/metroKiwanis__primary.jpg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Playground (Fenced)",
+    "type": "Playground",
     "fenced": "True",
     "address": "817 Guaranda Dr, Johnson City, TN 37604",
     "coordinates": {
