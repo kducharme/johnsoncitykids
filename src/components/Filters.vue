@@ -1,11 +1,26 @@
 <template>
   <div ref="filterArea" class="filters">
+    <!-- Type Filter -->
     <section class="filter">
-      <article class="input" @click="filterByType()">
+      <article class="input" @click="displayTypeFilter()" id="input__type">
         <p class="placeholder">Type</p>
       </article>
-      <article class="structure hide">
-        <p v-for="type in types" :key="type" @click="filterResults(type)">{{ type }}</p>
+      <article class="structure hide" id="structure__type">
+        <p v-for="type in types" :key="type" @click="filterBy(type)">
+          {{ type }}
+        </p>
+      </article>
+    </section>
+
+    <!-- price Filter -->
+    <section class="filter">
+      <article class="input" @click="displayPriceFilter()" id="input__price">
+        <p class="placeholder">Price</p>
+      </article>
+      <article class="structure hide" id="structure__price">
+        <p v-for="price in prices" :key="price" @click="filterBy(price)">
+          {{ Price }}
+        </p>
       </article>
     </section>
   </div>
@@ -17,47 +32,39 @@ export default {
   components: {},
   data() {
     return {
+      activeFilters: {
+        type: "",
+      },
       types: {
         one: "Playground",
         two: "Library",
       },
+      prices: {
+        one: "Free",
+        two: "Paid",
+      },
     };
   },
   methods: {
-    filterByType() {
-      const dropdown = document.querySelector(".structure");
+    displayPriceFilter() {
+      const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
 
-      const input = document.querySelector(".input");
+      const input = document.querySelector("#input__price");
       input.classList.toggle("input__active");
     },
-    filterResults() {
-      console.log("filter me");
+    displayTypeFilter() {
+      const dropdown = document.querySelector("#structure__type");
+      dropdown.classList.toggle("hide");
+
+      const input = document.querySelector("#input__type");
+      input.classList.toggle("input__active");
     },
-    showDropdown() {
-      const structure = document.createElement("div");
-      structure.classList.add("structure", "hide");
-
-      //   users.forEach((user) => {
-      //     const { id, name, title } = user;
-      //     const option = document.createElement("div");
-      //     option.addEventListener("click", () => selectOption(name));
-      //     option.setAttribute("id", id);
-
-      //     const n = document.createElement("h5");
-      //     n.textContent = name;
-
-      //     const t = document.createElement("p");
-      //     t.textContent = `(${title})`;
-
-      //     option.appendChild(n);
-      //     option.appendChild(t);
-      //     structure.appendChild(option);
-      //   });
-      return structure;
+    filterBy(n) {
+      console.log(n);
     },
     toggleDropdown() {
-      const dropdown = document.querySelector(".structure");
+      const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
 
       const input = document.querySelector(".input");
@@ -80,6 +87,10 @@ export default {
   flex-direction: row;
   padding: 16px 0;
   margin: 0 0 24px;
+}
+
+.filter {
+  margin-right: 12px;
 }
 
 /* Input styling */
@@ -124,39 +135,29 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  height: 200px;
   width: 280px;
   overflow: scroll;
   background-color: white;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-  padding: 12px;
+  padding: 6px 0;
   z-index: 9999;
   position: absolute;
   margin-top: 16px;
   border: 1px solid #e2e2e2;
+  border-radius: 3px;
 }
 
-.structure > div {
+.structure > p {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 16px;
+  margin: 0;
 }
 
-.structure > article:hover {
-  background-color: var(--colorAccent);
-  color: white;
+.structure > p:hover {
+  background-color: #fafafa;
   cursor: pointer;
-}
-
-.structure > article > h5 {
-  font-weight: 600;
-  margin-right: 4px;
-}
-
-.structure > article > p {
-  font-weight: 400;
-  font-size: 13px;
 }
 
 .hide {

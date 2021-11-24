@@ -38,6 +38,7 @@ export default {
   components: {
     StarRating,
   },
+  props: ['typeFilter'],
   data() {
     return {
       locations: locationData,

@@ -1,7 +1,7 @@
 <template>
   <div class="listings">
     <section class="title">
-      <h1 class="title__header">Kids Activities in Johnson City, TN</h1>
+      <h1 class="title__header">Activities in Johnson City, TN</h1>
       <p class="title__sub">{{ locations.length }} results</p>
     </section>
     <Filters />
