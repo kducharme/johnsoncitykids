@@ -8,7 +8,7 @@
       @click="activateMarker(l)"
     >
       <!-- <MglPopup> -->
-        <!-- <VCard>
+      <!-- <VCard>
       <div>{{ l.country }}</div>
       <div>{{ l.latest.confirmed }}</div>
     </VCard> -->
@@ -16,8 +16,6 @@
     </MglMarker>
   </MglMap>
 </template>
-
-
 
 
 <script>
@@ -39,11 +37,8 @@ export default {
     };
   },
   methods: {
-    // TODO - combine coordinates
-    addMarkers() {},
     created() {
       this.mapbox = Mapbox;
-      this.addMarkers();
     },
   },
 };

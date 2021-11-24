@@ -6,7 +6,7 @@
         <p class="placeholder">Type</p>
       </article>
       <article class="structure hide" id="structure__type">
-        <p v-for="type in types" :key="type" @click="filterBy(type)">
+        <p v-for="type in types" :key="type" @click="filterByType(type)">
           {{ type }}
         </p>
       </article>
@@ -18,7 +18,7 @@
         <p class="placeholder">Price</p>
       </article>
       <article class="structure hide" id="structure__price">
-        <p v-for="price in prices" :key="price" @click="filterBy(price)">
+        <p v-for="price in prices" :key="price" @click="filterByPrice(price)">
           {{ price }}
         </p>
       </article>
@@ -28,6 +28,8 @@
 
 
 <script>
+// import { mapState } from "vuex";
+
 export default {
   components: {},
   data() {
@@ -38,7 +40,7 @@ export default {
       types: {
         one: "Playground",
         two: "Library",
-        three: "Trampoline park"
+        three: "Trampoline park",
       },
       prices: {
         one: "Free",
@@ -47,6 +49,16 @@ export default {
     };
   },
   methods: {
+    filterByType(type) {
+      this.$store.commit("setTypeFilter", {
+        type,
+      });
+    },
+    filterByPrice(price) {
+      this.$store.commit("setPriceFilter", {
+        price,
+      });
+    },
     displayPriceFilter() {
       const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
@@ -61,9 +73,7 @@ export default {
       const input = document.querySelector("#input__type");
       input.classList.toggle("input__active");
     },
-    filterBy(n) {
-      console.log(n);
-    },
+
     toggleDropdown() {
       const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");

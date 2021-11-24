@@ -7,11 +7,30 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    locations: locationData
+    allLocations: locationData,
+
+    filteredLocations: [],
+
+    activeFilters: {
+      type: undefined,
+      price: undefined
+    }
+  },
+  getters: {
+    getLocations: state => state.allLocations
   },
   mutations: {
+    setTypeFilter(state, payload) {
+      this.state.activeFilters.type = payload.type;
+    },
+    setPriceFilter(state, payload) {
+      this.state.activeFilters.price = payload.price;
+    }
   },
   actions: {
+    getLocations() {
+
+    }
   },
   modules: {
   }
