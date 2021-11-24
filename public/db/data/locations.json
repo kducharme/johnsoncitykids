@@ -3,15 +3,12 @@
     "id": 1,
     "name": "Rotary Park",
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-    "image": "../db/images/rotary/rotary__primary.jpeg",
+    "image": "../db/images/rotary__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
     "type": "Playground",
     "fenced": "True",
     "address": "1001 N Broadway St, Johnson City, TN 37601",
-    "coordinates": {
-      "lat": 36.337730,
-      "lon": -82.348580
-    },
+    "coordinates": [-82.348580, 36.337730],
     "distance": "0.7 mi",
     "reviews": {
       "rating": 4.7,
@@ -38,15 +35,12 @@
     "id": 2,
     "name": "West Side Elementary Playground",
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-    "image": "../db/images/westSide/westSide__primary.jpeg",
+    "image": "../db/images/westSide__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
     "type": "Playground",
     "fenced": "True",
     "address": "1310 Burgie St, Elizabethton, TN 37643",
-    "coordinates": {
-      "lat": 36.342860,
-      "lon": -82.246210
-    },
+    "coordinates": [-82.246210, 36.342860],
     "distance": "0.7 mi",
     "reviews": {
       "rating": 4.4,
@@ -73,15 +67,12 @@
     "id": 3,
     "name": "Willow Springs Park",
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-    "image": "../db/images/willowSprings/willow__primary.jpeg",
+    "image": "../db/images/willow__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
     "type": "Playground",
     "fenced": "False",
     "address": "817 Guaranda Dr, Johnson City, TN 37604",
-    "coordinates": {
-      "lat": 36.291170,
-      "lon": -82.405200
-    },
+    "coordinates": [-82.405200, 36.291170],
     "distance": "0.7 mi",
     "reviews": {
       "rating": 4.0,
@@ -108,15 +99,12 @@
     "id": 4,
     "name": "Carvers Park",
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-    "image": "../db/images/carvers/carvers__primary.jpg",
+    "image": "../db/images/carvers__primary.jpg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
     "type": "Playground",
     "fenced": "True",
     "address": "322 W Watauga Ave, Johnson City, TN 37604",
-    "coordinates": {
-      "lat": 36.317430,
-      "lon": -82.360620
-    },
+    "coordinates": [-82.360620, 36.317430],
     "distance": "0.7 mi",
     "reviews": {
       "rating": 3.8,
@@ -143,15 +131,12 @@
     "id": 5,
     "name": "Kings Common Park",
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-    "image": "../db/images/kingsCommon/kings__primary.jpeg",
+    "image": "../db/images/kings__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
     "type": "Playground",
     "fenced": "False",
     "address": "12 N Commerce St, Johnson City, TN 37604",
-    "coordinates": {
-      "lat": 36.318100,
-      "lon": -82.353280
-    },
+    "coordinates": [82.353280, 36.318100],
     "distance": "0.7 mi",
     "reviews": {
       "rating": 4.2,
@@ -178,15 +163,12 @@
     "id": 6,
     "name": "Lions Park",
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-    "image": "../db/images/willowSprings/willow__primary.jpeg",
+    "image": "../db/images/willow__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
     "type": "Playground",
     "fenced": "False",
     "address": "817 Country Club Dr, Johnson City, TN 37601",
-    "coordinates": {
-      "lat": 36.347000,
-      "lon": -82.336830
-    },
+    "coordinates": [-82.336830, 36.318100],
     "distance": "0.7 mi",
     "reviews": {
       "rating": 3.4,
@@ -213,14 +195,11 @@
     "id": 7,
     "name": "Johnson City Public Library",
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-    "image": "../db/images/library/library__primary.jpeg",
+    "image": "../db/images/library__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
     "type": "Library",
     "address": "100 W Millard St, Johnson City, TN 37604",
-    "coordinates": {
-      "lat": 36.319600,
-      "lon": -82.354260
-    },
+    "coordinates": [-82.354260, 36.319600],
     "distance": "0.7 mi",
     "reviews": {
       "rating": 4.0,
@@ -247,15 +226,12 @@
     "id": 8,
     "name": "Metro Kiwanis",
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-    "image": "../db/images/kiwanis/metroKiwanis__primary.jpg",
+    "image": "../db/images/metroKiwanis__primary.jpg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
     "type": "Playground",
     "fenced": "True",
     "address": "817 Guaranda Dr, Johnson City, TN 37604",
-    "coordinates": {
-      "lat": 36.326110,
-      "lon": -82.384290
-    },
+    "coordinates": [-82.384290, 36.326110],
     "distance": "0.7 mi",
     "reviews": {
       "rating": 3.8,
@@ -276,6 +252,70 @@
     "swings": {
       "bucket": 4,
       "regular": 4
+    }
+  },
+  {
+    "id": 9,
+    "name": "Just Jump Trampoline Park",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/justJump__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Trampoline Park",
+    "fenced": "False",
+    "address": "2304 Silverdale Dr #600, Johnson City, TN 37601",
+    "coordinates": [-82.364870, 36.353130],
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 4.4,
+      "count": "752",
+      "link": ""
+    },
+    "price": "Paid",
+    "hours": {
+      "mon": "",
+      "tue": "",
+      "wed": "",
+      "thu": "",
+      "fri": "",
+      "sat": "",
+      "sun": ""
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 0,
+      "regular": 0
+    }
+  },
+  {
+    "id": 10,
+    "name": "Quantum Leap Trampoline Sports Arena",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/quantum__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Trampoline Park",
+    "fenced": "False",
+    "address": "117 E King St, Johnson City, TN 37601",
+    "coordinates": [-82.352090, 36.320140],
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 4.4,
+      "count": "776",
+      "link": ""
+    },
+    "price": "Paid",
+    "hours": {
+      "mon": "",
+      "tue": "",
+      "wed": "",
+      "thu": "",
+      "fri": "",
+      "sat": "",
+      "sun": ""
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 0,
+      "regular": 0
     }
   }
 ]

@@ -2,7 +2,7 @@
   <MglMap :accessToken="accessToken" :mapStyle="mapStyle" class="map">
     <MglMarker
       color="#009478"
-      v-for="(l, key) in locations"
+      v-for="(l, key) in $store.state.locations"
       :key="key"
       :coordinates="l.coordinates"
       @click="activateMarker(l)"
@@ -23,7 +23,6 @@
 <script>
 import Mapbox from "mapbox-gl";
 import { MglMap, MglMarker } from "vue-mapbox";
-import locationData from "../../public/db/data/locations.json";
 
 export default {
   components: {
@@ -37,7 +36,6 @@ export default {
       mapStyle: "mapbox://styles/ducharme-kyle/ckwbdgjia157o14jv1u3e1oue", // your map style
       center: [-71.61373, 42.13024],
       zoom: 100,
-      locations: locationData
     };
   },
   methods: {

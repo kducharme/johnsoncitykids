@@ -19,7 +19,7 @@
       </article>
       <article class="structure hide" id="structure__price">
         <p v-for="price in prices" :key="price" @click="filterBy(price)">
-          {{ Price }}
+          {{ price }}
         </p>
       </article>
     </section>
@@ -38,6 +38,7 @@ export default {
       types: {
         one: "Playground",
         two: "Library",
+        three: "Trampoline park"
       },
       prices: {
         one: "Free",
@@ -86,7 +87,7 @@ export default {
   display: flex;
   flex-direction: row;
   padding: 16px 0;
-  margin: 0 0 24px;
+  margin: 0 0 16px;
 }
 
 .filter {
