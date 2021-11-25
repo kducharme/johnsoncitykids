@@ -2,7 +2,7 @@
   <MglMap :accessToken="accessToken" :mapStyle="mapStyle" class="map">
     <MglMarker
       color="#009478"
-      v-for="(l, key) in $store.state.locations"
+      v-for="(l, key) in $store.state.filteredLocations"
       :key="key"
       :coordinates="l.coordinates"
       @click="activateMarker(l)"

@@ -2,7 +2,7 @@
   <div class="listings">
     <section class="title">
       <h1 class="title__header">Activities in Johnson City, TN</h1>
-      <p class="title__sub">{{ locations.length }} results</p>
+      <p class="title__sub">{{ this.$store.state.allLocations.length }} results</p>
     </section>
     <Filters />
     <div class="locations">

@@ -23,6 +23,7 @@
         </p>
       </article>
     </section>
+    
   </div>
 </template>
 
@@ -53,11 +54,21 @@ export default {
       this.$store.commit("setTypeFilter", {
         type,
       });
+      const dropdown = document.querySelector("#structure__type");
+      dropdown.classList.toggle("hide");
+
+      const input = document.querySelector("#input__type");
+      input.classList.toggle("input__active");
     },
     filterByPrice(price) {
       this.$store.commit("setPriceFilter", {
         price,
       });
+      const dropdown = document.querySelector("#structure__price");
+      dropdown.classList.toggle("hide");
+
+      const input = document.querySelector("#input__price");
+      input.classList.toggle("input__active");
     },
     displayPriceFilter() {
       const dropdown = document.querySelector("#structure__price");
@@ -117,7 +128,7 @@ export default {
 }
 
 .input__active {
-  border: 2px solid #009478;
+  border: 2px solid #009478!important;
   margin: -1px;
   background: #fafafa;
 }
@@ -131,6 +142,7 @@ export default {
 
 .input:hover {
   cursor: pointer;
+  border: 1px solid #b4b4b4
 }
 
 .placeholder {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="card" v-for="location in locations" :key="location.id">
+    <section class="card" v-for="location in this.$store.state.filteredLocations" :key="location.id">
       <section class="card__left">
         <img class="card__image" :src="`${location.image}`" />
       </section>
@@ -47,7 +47,7 @@ export default {
     };
   },
   mounted() {
-    this.locations = this.$store.getters.getLocations;
+    this.$store.getters.getLocations;
   },
   methods: {},
 };

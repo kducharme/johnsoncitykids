@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    allLocations: locationData,
+    allLocations: [],
 
     filteredLocations: [],
 
@@ -17,11 +17,22 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    getLocations: state => state.allLocations
+    getLocations(state) {
+      state.allLocations = locationData;
+      state.filteredLocations = locationData;
+    }
   },
   mutations: {
     setTypeFilter(state, payload) {
+      this.state.filteredLocations = [];
       this.state.activeFilters.type = payload.type;
+
+      this.state.allLocations.forEach(l => {
+        if (l.type.toLowerCase() === this.state.activeFilters.type.toLowerCase()) {
+          this.state.filteredLocations.push(l)
+          console.log(this.state.filteredLocations)
+        }
+      })
     },
     setPriceFilter(state, payload) {
       this.state.activeFilters.price = payload.price;
