@@ -23,7 +23,6 @@
         </p>
       </article>
     </section>
-    
   </div>
 </template>
 
@@ -58,8 +57,36 @@ export default {
       dropdown.classList.toggle("hide");
 
       const input = document.querySelector("#input__type");
-      input.classList.toggle("input__active");
+      input.textContent = this.$store.state.activeFilters.type;
+
+      const clearFilters = this.addClearFilters();
+
+      dropdown.appendChild(clearFilters);
     },
+    addClearFilters() {
+      const clear = document.createElement("article");
+      clear.textContent = "Clear filter";
+      clear.classList.add("clear");
+      clear.addEventListener("click", () => {
+        this.resetTypeFilter();
+        this.removeClearFilters();
+        const dropdown = document.querySelector("#structure__type");
+        dropdown.classList.add("hide");
+
+        const input = document.querySelector("#input__type");
+        input.classList.remove("input__active");
+        input.textContent = "Type";
+      });
+      return clear;
+    },
+
+    removeClearFilters() {
+      document.querySelector(".clear").remove();
+    },
+    resetTypeFilter() {
+      this.$store.commit("resetTypeFilter");
+    },
+
     filterByPrice(price) {
       this.$store.commit("setPriceFilter", {
         price,
@@ -118,8 +145,9 @@ export default {
 /* Input styling */
 .input {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   border: 1px solid #e2e2e2;
   border-radius: 24px;
   height: 36px;
@@ -128,7 +156,7 @@ export default {
 }
 
 .input__active {
-  border: 2px solid #009478!important;
+  border: 2px solid #009478 !important;
   margin: -1px;
   background: #fafafa;
 }
@@ -142,7 +170,7 @@ export default {
 
 .input:hover {
   cursor: pointer;
-  border: 1px solid #b4b4b4
+  border: 1px solid #b4b4b4;
 }
 
 .placeholder {
@@ -185,5 +213,13 @@ export default {
 
 .hide {
   display: none;
+}
+
+.close {
+  font-weight: 600;
+  font-family: "avenir";
+  color: black;
+  margin-left: 16px;
+  z-index: 99999;
 }
 </style>;

@@ -23,6 +23,10 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    resetTypeFilter(state) {
+      state.activeFilters.type = undefined;
+      state.filteredLocations = state.allLocations;
+    },
     setTypeFilter(state, payload) {
       this.state.filteredLocations = [];
       this.state.activeFilters.type = payload.type;
