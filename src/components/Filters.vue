@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     filterByType(type) {
-      this.$store.commit("setTypeFilter", {
+      this.$store.commit("filterLocations", {
         type,
       });
       const dropdown = document.querySelector("#structure__type");
@@ -59,9 +59,10 @@ export default {
       const input = document.querySelector("#input__type");
       input.textContent = this.$store.state.activeFilters.type;
 
-      const clearFilters = this.addClearFilters();
-
-      dropdown.appendChild(clearFilters);
+      if (document.querySelector(".clear") === null) {
+        const clearFilters = this.addClearFilters();
+        dropdown.appendChild(clearFilters);
+      }
     },
     addClearFilters() {
       const clear = document.createElement("article");
@@ -84,11 +85,11 @@ export default {
       document.querySelector(".clear").remove();
     },
     resetTypeFilter() {
-      this.$store.commit("resetTypeFilter");
+      this.$store.commit("resetFilters");
     },
 
     filterByPrice(price) {
-      this.$store.commit("setPriceFilter", {
+      this.$store.commit("filterLocations", {
         price,
       });
       const dropdown = document.querySelector("#structure__price");
@@ -215,11 +216,16 @@ export default {
   display: none;
 }
 
-.close {
+.clear {
   font-weight: 600;
   font-family: "avenir";
   color: black;
-  margin-left: 16px;
-  z-index: 99999;
+  text-decoration: underline;
+  margin: 16px;
+}
+
+.clear:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 </style>;
