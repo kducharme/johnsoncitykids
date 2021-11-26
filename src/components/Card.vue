@@ -28,7 +28,6 @@
             :star-size="16"
           >
           </star-rating>
-          <p class="reviews__count">({{ location.reviews.count }} reviews)</p>
         </article>
       </section>
     </section>

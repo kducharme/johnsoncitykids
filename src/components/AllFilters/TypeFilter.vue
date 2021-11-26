@@ -22,7 +22,7 @@ export default {
         two: "Hiking",
         three: "Library",
         four: "Trampoline & Inflatable Parks",
-        five: "Sports"
+        five: "Sports",
       },
     };
   },
@@ -70,19 +70,25 @@ export default {
     },
 
     displayTypeFilter() {
+      console.log("woo");
       const dropdown = document.querySelector("#structure__type");
       dropdown.classList.toggle("hide");
 
       const input = document.querySelector("#input__type");
-      input.classList.toggle("input__active");
+
+      if (this.$store.state.activeFilters.type === undefined) {
+        input.classList.toggle("input__active");
+      } else {
+        input.classList.add("input__active");
+      }
     },
 
     toggleDropdown() {
-      const dropdown = document.querySelector("#structure__price");
+      const dropdown = document.querySelector("#structure__type");
       dropdown.classList.toggle("hide");
 
       const input = document.querySelector(".input");
-      input.classList.toggle("input__active");
+      input.classList.add("input__active");
     },
     selectOption(name) {
       const text = document.querySelector(".placeholder");

@@ -69,14 +69,19 @@ export default {
       dropdown.classList.toggle("hide");
 
       const input = document.querySelector("#input__price");
-      input.classList.toggle("input__active");
+
+      if (this.$store.state.activeFilters.price === undefined) {
+        input.classList.toggle("input__active");
+      } else {
+        input.classList.add("input__active");
+      }
     },
     toggleDropdown() {
       const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
 
-      const input = document.querySelector(".input");
-      input.classList.toggle("input__active");
+            const input = document.querySelector(".input");
+      input.classList.add("input__active");
     },
     selectOption(name) {
       const text = document.querySelector(".placeholder");
