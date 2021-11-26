@@ -60,19 +60,19 @@ export default {
       input.textContent = this.$store.state.activeFilters.type;
 
       if (document.querySelector(".clear") === null) {
-        const clearFilters = this.addClearFilters();
+        const clearFilters = this.clearTypeFilter();
         dropdown.appendChild(clearFilters);
       }
     },
-    addClearFilters() {
+    clearTypeFilter() {
       const clear = document.createElement("article");
       clear.textContent = "Clear filter";
       clear.classList.add("clear");
       clear.addEventListener("click", () => {
         this.resetTypeFilter();
         this.removeClearFilters();
-        const dropdown = document.querySelector("#structure__type");
-        dropdown.classList.add("hide");
+        const typeDropdown = document.querySelector("#structure__type");
+        typeDropdown.classList.add("hide");
 
         const input = document.querySelector("#input__type");
         input.classList.remove("input__active");
@@ -85,7 +85,10 @@ export default {
       document.querySelector(".clear").remove();
     },
     resetTypeFilter() {
-      this.$store.commit("resetFilters");
+      this.$store.commit("resetTypeFilter");
+      this.$store.commit("filterLocations", {
+        type: undefined,
+      });
     },
 
     filterByPrice(price) {
@@ -96,8 +99,35 @@ export default {
       dropdown.classList.toggle("hide");
 
       const input = document.querySelector("#input__price");
-      input.classList.toggle("input__active");
+      input.textContent = this.$store.state.activeFilters.price;
+      if (document.querySelector(".clear") === null) {
+        const clearFilters = this.clearPriceFilter();
+        dropdown.appendChild(clearFilters);
+      }
     },
+    clearPriceFilter() {
+      const clear = document.createElement("article");
+      clear.textContent = "Clear filter";
+      clear.classList.add("clear");
+      clear.addEventListener("click", () => {
+        this.resetPriceFilter();
+        this.removeClearFilters();
+        const priceDropdown = document.querySelector("#structure__price");
+        priceDropdown.classList.add("hide");
+
+        const input = document.querySelector("#input__price");
+        input.classList.remove("input__active");
+        input.textContent = "Price";
+      });
+      return clear;
+    },
+    resetPriceFilter() {
+      this.$store.commit("resetPriceFilter");
+      this.$store.commit("filterLocations", {
+        price: undefined,
+      });
+    },
+
     displayPriceFilter() {
       const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
@@ -105,6 +135,7 @@ export default {
       const input = document.querySelector("#input__price");
       input.classList.toggle("input__active");
     },
+
     displayTypeFilter() {
       const dropdown = document.querySelector("#structure__type");
       dropdown.classList.toggle("hide");

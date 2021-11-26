@@ -23,16 +23,23 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    resetFilters(state) {
+    resetTypeFilter(state) {
       state.activeFilters.type = undefined;
-      state.filteredLocations = state.allLocations;
+    },
+    resetPriceFilter(state) {
+      state.activeFilters.price = undefined;
     },
     filterLocations(state, payload) {
       this.state.filteredLocations = [];
 
       // Checks if new filter params have been passed
 
-      if (payload.type) { this.state.activeFilters.type = payload.type; console.log(this.state.activeFilters.type) }
+      if (payload.type !== undefined) {
+        this.state.activeFilters.type = payload.type;
+      }
+      else {
+        this.state.activeFilters.type = undefined;
+      }
       if (payload.price) { this.state.activeFilters.price = payload.price; }
 
       // Update locations -- both filters are active
@@ -56,9 +63,9 @@ export default new Vuex.Store({
           }
         })
       }
-      
+
       // Update locations -- only price filter is active
-      
+
       if (this.state.activeFilters.type === undefined && this.state.activeFilters.price !== undefined) {
         console.log('price only')
         this.state.allLocations.forEach(l => {
@@ -68,13 +75,11 @@ export default new Vuex.Store({
         })
       }
 
+      // If there aren't any filters applied, then display allLocations
 
-
-      // this.state.allLocations.forEach(l => {
-      //   if (l.type.toLowerCase() === this.state.activeFilters.type.toLowerCase()) {
-      //     this.state.filteredLocations.push(l)
-      //   }
-      // })
+      if (this.state.activeFilters.type === undefined && this.state.activeFilters.price === undefined) {
+        this.state.filteredLocations = this.state.allLocations;
+      }
     },
     setPriceFilter(state, payload) {
       this.state.activeFilters.price = payload.price;
