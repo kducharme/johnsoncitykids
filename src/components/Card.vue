@@ -1,6 +1,10 @@
 <template>
   <div>
-    <section class="card" v-for="location in this.$store.state.filteredLocations" :key="location.id">
+    <section
+      class="card"
+      v-for="location in this.$store.state.filteredLocations"
+      :key="location.id"
+    >
       <section class="card__left">
         <img class="card__image" :src="`${location.image}`" />
       </section>
@@ -19,16 +23,14 @@
             class="rating"
             v-model="location.reviews.rating"
             star-rating
-            :increment="0.2"
+            :increment="0.1"
             active-color="#009478"
             :star-size="16"
           >
           </star-rating>
-          <p class="reviews__count">({{ location.reviews.count }} reviews)</p>
         </article>
       </section>
     </section>
-
   </div>
 </template>
 
@@ -48,6 +50,7 @@ export default {
   },
   mounted() {
     this.$store.getters.getLocations;
+    this.$store.commit("sortLocations");
   },
   methods: {},
 };

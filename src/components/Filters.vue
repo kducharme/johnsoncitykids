@@ -1,162 +1,27 @@
 <template>
   <div ref="filterArea" class="filters">
-    <!-- Type Filter -->
-    <section class="filter">
-      <article class="input" @click="displayTypeFilter()" id="input__type">
-        <p class="placeholder">Type</p>
-      </article>
-      <article class="structure hide" id="structure__type">
-        <p v-for="type in types" :key="type" @click="filterByType(type)">
-          {{ type }}
-        </p>
-      </article>
-    </section>
+    <TypeFilter />
+    <PriceFilter />
 
-    <!-- price Filter -->
-    <section class="filter">
-      <article class="input" @click="displayPriceFilter()" id="input__price">
-        <p class="placeholder">Price</p>
-      </article>
-      <article class="structure hide" id="structure__price">
-        <p v-for="price in prices" :key="price" @click="filterByPrice(price)">
-          {{ price }}
-        </p>
-      </article>
-    </section>
   </div>
 </template>
 
 
 <script>
-// import { mapState } from "vuex";
+import TypeFilter from "./AllFilters/TypeFilter";
+import PriceFilter from "./AllFilters/PriceFilter";
 
 export default {
-  components: {},
+  components: {
+    TypeFilter,
+    PriceFilter
+  },
   data() {
     return {
-      activeFilters: {
-        type: "",
-      },
-      types: {
-        one: "Playground",
-        two: "Library",
-        three: "Trampoline park",
-      },
-      prices: {
-        one: "Free",
-        two: "Paid",
-      },
+
     };
   },
   methods: {
-    filterByType(type) {
-      this.$store.commit("filterLocations", {
-        type,
-      });
-      const dropdown = document.querySelector("#structure__type");
-      dropdown.classList.toggle("hide");
-
-      const input = document.querySelector("#input__type");
-      input.textContent = this.$store.state.activeFilters.type;
-
-      if (document.querySelector(".clear") === null) {
-        const clearFilters = this.clearTypeFilter();
-        dropdown.appendChild(clearFilters);
-      }
-    },
-    clearTypeFilter() {
-      const clear = document.createElement("article");
-      clear.textContent = "Clear filter";
-      clear.classList.add("clear");
-      clear.addEventListener("click", () => {
-        this.resetTypeFilter();
-        this.removeClearFilters();
-        const typeDropdown = document.querySelector("#structure__type");
-        typeDropdown.classList.add("hide");
-
-        const input = document.querySelector("#input__type");
-        input.classList.remove("input__active");
-        input.textContent = "Type";
-      });
-      return clear;
-    },
-
-    removeClearFilters() {
-      document.querySelector(".clear").remove();
-    },
-    resetTypeFilter() {
-      this.$store.commit("resetTypeFilter");
-      this.$store.commit("filterLocations", {
-        type: undefined,
-      });
-    },
-
-    filterByPrice(price) {
-      this.$store.commit("filterLocations", {
-        price,
-      });
-      const dropdown = document.querySelector("#structure__price");
-      dropdown.classList.toggle("hide");
-
-      const input = document.querySelector("#input__price");
-      input.textContent = this.$store.state.activeFilters.price;
-      if (document.querySelector(".clear") === null) {
-        const clearFilters = this.clearPriceFilter();
-        dropdown.appendChild(clearFilters);
-      }
-    },
-    clearPriceFilter() {
-      const clear = document.createElement("article");
-      clear.textContent = "Clear filter";
-      clear.classList.add("clear");
-      clear.addEventListener("click", () => {
-        this.resetPriceFilter();
-        this.removeClearFilters();
-        const priceDropdown = document.querySelector("#structure__price");
-        priceDropdown.classList.add("hide");
-
-        const input = document.querySelector("#input__price");
-        input.classList.remove("input__active");
-        input.textContent = "Price";
-      });
-      return clear;
-    },
-    resetPriceFilter() {
-      this.$store.commit("resetPriceFilter");
-      this.$store.commit("filterLocations", {
-        price: undefined,
-      });
-    },
-
-    displayPriceFilter() {
-      const dropdown = document.querySelector("#structure__price");
-      dropdown.classList.toggle("hide");
-
-      const input = document.querySelector("#input__price");
-      input.classList.toggle("input__active");
-    },
-
-    displayTypeFilter() {
-      const dropdown = document.querySelector("#structure__type");
-      dropdown.classList.toggle("hide");
-
-      const input = document.querySelector("#input__type");
-      input.classList.toggle("input__active");
-    },
-
-    toggleDropdown() {
-      const dropdown = document.querySelector("#structure__price");
-      dropdown.classList.toggle("hide");
-
-      const input = document.querySelector(".input");
-      input.classList.toggle("input__active");
-    },
-    selectOption(name) {
-      const text = document.querySelector(".placeholder");
-      text.textContent = name;
-      text.classList.add("input__selected");
-      this.toggleDropdown();
-    },
   },
   created() {},
 };
@@ -247,7 +112,8 @@ export default {
   display: none;
 }
 
-.clear {
+.clear__type,
+.clear__price {
   font-weight: 600;
   font-family: "avenir";
   color: black;
@@ -255,7 +121,8 @@ export default {
   margin: 16px;
 }
 
-.clear:hover {
+.clear__type:hover,
+.clear__price {
   cursor: pointer;
   opacity: 0.7;
 }

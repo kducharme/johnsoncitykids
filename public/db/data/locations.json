@@ -11,11 +11,11 @@
     "coordinates": [-82.348580, 36.337730],
     "distance": "0.7 mi",
     "reviews": {
-      "rating": 4.7,
+      "rating": 4.8,
       "count": "1,081",
       "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
     },
-    "price": "Paid",
+    "price": "Free",
     "hours": {
       "mon": "9am - 9pm",
       "tue": "9am - 9pm",
@@ -43,7 +43,7 @@
     "coordinates": [-82.246210, 36.342860],
     "distance": "0.7 mi",
     "reviews": {
-      "rating": 4.4,
+      "rating": 4.2,
       "count": "243",
       "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
     },
@@ -75,7 +75,7 @@
     "coordinates": [-82.405200, 36.291170],
     "distance": "0.7 mi",
     "reviews": {
-      "rating": 4.0,
+      "rating": 4.1,
       "count": "755",
       "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
     },
@@ -107,7 +107,7 @@
     "coordinates": [-82.360620, 36.317430],
     "distance": "0.7 mi",
     "reviews": {
-      "rating": 3.8,
+      "rating": 3.5,
       "count": "282",
       "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
     },
@@ -139,7 +139,7 @@
     "coordinates": [82.353280, 36.318100],
     "distance": "0.7 mi",
     "reviews": {
-      "rating": 4.2,
+      "rating": 4.3,
       "count": "187",
       "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
     },
@@ -163,7 +163,7 @@
     "id": 6,
     "name": "Lions Park",
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
-    "image": "../db/images/willow__primary.jpeg",
+    "image": "../db/images/lions__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
     "type": "Playground",
     "fenced": "False",
@@ -202,7 +202,7 @@
     "coordinates": [-82.354260, 36.319600],
     "distance": "0.7 mi",
     "reviews": {
-      "rating": 4.0,
+      "rating": 3.9,
       "count": "105",
       "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
     },
@@ -224,7 +224,7 @@
   },
   {
     "id": 8,
-    "name": "Metro Kiwanis",
+    "name": "Metro Kiwanis Park",
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/metroKiwanis__primary.jpg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
@@ -234,7 +234,7 @@
     "coordinates": [-82.384290, 36.326110],
     "distance": "0.7 mi",
     "reviews": {
-      "rating": 3.8,
+      "rating": 3.9,
       "count": "243",
       "link": ">https://www.google.com/search?q=rotary+park+johnson+city+tn&rlz=1C5GCEM_enUS931US931&oq=rotary&aqs=chrome.0.69i59l2j46i199i433i465i512j0i395i433i512l2j69i60j69i61j69i60.1069j1j7&sourceid=chrome&ie=UTF-8#lrd=0x885a7d0c02054839:0xe5187598eca05284,1,,,"
     },
@@ -260,13 +260,13 @@
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/justJump__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Trampoline Park",
+    "type": "Trampoline & Inflatable Parks",
     "fenced": "False",
     "address": "2304 Silverdale Dr #600, Johnson City, TN 37601",
     "coordinates": [-82.364870, 36.353130],
     "distance": "0.7 mi",
     "reviews": {
-      "rating": 4.4,
+      "rating": 4.2,
       "count": "752",
       "link": ""
     },
@@ -292,17 +292,177 @@
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/quantum__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Trampoline Park",
+    "type": "Trampoline & Inflatable Parks",
     "fenced": "False",
     "address": "117 E King St, Johnson City, TN 37601",
     "coordinates": [-82.352090, 36.320140],
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 4.2,
+      "count": "776",
+      "link": ""
+    },
+    "price": "Paid",
+    "hours": {
+      "mon": "",
+      "tue": "",
+      "wed": "",
+      "thu": "",
+      "fri": "",
+      "sat": "",
+      "sun": ""
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 0,
+      "regular": 0
+    }
+  },
+  {
+    "id": 11,
+    "name": "Jacob's Nature Park",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/jacobs__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Hiking",
+    "fenced": "False",
+    "address": "1342 King Springs Rd, Johnson City, TN 37601",
+    "coordinates": [-82.323150, 36.318080],
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 3.5,
+      "count": "776",
+      "link": ""
+    },
+    "price": "Free",
+    "hours": {
+      "mon": "",
+      "tue": "",
+      "wed": "",
+      "thu": "",
+      "fri": "",
+      "sat": "",
+      "sun": ""
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 0,
+      "regular": 0
+    }
+  },
+  {
+    "id": 12,
+    "name": "Tweetsie Trail",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/tweetsie__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Hiking",
+    "fenced": "False",
+    "address": "Tweetsie Trail, Johnson City, TN 37601",
+    "coordinates": [-82.336810, 36.315254],
     "distance": "0.7 mi",
     "reviews": {
       "rating": 4.4,
       "count": "776",
       "link": ""
     },
+    "price": "Free",
+    "hours": {
+      "mon": "",
+      "tue": "",
+      "wed": "",
+      "thu": "",
+      "fri": "",
+      "sat": "",
+      "sun": ""
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 0,
+      "regular": 0
+    }
+  },
+  {
+    "id": 13,
+    "name": "Wallabies Parties & Play",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/wallabies__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Trampoline & Inflatable Parks",
+    "fenced": "False",
+    "address": "3102 Hanover Rd, Johnson City, TN 37604",
+    "coordinates": [-82.402680, 36.351420],
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 3.9,
+      "count": "776",
+      "link": ""
+    },
     "price": "Paid",
+    "hours": {
+      "mon": "",
+      "tue": "",
+      "wed": "",
+      "thu": "",
+      "fri": "",
+      "sat": "",
+      "sun": ""
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 0,
+      "regular": 0
+    }
+  },
+  {
+    "id": 14,
+    "name": "Winged Deer Disc Golf",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/winged__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Sports",
+    "fenced": "False",
+    "address": "209 Carroll Creek Rd. Johnson City, TN 37601",
+    "coordinates": [-82.367928, 36.392411],
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 4.2,
+      "count": "776",
+      "link": ""
+    },
+    "price": "Free",
+    "hours": {
+      "mon": "",
+      "tue": "",
+      "wed": "",
+      "thu": "",
+      "fri": "",
+      "sat": "",
+      "sun": ""
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 0,
+      "regular": 0
+    }
+  },
+  {
+    "id": 15,
+    "name": "Jack's Natural Playground",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/jacks__primary.jpg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Playground",
+    "fenced": "False",
+    "address": "240 Powder Hollow Rd, Unicoi, TN 37692",
+    "coordinates": [-82.352480, 36.211080],
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 3.5,
+      "count": "776",
+      "link": ""
+    },
+    "price": "Free",
     "hours": {
       "mon": "",
       "tue": "",
