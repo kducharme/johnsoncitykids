@@ -14,7 +14,9 @@ export default new Vuex.Store({
     activeFilters: {
       type: undefined,
       price: undefined
-    }
+    },
+
+    activeSort: undefined
   },
   getters: {
     getLocations(state) {
@@ -29,6 +31,11 @@ export default new Vuex.Store({
     resetPriceFilter(state) {
       state.activeFilters.price = undefined;
     },
+    sortLocations(state) {
+      state.filteredLocations.sort(function (a, b) {
+        return b.reviews.rating - a.reviews.rating;
+      });
+    },
     filterLocations(state, payload) {
       this.state.filteredLocations = [];
 
@@ -37,9 +44,14 @@ export default new Vuex.Store({
       if (payload.type !== undefined) {
         this.state.activeFilters.type = payload.type;
       }
+      else if (this.state.activeFilters !== undefined) {
+        //no change
+      }
       else {
         this.state.activeFilters.type = undefined;
       }
+
+
       if (payload.price) { this.state.activeFilters.price = payload.price; }
 
       // Update locations -- both filters are active
@@ -74,12 +86,13 @@ export default new Vuex.Store({
           }
         })
       }
-
+      
       // If there aren't any filters applied, then display allLocations
-
+      
       if (this.state.activeFilters.type === undefined && this.state.activeFilters.price === undefined) {
         this.state.filteredLocations = this.state.allLocations;
       }
+
     },
     setPriceFilter(state, payload) {
       this.state.activeFilters.price = payload.price;

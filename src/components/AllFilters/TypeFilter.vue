@@ -19,9 +19,9 @@ export default {
     return {
       types: {
         one: "Playground",
-        two: "Library",
-        three: "Trampoline park",
-        four: "Hiking",
+        two: "Hiking",
+        three: "Library",
+        four: "Trampoline & Inflatable Parks",
         five: "Sports"
       },
     };
