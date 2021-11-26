@@ -1,6 +1,6 @@
 <template>
   <div>
-    <section class="card" v-for="location in locations" :key="location.id">
+    <section class="card" v-for="location in this.$store.state.filteredLocations" :key="location.id">
       <section class="card__left">
         <img class="card__image" :src="`${location.image}`" />
       </section>
@@ -15,6 +15,7 @@
         </article>
         <article class="card__right__bottom">
           <star-rating
+            :read-only="true"
             class="rating"
             v-model="location.reviews.rating"
             star-rating
@@ -23,28 +24,31 @@
             :star-size="16"
           >
           </star-rating>
+          <p class="reviews__count">({{ location.reviews.count }} reviews)</p>
         </article>
       </section>
     </section>
+
   </div>
 </template>
 
 
 <script>
-import locationData from "../../public/db/data/locations.json";
 import StarRating from "vue-star-rating";
 
 export default {
   components: {
     StarRating,
   },
-  props: ['typeFilter'],
+  props: ["typeFilter"],
   data() {
     return {
-      locations: locationData,
+      locations: {},
     };
   },
-  created() {},
+  mounted() {
+    this.$store.getters.getLocations;
+  },
   methods: {},
 };
 </script>

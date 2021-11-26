@@ -6,7 +6,7 @@
         <p class="placeholder">Type</p>
       </article>
       <article class="structure hide" id="structure__type">
-        <p v-for="type in types" :key="type" @click="filterBy(type)">
+        <p v-for="type in types" :key="type" @click="filterByType(type)">
           {{ type }}
         </p>
       </article>
@@ -18,8 +18,8 @@
         <p class="placeholder">Price</p>
       </article>
       <article class="structure hide" id="structure__price">
-        <p v-for="price in prices" :key="price" @click="filterBy(price)">
-          {{ Price }}
+        <p v-for="price in prices" :key="price" @click="filterByPrice(price)">
+          {{ price }}
         </p>
       </article>
     </section>
@@ -28,6 +28,8 @@
 
 
 <script>
+// import { mapState } from "vuex";
+
 export default {
   components: {},
   data() {
@@ -38,6 +40,7 @@ export default {
       types: {
         one: "Playground",
         two: "Library",
+        three: "Trampoline park",
       },
       prices: {
         one: "Free",
@@ -46,6 +49,85 @@ export default {
     };
   },
   methods: {
+    filterByType(type) {
+      this.$store.commit("filterLocations", {
+        type,
+      });
+      const dropdown = document.querySelector("#structure__type");
+      dropdown.classList.toggle("hide");
+
+      const input = document.querySelector("#input__type");
+      input.textContent = this.$store.state.activeFilters.type;
+
+      if (document.querySelector(".clear") === null) {
+        const clearFilters = this.clearTypeFilter();
+        dropdown.appendChild(clearFilters);
+      }
+    },
+    clearTypeFilter() {
+      const clear = document.createElement("article");
+      clear.textContent = "Clear filter";
+      clear.classList.add("clear");
+      clear.addEventListener("click", () => {
+        this.resetTypeFilter();
+        this.removeClearFilters();
+        const typeDropdown = document.querySelector("#structure__type");
+        typeDropdown.classList.add("hide");
+
+        const input = document.querySelector("#input__type");
+        input.classList.remove("input__active");
+        input.textContent = "Type";
+      });
+      return clear;
+    },
+
+    removeClearFilters() {
+      document.querySelector(".clear").remove();
+    },
+    resetTypeFilter() {
+      this.$store.commit("resetTypeFilter");
+      this.$store.commit("filterLocations", {
+        type: undefined,
+      });
+    },
+
+    filterByPrice(price) {
+      this.$store.commit("filterLocations", {
+        price,
+      });
+      const dropdown = document.querySelector("#structure__price");
+      dropdown.classList.toggle("hide");
+
+      const input = document.querySelector("#input__price");
+      input.textContent = this.$store.state.activeFilters.price;
+      if (document.querySelector(".clear") === null) {
+        const clearFilters = this.clearPriceFilter();
+        dropdown.appendChild(clearFilters);
+      }
+    },
+    clearPriceFilter() {
+      const clear = document.createElement("article");
+      clear.textContent = "Clear filter";
+      clear.classList.add("clear");
+      clear.addEventListener("click", () => {
+        this.resetPriceFilter();
+        this.removeClearFilters();
+        const priceDropdown = document.querySelector("#structure__price");
+        priceDropdown.classList.add("hide");
+
+        const input = document.querySelector("#input__price");
+        input.classList.remove("input__active");
+        input.textContent = "Price";
+      });
+      return clear;
+    },
+    resetPriceFilter() {
+      this.$store.commit("resetPriceFilter");
+      this.$store.commit("filterLocations", {
+        price: undefined,
+      });
+    },
+
     displayPriceFilter() {
       const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
@@ -53,6 +135,7 @@ export default {
       const input = document.querySelector("#input__price");
       input.classList.toggle("input__active");
     },
+
     displayTypeFilter() {
       const dropdown = document.querySelector("#structure__type");
       dropdown.classList.toggle("hide");
@@ -60,9 +143,7 @@ export default {
       const input = document.querySelector("#input__type");
       input.classList.toggle("input__active");
     },
-    filterBy(n) {
-      console.log(n);
-    },
+
     toggleDropdown() {
       const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
@@ -86,7 +167,7 @@ export default {
   display: flex;
   flex-direction: row;
   padding: 16px 0;
-  margin: 0 0 24px;
+  margin: 0 0 16px;
 }
 
 .filter {
@@ -96,8 +177,9 @@ export default {
 /* Input styling */
 .input {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   border: 1px solid #e2e2e2;
   border-radius: 24px;
   height: 36px;
@@ -106,7 +188,7 @@ export default {
 }
 
 .input__active {
-  border: 2px solid #009478;
+  border: 2px solid #009478 !important;
   margin: -1px;
   background: #fafafa;
 }
@@ -120,6 +202,7 @@ export default {
 
 .input:hover {
   cursor: pointer;
+  border: 1px solid #b4b4b4;
 }
 
 .placeholder {
@@ -162,5 +245,18 @@ export default {
 
 .hide {
   display: none;
+}
+
+.clear {
+  font-weight: 600;
+  font-family: "avenir";
+  color: black;
+  text-decoration: underline;
+  margin: 16px;
+}
+
+.clear:hover {
+  cursor: pointer;
+  opacity: 0.7;
 }
 </style>;
