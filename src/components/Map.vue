@@ -5,6 +5,7 @@
       v-for="(l, key) in $store.state.filteredLocations"
       :key="key"
       :coordinates="l.coordinates"
+      @click="zoomToMarker(l)"
     >
       <MglPopup>
         <div>
@@ -22,6 +23,7 @@
             </star-rating>
             <p class="pop__name">{{ l.name }}</p>
             <p class="pop__address">{{ l.description }}</p>
+            <!-- <a href={ l.website }> View details </a> -->
           </section>
         </div>
       </MglPopup>
@@ -55,6 +57,8 @@ export default {
     created() {
       this.mapbox = Mapbox;
     },
+    zoomToMarker() {
+    },
   },
 };
 </script>
@@ -70,6 +74,10 @@ export default {
 
 .pop__image {
   width: 100%;
+  height: 160px;
+  border-radius: 5%;
+  object-fit: cover;
+  object-position: 25% 20%;
   border-radius: 5px;
 }
 
@@ -86,10 +94,14 @@ export default {
 .pop__address {
   font-size: 13px;
   color: #6b6b6b;
-display: -webkit-box;
--webkit-line-clamp: 3;
--webkit-box-orient: vertical;
-overflow: hidden;
-text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mapboxgl-popup-close-button {
+  display: none;
 }
 </style>

@@ -18,11 +18,12 @@ export default {
   data() {
     return {
       types: {
-        one: "Playground",
-        two: "Hiking",
-        three: "Library",
-        four: "Trampoline & Inflatable Parks",
-        five: "Sports",
+        playground: "Playground",
+        hiking: "Hiking",
+        library: "Library",
+        sports: "Sports",
+        swimming: "Swimming",
+        trampoline: "Trampoline Parks",
       },
     };
   },
