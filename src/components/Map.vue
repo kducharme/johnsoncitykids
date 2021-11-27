@@ -5,14 +5,28 @@
       v-for="(l, key) in $store.state.filteredLocations"
       :key="key"
       :coordinates="l.coordinates"
-      @click="activateMarker(l)"
+      @click="zoomToMarker(l)"
     >
-      <!-- <MglPopup> -->
-      <!-- <VCard>
-      <div>{{ l.country }}</div>
-      <div>{{ l.latest.confirmed }}</div>
-    </VCard> -->
-      <!-- </MglPopup> -->
+      <MglPopup>
+        <div>
+          <section class="pop">
+            <img class="pop__image" :src="`${l.image}`" />
+            <star-rating
+              :read-only="true"
+              class="pop__rating"
+              v-model="l.reviews.rating"
+              star-rating
+              :increment="0.1"
+              active-color="#009478"
+              :star-size="12"
+            >
+            </star-rating>
+            <p class="pop__name">{{ l.name }}</p>
+            <p class="pop__address">{{ l.description }}</p>
+            <!-- <a href={ l.website }> View details </a> -->
+          </section>
+        </div>
+      </MglPopup>
     </MglMarker>
   </MglMap>
 </template>
@@ -20,12 +34,15 @@
 
 <script>
 import Mapbox from "mapbox-gl";
-import { MglMap, MglMarker } from "vue-mapbox";
+import { MglMap, MglMarker, MglPopup } from "vue-mapbox";
+import StarRating from "vue-star-rating";
 
 export default {
   components: {
     MglMap,
     MglMarker,
+    MglPopup,
+    StarRating,
   },
   data() {
     return {
@@ -40,6 +57,8 @@ export default {
     created() {
       this.mapbox = Mapbox;
     },
+    zoomToMarker() {
+    },
   },
 };
 </script>
@@ -51,5 +70,38 @@ export default {
   right: 0;
   height: calc(100vh - 72px);
   width: 40vw;
+}
+
+.pop__image {
+  width: 100%;
+  height: 160px;
+  border-radius: 5%;
+  object-fit: cover;
+  object-position: 25% 20%;
+  border-radius: 5px;
+}
+
+.pop__rating {
+  margin: 16px 0 8px;
+}
+
+.pop__name {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.pop__address {
+  font-size: 13px;
+  color: #6b6b6b;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mapboxgl-popup-close-button {
+  display: none;
 }
 </style>

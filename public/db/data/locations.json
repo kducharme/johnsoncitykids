@@ -6,6 +6,7 @@
     "image": "../db/images/rotary__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
     "type": "Playground",
+    "location": "Outdoor",
     "fenced": "True",
     "address": "1001 N Broadway St, Johnson City, TN 37601",
     "coordinates": [-82.348580, 36.337730],
@@ -38,6 +39,7 @@
     "image": "../db/images/westSide__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
     "type": "Playground",
+    "location": "Outdoor",
     "fenced": "True",
     "address": "1310 Burgie St, Elizabethton, TN 37643",
     "coordinates": [-82.246210, 36.342860],
@@ -260,7 +262,7 @@
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/justJump__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Trampoline & Inflatable Parks",
+    "type": "Trampoline Parks",
     "fenced": "False",
     "address": "2304 Silverdale Dr #600, Johnson City, TN 37601",
     "coordinates": [-82.364870, 36.353130],
@@ -292,7 +294,7 @@
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/quantum__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Trampoline & Inflatable Parks",
+    "type": "Trampoline Parks",
     "fenced": "False",
     "address": "117 E King St, Johnson City, TN 37601",
     "coordinates": [-82.352090, 36.320140],
@@ -388,7 +390,7 @@
     "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
     "image": "../db/images/wallabies__primary.jpeg",
     "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
-    "type": "Trampoline & Inflatable Parks",
+    "type": "Trampoline Parks",
     "fenced": "False",
     "address": "3102 Hanover Rd, Johnson City, TN 37604",
     "coordinates": [-82.402680, 36.351420],
@@ -459,6 +461,70 @@
     "distance": "0.7 mi",
     "reviews": {
       "rating": 3.5,
+      "count": "776",
+      "link": ""
+    },
+    "price": "Free",
+    "hours": {
+      "mon": "",
+      "tue": "",
+      "wed": "",
+      "thu": "",
+      "fri": "",
+      "sat": "",
+      "sun": ""
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 0,
+      "regular": 0
+    }
+  },
+  {
+    "id": 16,
+    "name": "Watauga Lake Swimming Area",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/watauga__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Swimming",
+    "fenced": "False",
+    "address": "1588 US-321 Scenic, Hampton, TN 37658",
+    "coordinates": [-82.127991, 36.301998],
+    "distance": "0.7 mi",
+    "reviews": {
+      "rating": 4.5,
+      "count": "776",
+      "link": ""
+    },
+    "price": "Free",
+    "hours": {
+      "mon": "",
+      "tue": "",
+      "wed": "",
+      "thu": "",
+      "fri": "",
+      "sat": "",
+      "sun": ""
+    },
+    "bathrooms": "",
+    "swings": {
+      "bucket": 0,
+      "regular": 0
+    }
+  },
+  {
+    "id": 17,
+    "name": "Warriors Path State Park Playground",
+    "description": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.",
+    "image": "../db/images/warriors__primary.jpeg",
+    "website": "https://www.johnsoncitytn.org/residents/parks_and_facilities/residents/rotary_park.php",
+    "type": "Playground",
+    "fenced": "False",
+    "address": "407 Warrior Dr. Colonial Heights, TN 37663",
+    "coordinates": [-82.481986, 36.491194],
+    "distance": "19.7 mi",
+    "reviews": {
+      "rating": 4.6,
       "count": "776",
       "link": ""
     },
