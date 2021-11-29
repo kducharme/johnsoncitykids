@@ -138,7 +138,7 @@
     "type": "Playground",
     "fenced": "False",
     "address": "12 N Commerce St, Johnson City, TN 37604",
-    "coordinates": [82.353280, 36.318100],
+    "coordinates": [-82.353280, 36.318100],
     "distance": "0.7 mi",
     "reviews": {
       "rating": 4.3,

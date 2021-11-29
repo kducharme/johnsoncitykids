@@ -49,7 +49,7 @@ export default {
   },
   mounted() {
     // this.$store.getters.getLocations;
-    this.$store.commit("sortLocations");
+    
   },
   methods: {},
 };

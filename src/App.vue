@@ -30,6 +30,7 @@ export default {
 
   mounted() {
     this.$store.getters.getAirtableLocations;
+    // this.$store.commit('sortLocations');
   },
 
   data: () => ({

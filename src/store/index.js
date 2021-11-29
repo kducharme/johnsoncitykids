@@ -39,10 +39,15 @@ export default new Vuex.Store({
 
         records.forEach((locationData) => {
           state.locations.push(locationData)
+          state.locations.sort(function (a, b) {
+            console.log(a.fields.rating, b.fields.rating)
+            return b.fields.rating - a.fields.rating;
+          });
           locationData.fields.coordinates = [locationData.fields.long, locationData.fields.lat]
           locationData.fields.type = locationData.fields.type.shift()
         });
         state.allLocations = state.locations;
+
         // To fetch the next page of records, call `fetchNextPage`.
         // If there are more records, `page` will get called again.
         // If there are no more records, `done` will get called.
@@ -60,10 +65,9 @@ export default new Vuex.Store({
     resetPriceFilter(state) {
       state.activeFilters.price = undefined;
     },
-    sortLocations(state) {
-      state.locations.sort(function (a, b) {
-        return b.fields.rating - a.fields.rating;
-      });
+    sortLocations() {
+      // Not working
+
     },
     filterLocations(state, payload) {
       this.state.locations = [];

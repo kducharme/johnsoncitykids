@@ -22,7 +22,7 @@ export default {
         hiking: "Hiking",
         library: "Library",
         sports: "Sports",
-        swimming: "Swimming",
+        swimming: "Swimming & Splash Pads",
         trampoline: "Trampoline Parks",
       },
     };
