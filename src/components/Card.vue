@@ -2,25 +2,25 @@
   <div>
     <section
       class="card"
-      v-for="location in this.$store.state.filteredLocations"
-      :key="location.id"
+      v-for="location in this.$store.state.locations"
+      :key="location.fields.id"
     >
       <section class="card__left">
-        <img class="card__image" :src="`${location.image}`" />
+        <img class="card__image" :src="`${location.fields.image}`" />
       </section>
       <section class="card__right">
         <article class="card__right__top">
           <p class="card__subtitle">
-            {{ location.type }} · {{ location.price }} · {{ location.distance }} from downtown
+            {{ location.type }} · {{ location.fields.price }} · {{ location.fields.distance }} from downtown
           </p>
-          <p class="card__title">{{ location.name }}</p>
-          <p class="card__details">{{ location.description }}</p>
+          <p class="card__title">{{ location.fields.name }}</p>
+          <p class="card__details">{{ location.fields.description }}</p>
         </article>
         <article class="card__right__bottom">
           <star-rating
             :read-only="true"
             class="rating"
-            v-model="location.reviews.rating"
+            v-model="location.fields.rating"
             star-rating
             :increment="0.1"
             active-color="#009478"
@@ -48,7 +48,7 @@ export default {
     };
   },
   mounted() {
-    this.$store.getters.getLocations;
+    // this.$store.getters.getLocations;
     this.$store.commit("sortLocations");
   },
   methods: {},
