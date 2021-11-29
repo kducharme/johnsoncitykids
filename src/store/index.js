@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import locationData from "../../public/db/data/locations.json";
 import Airtable from "airtable";
 
 Vue.use(Vuex)
@@ -22,13 +21,11 @@ export default new Vuex.Store({
     activeSort: undefined
   },
   getters: {
-    getLocations(state) {
-      // state.allLocations = locationData;
-      // state.filteredLocations = locationData;
-    },
     getAirtableLocations(state) {
 
-      const base = new Airtable({ apiKey: 'keyPnDWTHY6UHf26L' }).base('app3Dn6iVpWym6Uup');
+      const airtableKey = 'keyPnDWTHY6UHf26L';
+
+      const base = new Airtable({ apiKey: airtableKey }).base('app3Dn6iVpWym6Uup');
 
       base('Locations').select({
         // Selecting the first 25 records in Grid view:
@@ -40,7 +37,6 @@ export default new Vuex.Store({
         records.forEach((locationData) => {
           state.locations.push(locationData)
           state.locations.sort(function (a, b) {
-            console.log(a.fields.rating, b.fields.rating)
             return b.fields.rating - a.fields.rating;
           });
           locationData.fields.coordinates = [locationData.fields.long, locationData.fields.lat]
@@ -92,7 +88,7 @@ export default new Vuex.Store({
       if (this.state.activeFilters.type !== undefined && this.state.activeFilters.price !== undefined) {
         console.log('both')
         this.state.allLocations.forEach(l => {
-          if (l.type.toLowerCase() === this.state.activeFilters.type.toLowerCase() && l.price.toLowerCase() === this.state.activeFilters.price.toLowerCase()) {
+          if (l.fields.type.toLowerCase() === this.state.activeFilters.type.toLowerCase() && l.fields.price.toLowerCase() === this.state.activeFilters.price.toLowerCase()) {
             this.state.locations.push(l)
           }
         })
@@ -101,9 +97,8 @@ export default new Vuex.Store({
       // Update locations -- only type filter is active
 
       if (this.state.activeFilters.type !== undefined && this.state.activeFilters.price === undefined) {
-        console.log('type only')
         this.state.allLocations.forEach(l => {
-          if (l.type.toLowerCase() === this.state.activeFilters.type.toLowerCase()) {
+          if (l.fields.type.toLowerCase() === this.state.activeFilters.type.toLowerCase()) {
             this.state.locations.push(l)
           }
         })
@@ -114,7 +109,7 @@ export default new Vuex.Store({
       if (this.state.activeFilters.type === undefined && this.state.activeFilters.price !== undefined) {
         console.log('price only')
         this.state.allLocations.forEach(l => {
-          if (l.price.toLowerCase() === this.state.activeFilters.price.toLowerCase()) {
+          if (l.fields.price.toLowerCase() === this.state.activeFilters.price.toLowerCase()) {
             this.state.locations.push(l)
           }
         })
