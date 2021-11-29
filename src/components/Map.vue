@@ -2,9 +2,9 @@
   <MglMap :accessToken="accessToken" :mapStyle="mapStyle" class="map">
     <MglMarker
       color="#009478"
-      v-for="(l, key) in $store.state.filteredLocations"
+      v-for="(l, key) in $store.state.locations"
       :key="key"
-      :coordinates="l.coordinates"
+      :coordinates="l.fields.coordinates"
       @click="zoomToMarker(l)"
     >
       <MglPopup>
@@ -14,7 +14,7 @@
             <star-rating
               :read-only="true"
               class="pop__rating"
-              v-model="l.reviews.rating"
+              v-model="l.fields.rating"
               star-rating
               :increment="0.1"
               active-color="#009478"

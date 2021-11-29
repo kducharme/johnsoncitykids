@@ -11,7 +11,7 @@
       <section class="card__right">
         <article class="card__right__top">
           <p class="card__subtitle">
-            {{ location.type }} · {{ location.fields.price }} · {{ location.fields.distance }} from downtown
+            {{ location.fields.type }} · {{ location.fields.price }} · {{ location.fields.distance }} from downtown
           </p>
           <p class="card__title">{{ location.fields.name }}</p>
           <p class="card__details">{{ location.fields.description }}</p>

@@ -31,14 +31,16 @@ export default new Vuex.Store({
       const base = new Airtable({ apiKey: 'keyPnDWTHY6UHf26L' }).base('app3Dn6iVpWym6Uup');
 
       base('Locations').select({
-        // Selecting the first 3 records in Grid view:
-        maxRecords: 20,
+        // Selecting the first 25 records in Grid view:
+        maxRecords: 25,
         view: "Grid view"
       }).eachPage(function page(records, fetchNextPage) {
         // This function (`page`) will get called for each page of records.
 
         records.forEach((locationData) => {
-          state.locations.push(locationData) 
+          state.locations.push(locationData)
+          locationData.fields.coordinates = [locationData.fields.long, locationData.fields.lat]
+          locationData.fields.type = locationData.fields.type.shift()
         });
         state.allLocations = state.locations;
         // To fetch the next page of records, call `fetchNextPage`.
@@ -59,13 +61,9 @@ export default new Vuex.Store({
       state.activeFilters.price = undefined;
     },
     sortLocations(state) {
-      // state.filteredLocations.sort(function (a, b) {
-      //   return b.reviews.rating - a.reviews.rating;
-      // });
       state.locations.sort(function (a, b) {
         return b.fields.rating - a.fields.rating;
       });
-      console.log(state.locations)
     },
     filterLocations(state, payload) {
       this.state.locations = [];
