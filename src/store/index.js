@@ -23,7 +23,9 @@ export default new Vuex.Store({
   getters: {
     getAirtableLocations(state) {
 
-      const base = new Airtable({ apiKey: 'keyPnDWTHY6UHf26L' }).base('app3Dn6iVpWym6Uup');
+      const airtableKey = 'keyPnDWTHY6UHf26L';
+
+      const base = new Airtable({ apiKey: airtableKey }).base('app3Dn6iVpWym6Uup');
 
       base('Locations').select({
         // Selecting the first 25 records in Grid view:

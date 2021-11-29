@@ -20,9 +20,9 @@ export default {
       types: {
         playground: "Playground",
         hiking: "Hiking",
-        library: "Library",
         sports: "Sports",
         swimming: "Swimming & Splash Pads",
+        library: "Libraries & Bookstores",
         trampoline: "Trampoline Parks",
       },
     };
