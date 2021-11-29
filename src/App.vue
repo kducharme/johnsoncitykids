@@ -28,6 +28,11 @@ export default {
     Map,
   },
 
+  mounted() {
+    this.$store.getters.getAirtableLocations;
+    // this.$store.commit('sortLocations');
+  },
+
   data: () => ({
     //
   }),
@@ -35,7 +40,6 @@ export default {
 </script>
 
 <style lang="scss">
-
 body {
   margin: 0;
   font-family: "avenir";
