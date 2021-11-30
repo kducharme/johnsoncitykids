@@ -23,7 +23,8 @@ export default new Vuex.Store({
   getters: {
     getAirtableLocations(state) {
 
-      const AIRTABLEKEY = 'keyPnDWTHY6UHf26L';
+      const AIRTABLEKEY = 'keyGAYZJUgJTK3tOK'
+
 
       const base = new Airtable({ apiKey: AIRTABLEKEY }).base('app3Dn6iVpWym6Uup');
 

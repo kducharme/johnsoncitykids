@@ -71,7 +71,6 @@ export default {
     },
 
     displayTypeFilter() {
-      console.log("woo");
       const dropdown = document.querySelector("#structure__type");
       dropdown.classList.toggle("hide");
 

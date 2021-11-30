@@ -48,7 +48,7 @@ export default {
     return {
       accessToken:
         "pk.eyJ1IjoiZHVjaGFybWUta3lsZSIsImEiOiJja3c3NGtwdG5jZDQ5Mm9xMTd6NnA0eGIzIn0.UeLLcHA6s3e_hxm2sLJ-oA", // your access token. Needed if you using Mapbox maps
-      mapStyle: "mapbox://styles/ducharme-kyle/ckwbdgjia157o14jv1u3e1oue", // your map style
+      mapStyle: "mapbox://styles/ducharme-kyle/ckwl424ix3ftj14r7h2mqh0yz", // your map style
       center: [-71.61373, 42.13024],
       zoom: 100,
     };
