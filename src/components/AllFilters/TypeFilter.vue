@@ -22,7 +22,7 @@ export default {
         hiking: "Hiking",
         sports: "Sports",
         swimming: "Swimming & Splash Pads",
-        library: "Libraries & Bookstores",
+        library: "Books & Education",
         trampoline: "Trampoline Parks",
       },
     };
@@ -71,7 +71,6 @@ export default {
     },
 
     displayTypeFilter() {
-      console.log("woo");
       const dropdown = document.querySelector("#structure__type");
       dropdown.classList.toggle("hide");
 

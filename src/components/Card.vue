@@ -4,14 +4,27 @@
       class="card"
       v-for="location in this.$store.state.locations"
       :key="location.fields.id"
+      @mouseenter="displayVideo(location)"
+      @mouseleave="hideVideo(location)"
+      :id="`location__${location.fields.id}`"
     >
       <section class="card__left">
-        <img class="card__image" :src="`${location.fields.image}`" />
+        <img
+          class="card__image"
+          :src="`${location.fields.img}`"
+          :id="`card__image__${location.fields.id}`"
+        />
+        <img
+          class="card__gif hide"
+          :src="`${location.fields.gif}`"
+          :id="`card__gif__${location.fields.id}`"
+        />
       </section>
       <section class="card__right">
         <article class="card__right__top">
           <p class="card__subtitle">
-            {{ location.fields.type }} · {{ location.fields.price }} · {{ location.fields.distance }} from downtown
+            {{ location.fields.type }} · {{ location.fields.price }} ·
+            {{ location.fields.distance }} miles from downtown
           </p>
           <p class="card__title">{{ location.fields.name }}</p>
           <p class="card__details">{{ location.fields.description }}</p>
@@ -45,13 +58,32 @@ export default {
   data() {
     return {
       locations: {},
+      hover: false,
     };
   },
   mounted() {
     // this.$store.getters.getLocations;
-    
   },
-  methods: {},
+  methods: {
+    displayVideo(location) {
+      if (location.fields.gif) {
+        const img = document.querySelector(
+          "#card__image__" + location.fields.id
+        );
+        img.classList.add("hide");
+
+        const gif = document.querySelector("#card__gif__" + location.fields.id);
+        gif.classList.remove("hide");
+      }
+    },
+    hideVideo(location) {
+      const img = document.querySelector("#card__image__" + location.fields.id);
+      img.classList.remove("hide");
+
+      const gif = document.querySelector("#card__gif__" + location.fields.id);
+      gif.classList.add("hide");
+    },
+  },
 };
 </script>
 
@@ -65,6 +97,13 @@ export default {
   .card__left {
     width: 30%;
     .card__image {
+      width: 100%;
+      height: 200px;
+      border-radius: 5%;
+      object-fit: cover;
+      object-position: 25% 20%;
+    }
+    .card__gif {
       width: 100%;
       height: 200px;
       border-radius: 5%;
@@ -102,6 +141,10 @@ export default {
       margin-left: 8px;
       color: #6b6b6b;
     }
+  }
+
+  .hide {
+    display: none;
   }
 }
 </style>;

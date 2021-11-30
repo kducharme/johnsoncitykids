@@ -10,7 +10,7 @@
       <MglPopup>
         <div>
           <section class="pop">
-            <img class="pop__image" :src="`${l.image}`" />
+            <img class="pop__image" :src="`${l.fields.image}`" />
             <star-rating
               :read-only="true"
               class="pop__rating"
@@ -21,8 +21,8 @@
               :star-size="12"
             >
             </star-rating>
-            <p class="pop__name">{{ l.name }}</p>
-            <p class="pop__address">{{ l.description }}</p>
+            <p class="pop__name">{{ l.fields.name }}</p>
+            <p class="pop__address">{{ l.fields.description }}</p>
             <!-- <a href={ l.website }> View details </a> -->
           </section>
         </div>
@@ -48,7 +48,7 @@ export default {
     return {
       accessToken:
         "pk.eyJ1IjoiZHVjaGFybWUta3lsZSIsImEiOiJja3c3NGtwdG5jZDQ5Mm9xMTd6NnA0eGIzIn0.UeLLcHA6s3e_hxm2sLJ-oA", // your access token. Needed if you using Mapbox maps
-      mapStyle: "mapbox://styles/ducharme-kyle/ckwbdgjia157o14jv1u3e1oue", // your map style
+      mapStyle: "mapbox://styles/ducharme-kyle/ckwl424ix3ftj14r7h2mqh0yz", // your map style
       center: [-71.61373, 42.13024],
       zoom: 100,
     };

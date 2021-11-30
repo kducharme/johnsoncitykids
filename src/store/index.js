@@ -23,7 +23,8 @@ export default new Vuex.Store({
   getters: {
     getAirtableLocations(state) {
 
-      const AIRTABLEKEY = 'keyPnDWTHY6UHf26L';
+      const AIRTABLEKEY = 'keyGAYZJUgJTK3tOK'
+
 
       const base = new Airtable({ apiKey: AIRTABLEKEY }).base('app3Dn6iVpWym6Uup');
 
@@ -43,6 +44,14 @@ export default new Vuex.Store({
           locationData.fields.type = locationData.fields.type.shift()
         });
         state.allLocations = state.locations;
+
+        state.locations.forEach(l => {
+          l.fields.img = l.fields.image[0].url;
+
+          if (l.fields.gif !== undefined) {
+            l.fields.gif = l.fields.gif[0].url
+          }
+        })
 
         // To fetch the next page of records, call `fetchNextPage`.
         // If there are more records, `page` will get called again.
