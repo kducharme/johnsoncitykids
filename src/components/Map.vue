@@ -10,7 +10,7 @@
       <MglPopup>
         <div>
           <section class="pop">
-            <img class="pop__image" :src="`${l.image}`" />
+            <img class="pop__image" :src="`${l.fields.image}`" />
             <star-rating
               :read-only="true"
               class="pop__rating"
@@ -21,8 +21,8 @@
               :star-size="12"
             >
             </star-rating>
-            <p class="pop__name">{{ l.name }}</p>
-            <p class="pop__address">{{ l.description }}</p>
+            <p class="pop__name">{{ l.fields.name }}</p>
+            <p class="pop__address">{{ l.fields.description }}</p>
             <!-- <a href={ l.website }> View details </a> -->
           </section>
         </div>

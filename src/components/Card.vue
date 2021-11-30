@@ -4,8 +4,8 @@
       class="card"
       v-for="location in this.$store.state.locations"
       :key="location.fields.id"
-      @mouseenter="displayVideo(location.fields.id)"
-      @mouseleave="hideVideo(location.fields.id)"
+      @mouseenter="displayVideo(location)"
+      @mouseleave="hideVideo(location)"
       :id="`location__${location.fields.id}`"
     >
       <section class="card__left">
@@ -65,19 +65,23 @@ export default {
     // this.$store.getters.getLocations;
   },
   methods: {
-    displayVideo(id) {
-      const img = document.querySelector("#card__image__" + id);
-      img.classList.toggle("hide");
+    displayVideo(location) {
+      if (location.fields.gif) {
+        const img = document.querySelector(
+          "#card__image__" + location.fields.id
+        );
+        img.classList.add("hide");
 
-      const gif = document.querySelector("#card__gif__" + id);
-      gif.classList.toggle("hide");
+        const gif = document.querySelector("#card__gif__" + location.fields.id);
+        gif.classList.remove("hide");
+      }
     },
-    hideVideo(id) {
-      const img = document.querySelector("#card__image__" + id);
-      img.classList.toggle("hide");
+    hideVideo(location) {
+      const img = document.querySelector("#card__image__" + location.fields.id);
+      img.classList.remove("hide");
 
-      const gif = document.querySelector("#card__gif__" + id);
-      gif.classList.toggle("hide");
+      const gif = document.querySelector("#card__gif__" + location.fields.id);
+      gif.classList.add("hide");
     },
   },
 };
