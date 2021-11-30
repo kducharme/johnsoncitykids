@@ -13,19 +13,16 @@
 
 
 <script>
-import locationData from "../../public/db/data/locations.json";
 import Card from "./Card";
 import Filters from "./Filters";
 
 export default {
   components: {
     Card,
-    Filters
+    Filters,
   },
   data() {
-    return {
-      locations: locationData,
-    };
+    return {};
   },
   created() {},
   methods: {},
@@ -50,7 +47,6 @@ export default {
       margin: 0 0 16px;
     }
   }
-
 
   // listings section
 
