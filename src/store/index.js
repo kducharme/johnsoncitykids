@@ -40,10 +40,22 @@ export default new Vuex.Store({
           state.locations.sort(function (a, b) {
             return b.fields.rating - a.fields.rating;
           });
+          // console.log(locationData.records.image)
           locationData.fields.coordinates = [locationData.fields.long, locationData.fields.lat]
           locationData.fields.type = locationData.fields.type.shift()
+          // locationData.fields.img = locationData.fields.image.url.shift();
         });
         state.allLocations = state.locations;
+
+        state.locations.forEach(l => {
+          l.fields.img = l.fields.image[0].url;
+
+          if (l.fields.gif !== undefined) {
+            l.fields.gif = l.fields.gif[0].url
+          }
+        })
+
+        // console.log(state.locations.fields)
 
         // To fetch the next page of records, call `fetchNextPage`.
         // If there are more records, `page` will get called again.

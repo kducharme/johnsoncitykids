@@ -11,7 +11,7 @@
       <section class="card__left">
         <img
           class="card__image"
-          :src="`${location.fields.image}`"
+          :src="`${location.fields.img}`"
           :id="`card__image__${location.fields.id}`"
         />
         <img
