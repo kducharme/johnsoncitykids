@@ -68,7 +68,7 @@ export default {
         height: 200px;
         border-radius: 5%;
         object-fit: cover;
-        object-position: 25% 20%;
+        object-position: 50% 25%;
       }
     }
 

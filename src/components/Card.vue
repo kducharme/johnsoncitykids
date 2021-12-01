@@ -110,8 +110,8 @@ export default {
       width: 100%;
       height: 200px;
       border-radius: 5%;
+      object-position: 100px 200px;
       object-fit: cover;
-      object-position: 25% 20%;
     }
     .card__gif {
       width: 100%;
