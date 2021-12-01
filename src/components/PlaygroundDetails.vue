@@ -1,9 +1,9 @@
 <template>
   <section class="playground">
     <section class="playground__detail">
-      <p class="detail__title">Playground overview</p>
+      <p class="detail__title">Features</p>
 
- <!-- Bathrooms -->
+      <!-- Bathrooms -->
       <article class="feature">
         <span
           class="material-icons feature__icon__true"
@@ -18,7 +18,29 @@
         <p class="feature__details">Bathrooms on-site</p>
       </article>
 
-       <!-- Fenced -->
+      <!-- Swings -->
+
+      <article class="feature">
+        <span
+          class="material-icons feature__icon__true"
+          v-if="$store.state.activeLocation.swings === 'true'"
+          >check</span
+        >
+        <span
+          class="material-icons feature__icon__false"
+          v-if="$store.state.activeLocation.swings === 'false'"
+          >close</span
+        >
+        <p class="feature__details">
+          Swings
+          <span v-if="$store.state.activeLocation.swings === 'true'"
+            >({{ $store.state.activeLocation.swings_bucket }} bucket ·
+            {{ $store.state.activeLocation.swings_regular }} regular)</span
+          >
+        </p>
+      </article>
+
+      <!-- Fenced -->
 
       <article class="feature">
         <span
@@ -34,23 +56,21 @@
         <p class="feature__details">Fenced-in play area</p>
       </article>
 
-       <!-- Swings -->
+      <!-- Splashpad -->
 
       <article class="feature">
         <span
           class="material-icons feature__icon__true"
-          v-if="$store.state.activeLocation.swings !== '0'"
+          v-if="$store.state.activeLocation.splash === 'true'"
           >check</span
         >
         <span
           class="material-icons feature__icon__false"
-          v-if="$store.state.activeLocation.fenced === '0'"
+          v-if="$store.state.activeLocation.splash === 'false'"
           >close</span
         >
-        <p class="feature__details">Swings</p>
+        <p class="feature__details">Splash pad</p>
       </article>
-
-
     </section>
   </section>
 </template>
@@ -70,11 +90,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-.playground {
-    margin-top: 12px;
-}
-
 .detail__title {
   font-size: 12px;
   color: #8f8f8f;
@@ -92,7 +107,7 @@ export default {
   align-items: center;
   margin: 0;
   .feature__details {
-      margin: 8px 0;
+    margin: 8px 0;
   }
   .feature__icon__true {
     color: #009478;

@@ -42,10 +42,16 @@
               {{ $store.state.activeLocation.description }}
             </p>
           </section>
+          <PlaygroundDetails
+            v-if="$store.state.activeLocation.type === 'Playground'"
+          />
           <section class="detail">
             <p class="detail__title">Location</p>
             <p class="detail__content">
-              {{ $store.state.activeLocation.address }}
+              {{ $store.state.activeLocation.address }},
+              {{ $store.state.activeLocation.city }},
+              {{ $store.state.activeLocation.state }}
+              {{ $store.state.activeLocation.zip }}
             </p>
             <MglMap
               :accessToken="accessToken"
@@ -60,10 +66,6 @@
               </MglMarker>
             </MglMap>
           </section>
-
-          <PlaygroundDetails
-            v-if="$store.state.activeLocation.type === 'Playground'"
-          />
         </section>
       </section>
     </section>
@@ -164,14 +166,22 @@ export default {
         border: none;
         border-radius: 5px;
       }
+      .btn__primary:hover {
+        background: #00866e;
+        cursor: pointer;
+      }
       .btn__secondary {
         height: 40px;
         width: 100%;
         background: white;
         color: #009478;
         font-weight: 600;
-        border: 1.5px solid #009478;
+        border: 2px solid #009478;
         border-radius: 5px;
+      }
+      .btn__secondary:hover {
+        background: #006b570e;
+        cursor: pointer;
       }
     }
     .details__right {
