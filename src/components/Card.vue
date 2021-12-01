@@ -6,6 +6,7 @@
       :key="location.fields.id"
       @mouseenter="displayVideo(location)"
       @mouseleave="hideVideo(location)"
+      @click="showPanel(location)"
       :id="`location__${location.fields.id}`"
     >
       <section class="card__left">
@@ -65,6 +66,11 @@ export default {
     // this.$store.getters.getLocations;
   },
   methods: {
+    showPanel(location) {
+      this.$store.commit("showPanel", {
+        location,
+      });
+    },
     displayVideo(location) {
       if (location.fields.gif) {
         const img = document.querySelector(
@@ -88,6 +94,10 @@ export default {
 </script>
 
 <style lang="scss">
+.card:hover {
+  cursor: pointer;
+}
+
 .card {
   display: flex;
   border-top: 1px solid #e2e2e2;
@@ -100,8 +110,8 @@ export default {
       width: 100%;
       height: 200px;
       border-radius: 5%;
+      object-position: 100px 200px;
       object-fit: cover;
-      object-position: 25% 20%;
     }
     .card__gif {
       width: 100%;

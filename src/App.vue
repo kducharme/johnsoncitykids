@@ -1,5 +1,7 @@
 <template>
   <div class="content">
+    
+        <Panel />
     <div class="content__top">
       <Nav />
     </div>
@@ -18,6 +20,7 @@
 import Listings from "./components/Listings";
 import Map from "./components/Map";
 import Nav from "./components/Nav";
+import Panel from "./components/Panel";
 
 export default {
   name: "App",
@@ -26,6 +29,7 @@ export default {
     Nav,
     Listings,
     Map,
+    Panel
   },
 
   mounted() {
@@ -48,6 +52,7 @@ body {
 
 .content {
   background: #fff;
+  display: flex;
   .content__top {
     position: fixed;
     top: 0;

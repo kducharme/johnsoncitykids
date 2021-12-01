@@ -10,7 +10,7 @@
       <MglPopup>
         <div>
           <section class="pop">
-            <img class="pop__image" :src="`${l.fields.image}`" />
+            <img class="pop__image" :src="`${l.fields.img}`" />
             <star-rating
               :read-only="true"
               class="pop__rating"

@@ -18,6 +18,10 @@ export default new Vuex.Store({
       price: undefined
     },
 
+    panel: false,
+
+    activeLocation: undefined,
+
     activeSort: undefined
   },
   getters: {
@@ -64,6 +68,15 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    showPanel(state, payload) {
+      state.panel = true;
+      state.activeLocation = payload.location.fields;
+      console.log(state.activeLocation);
+    },
+    hidePanel(state) {
+      state.panel = false;
+      state.activeLocation = undefined;
+    },
     resetTypeFilter(state) {
       state.activeFilters.type = undefined;
     },
