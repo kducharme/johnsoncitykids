@@ -29,6 +29,9 @@ export default {
   },
   methods: {
     filterByType(type) {
+      this.$store.commit("setActiveFilter", {
+        type,
+      });
       this.$store.commit("filterLocations", {
         type,
       });

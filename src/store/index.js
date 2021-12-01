@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Airtable from "airtable";
+// import { filter } from 'vue/types/umd';
 
 Vue.use(Vuex)
 
@@ -9,13 +10,14 @@ export default new Vuex.Store({
   state: {
     allLocations: [],
 
-    // filteredLocations: [],
-
     locations: [],
 
     activeFilters: {
       type: undefined,
-      price: undefined
+      price: undefined,
+      // fenced: undefined,
+      // bathrooms: undefined,
+      // rating: undefined
     },
 
     panel: false,
@@ -79,6 +81,7 @@ export default new Vuex.Store({
     },
     resetTypeFilter(state) {
       state.activeFilters.type = undefined;
+
     },
     resetPriceFilter(state) {
       state.activeFilters.price = undefined;
@@ -87,60 +90,64 @@ export default new Vuex.Store({
       // Not working
 
     },
-    filterLocations(state, payload) {
-      this.state.locations = [];
+    setActiveFilter(state, filter) {
 
-      // Checks if new filter params have been passed
-
-      if (payload.type !== undefined) {
-        this.state.activeFilters.type = payload.type;
-      }
-      else if (this.state.activeFilters !== undefined) {
-        //no change
-      }
-      else {
-        this.state.activeFilters.type = undefined;
+      // Checks for type filter
+      switch (filter.type) {
+        case undefined:
+          state.activeFilters.type === undefined;
+          break;
+        default: state.activeFilters.type = filter.type
       }
 
+      // Checks for price filter
+      switch (filter.price) {
+        case undefined:
+          state.activeFilters.price === undefined;
+          break;
+        default: state.activeFilters.price = filter.price
+      }
+    },
+    filterLocations(state) {
 
-      if (payload.price) { this.state.activeFilters.price = payload.price; }
+      const filter = state.activeFilters;
+      const all = state.allLocations;
 
-      // Update locations -- both filters are active
+      state.locations = [];
 
-      if (this.state.activeFilters.type !== undefined && this.state.activeFilters.price !== undefined) {
-        console.log('both')
-        this.state.allLocations.forEach(l => {
-          if (l.fields.type.toLowerCase() === this.state.activeFilters.type.toLowerCase() && l.fields.price.toLowerCase() === this.state.activeFilters.price.toLowerCase()) {
-            this.state.locations.push(l)
+      // Every filter is inactive
+
+      if (Object.values(filter).every(f => f === undefined)) { state.locations = state.allLocations; }
+
+
+      // Every filter is active
+
+      if (Object.values(filter).every(f => f !== undefined)) {
+        all.forEach(l => {
+          if (l.fields.type.toLowerCase() == filter.type.toLowerCase() && l.fields.price.toLowerCase() == filter.price.toLowerCase()) {
+            state.locations.push(l)
           }
         })
       }
 
-      // Update locations -- only type filter is active
+      // Only "Type" filter is active
 
-      if (this.state.activeFilters.type !== undefined && this.state.activeFilters.price === undefined) {
-        this.state.allLocations.forEach(l => {
-          if (l.fields.type.toLowerCase() === this.state.activeFilters.type.toLowerCase()) {
-            this.state.locations.push(l)
+      if (filter.type !== undefined && filter.price === undefined) {
+        all.forEach(l => {
+          if (l.fields.type.toLowerCase() == filter.type.toLowerCase()) {
+            state.locations.push(l)
           }
         })
       }
 
-      // Update locations -- only price filter is active
+      // Only "Price" filter is active
 
-      if (this.state.activeFilters.type === undefined && this.state.activeFilters.price !== undefined) {
-        console.log('price only')
-        this.state.allLocations.forEach(l => {
-          if (l.fields.price.toLowerCase() === this.state.activeFilters.price.toLowerCase()) {
-            this.state.locations.push(l)
+      if (filter.type === undefined && filter.price !== undefined) {
+        all.forEach(l => {
+          if (l.fields.price.toLowerCase() == filter.price.toLowerCase()) {
+            state.locations.push(l)
           }
         })
-      }
-
-      // If there aren't any filters applied, then display allLocations
-
-      if (this.state.activeFilters.type === undefined && this.state.activeFilters.price === undefined) {
-        this.state.locations = this.state.allLocations;
       }
 
     },

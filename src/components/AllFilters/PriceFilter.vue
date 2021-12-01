@@ -28,6 +28,9 @@ export default {
       document.querySelector(".clear__price").remove();
     },
     filterByPrice(price) {
+      this.$store.commit("setActiveFilter", {
+        price,
+      });
       this.$store.commit("filterLocations", {
         price,
       });
@@ -80,7 +83,7 @@ export default {
       const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
 
-            const input = document.querySelector(".input");
+      const input = document.querySelector(".input");
       input.classList.add("input__active");
     },
     selectOption(name) {
