@@ -50,17 +50,18 @@ export default {
 
 <style lang="scss">
 .btn__text {
-  color: #3F62DC;
   font-weight: 600;
-  background: transparent;
+  font-family: "avenir";
+  color: #33475b;
+  text-decoration: underline;
+  margin: 16px;
   border: none;
-  padding: 8px 12px;
+  background: transparent;
+  margin: 0 12px;
 }
 
 .btn__text:hover {
   cursor: pointer;
-  background: #f5f8fa;
-  border-radius: 5px;
-  color: #2f50c7;
+  opacity: 0.85;
 }
 </style>

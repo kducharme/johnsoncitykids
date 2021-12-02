@@ -48,6 +48,7 @@ body {
   margin: 0;
   font-family: "avenir";
   font-size: 14px;
+  color: #33475b;
 }
 
 .content {
