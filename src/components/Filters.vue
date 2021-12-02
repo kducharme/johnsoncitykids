@@ -3,7 +3,7 @@
     <TypeFilter />
     <PriceFilter />
     <FenceFilter />
-
+    <ResetFilters v-if="Object.values(this.$store.state.activeFilters).some(f => f !== undefined)"/>
   </div>
 </template>
 
@@ -12,12 +12,14 @@
 import TypeFilter from "./AllFilters/TypeFilter";
 import PriceFilter from "./AllFilters/PriceFilter";
 import FenceFilter from "./AllFilters/FenceFilter";
+import ResetFilters from "./AllFilters/ResetFilters";
 
 export default {
   components: {
     TypeFilter,
     PriceFilter,
-    FenceFilter
+    FenceFilter,
+    ResetFilters
   },
   data() {
     return {
@@ -34,12 +36,9 @@ export default {
 .filters {
   display: flex;
   flex-direction: row;
+  align-items: center;
   padding: 16px 0;
   margin: 0 0 16px;
-}
-
-.filter {
-  margin-right: 12px;
 }
 
 /* Input styling */

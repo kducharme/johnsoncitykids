@@ -21,7 +21,7 @@ export default {
         playground: "Playground",
         hiking: "Hiking",
         sports: "Sports",
-        swimming: "Swimming & Splash Pads",
+        swimming: "Swimming",
         library: "Books & Education",
         trampoline: "Trampoline Parks",
       },
@@ -39,7 +39,7 @@ export default {
       dropdown.classList.toggle("hide");
 
       const input = document.querySelector("#input__type");
-      input.textContent = this.$store.state.activeFilters.type;
+      input.textContent = `Type: ${this.$store.state.activeFilters.type}`;
 
       if (document.querySelector(".clear__type") === null) {
         const clearFilters = this.clearTypeFilter();
@@ -100,7 +100,9 @@ export default {
       this.toggleDropdown();
     },
   },
-  created() {},
+  created() {
+    this.$root.$refs.TypeFilter = this;
+  },
 };
 </script>
 

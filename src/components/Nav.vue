@@ -2,7 +2,7 @@
   <div class="navigation">
     <div class="navigation__left">
       <img class="logo" src="../assets/logo.png">
-      <p class="logo__text">Kids</p>
+      <p class="logo__text">KIDS</p>
       </div>
     <div class="navigation__right">
       <button class="btn__contact">Add listing</button>
@@ -43,7 +43,8 @@ export default {};
     font-family: "avenir";
     font-size: 14px;
     font-weight: 600;
-    color: #009478;
+    color: #33475b;
+    letter-spacing: 0.8px;
   }
 }
 

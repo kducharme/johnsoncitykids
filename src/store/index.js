@@ -79,6 +79,11 @@ export default new Vuex.Store({
       state.panel = false;
       state.activeLocation = undefined;
     },
+    resetAllFilters(state) {
+      state.activeFilters.type = undefined;
+      state.activeFilters.price = undefined;
+      state.activeFilters.fenced = undefined;
+    },
     resetTypeFilter(state) {
       state.activeFilters.type = undefined;
     },
@@ -128,10 +133,6 @@ export default new Vuex.Store({
             break;
         }
       }
-
-
-
-
     },
     filterLocations(state) {
 
@@ -150,7 +151,6 @@ export default new Vuex.Store({
       // Every filter is active
 
       if (Object.values(filter).every(f => f !== undefined)) {
-        console.log('all filters')
         all.forEach(l => {
           if (l.fields.type.toLowerCase() == filter.type.toLowerCase() && l.fields.price.toLowerCase() == filter.price.toLowerCase() && l.fields.fenced.toLowerCase() == filter.fenced.toLowerCase()) {
             state.locations.push(l)
@@ -161,7 +161,6 @@ export default new Vuex.Store({
       // Only "Type" filter is active
 
       if (filter.type !== undefined && filter.price === undefined && filter.fenced === undefined) {
-        console.log('only type')
         all.forEach(l => {
           if (l.fields.type.toLowerCase() == filter.type.toLowerCase()) {
             state.locations.push(l)
@@ -172,7 +171,6 @@ export default new Vuex.Store({
       // Only "Price" filter is active
 
       if (filter.type === undefined && filter.price !== undefined && filter.fenced === undefined) {
-        console.log('only price')
         all.forEach(l => {
           if (l.fields.price.toLowerCase() == filter.price.toLowerCase()) {
             state.locations.push(l)
@@ -183,7 +181,6 @@ export default new Vuex.Store({
       // Only "Fence" filter is active
 
       if (filter.type === undefined && filter.price === undefined && filter.fenced !== undefined) {
-        console.log('only fence')
         all.forEach(l => {
           if (l.fields.fenced.toLowerCase() == filter.fenced.toLowerCase()) {
             state.locations.push(l)
@@ -194,7 +191,6 @@ export default new Vuex.Store({
       // Both "Type" and "Price" are active
 
       if (filter.type !== undefined && filter.price !== undefined && filter.fenced === undefined) {
-        console.log('type and price')
         all.forEach(l => {
           if (l.fields.type.toLowerCase() == filter.type.toLowerCase() && l.fields.price.toLowerCase() == filter.price.toLowerCase()) {
             state.locations.push(l)
@@ -205,7 +201,6 @@ export default new Vuex.Store({
       // Both "Type" and "Fenced" are active
 
       if (filter.type !== undefined && filter.price === undefined && filter.fenced !== undefined) {
-        console.log('type and fenced')
         all.forEach(l => {
           if (l.fields.type.toLowerCase() === filter.type.toLowerCase() && l.fields.fenced.toLowerCase() === filter.fenced.toLowerCase()) {
             state.locations.push(l)
@@ -216,7 +211,6 @@ export default new Vuex.Store({
       // Both "Price" and "Fenced" are active
 
       if (filter.type === undefined && filter.price !== undefined && filter.fenced !== undefined) {
-        console.log('price and fenced')
         all.forEach(l => {
           if (l.fields.price.toLowerCase() == filter.price.toLowerCase() && l.fields.fenced.toLowerCase() == filter.fenced.toLowerCase()) {
             state.locations.push(l)

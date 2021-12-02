@@ -40,11 +40,11 @@ export default {
       const input = document.querySelector("#input__fenced");
 
       if (this.$store.state.activeFilters.fenced === "True") {
-        input.textContent = "Fenced (Yes)";
+        input.textContent = "Fenced: Yes";
       }
 
       if (this.$store.state.activeFilters.fenced === "False") {
-        input.textContent = "Fenced (No)";
+        input.textContent = "Fenced: No";
       }
 
       if (document.querySelector(".clear__fenced") === null) {
@@ -101,7 +101,9 @@ export default {
       this.toggleDropdown();
     },
   },
-  created() {},
+  created() {
+    this.$root.$refs.FenceFilter = this;
+  },
 };
 </script>
 
