@@ -2,6 +2,7 @@
   <div ref="filterArea" class="filters">
     <TypeFilter />
     <PriceFilter />
+    <FenceFilter />
 
   </div>
 </template>
@@ -10,11 +11,13 @@
 <script>
 import TypeFilter from "./AllFilters/TypeFilter";
 import PriceFilter from "./AllFilters/PriceFilter";
+import FenceFilter from "./AllFilters/FenceFilter";
 
 export default {
   components: {
     TypeFilter,
-    PriceFilter
+    PriceFilter,
+    FenceFilter
   },
   data() {
     return {
