@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Airtable from "airtable";
+// import { filter } from 'vue/types/umd';
 
 Vue.use(Vuex)
 
@@ -9,13 +10,14 @@ export default new Vuex.Store({
   state: {
     allLocations: [],
 
-    // filteredLocations: [],
-
     locations: [],
 
     activeFilters: {
       type: undefined,
-      price: undefined
+      price: undefined,
+      fenced: undefined,
+      // bathrooms: undefined,
+      // rating: undefined
     },
 
     panel: false,
@@ -77,70 +79,143 @@ export default new Vuex.Store({
       state.panel = false;
       state.activeLocation = undefined;
     },
+    resetAllFilters(state) {
+      state.activeFilters.type = undefined;
+      state.activeFilters.price = undefined;
+      state.activeFilters.fenced = undefined;
+    },
     resetTypeFilter(state) {
       state.activeFilters.type = undefined;
     },
     resetPriceFilter(state) {
       state.activeFilters.price = undefined;
     },
+    resetFencedFilter(state) {
+      state.activeFilters.fenced = undefined;
+    },
     sortLocations() {
       // Not working
 
     },
-    filterLocations(state, payload) {
-      this.state.locations = [];
+    setActiveFilter(state, filter) {
 
-      // Checks if new filter params have been passed
-
-      if (payload.type !== undefined) {
-        this.state.activeFilters.type = payload.type;
-      }
-      else if (this.state.activeFilters !== undefined) {
-        //no change
-      }
-      else {
-        this.state.activeFilters.type = undefined;
+      // Sets for "type" filter
+      if (filter.type) {
+        switch (filter.type) {
+          case undefined:
+            state.activeFilters.type = undefined;
+            break;
+          default: state.activeFilters.type = filter.type
+        }
       }
 
+      // Sets the "Price" filter
+      if (filter.price) {
+        switch (filter.price) {
+          case undefined:
+            state.activeFilters.price = undefined;
+            break;
+          default: state.activeFilters.price = filter.price
+        }
+      }
 
-      if (payload.price) { this.state.activeFilters.price = payload.price; }
+      // Sets the "Fence" filter
+      if (filter.fenced) {
+        switch (filter.fenced) {
+          case undefined:
+            state.activeFilters.fenced = undefined;
+            break;
+          case 'Yes':
+            state.activeFilters.fenced = 'True';
+            break;
+          case 'No':
+            state.activeFilters.fenced = 'False';
+            break;
+        }
+      }
+    },
+    filterLocations(state) {
 
-      // Update locations -- both filters are active
+      console.log(state.activeFilters)
 
-      if (this.state.activeFilters.type !== undefined && this.state.activeFilters.price !== undefined) {
-        console.log('both')
-        this.state.allLocations.forEach(l => {
-          if (l.fields.type.toLowerCase() === this.state.activeFilters.type.toLowerCase() && l.fields.price.toLowerCase() === this.state.activeFilters.price.toLowerCase()) {
-            this.state.locations.push(l)
+      const filter = state.activeFilters;
+      const all = state.allLocations;
+
+      state.locations = [];
+
+      // Every filter is inactive
+
+      if (Object.values(filter).every(f => f === undefined)) { state.locations = state.allLocations; }
+
+
+      // Every filter is active
+
+      if (Object.values(filter).every(f => f !== undefined)) {
+        all.forEach(l => {
+          if (l.fields.type.toLowerCase() == filter.type.toLowerCase() && l.fields.price.toLowerCase() == filter.price.toLowerCase() && l.fields.fenced.toLowerCase() == filter.fenced.toLowerCase()) {
+            state.locations.push(l)
           }
         })
       }
 
-      // Update locations -- only type filter is active
+      // Only "Type" filter is active
 
-      if (this.state.activeFilters.type !== undefined && this.state.activeFilters.price === undefined) {
-        this.state.allLocations.forEach(l => {
-          if (l.fields.type.toLowerCase() === this.state.activeFilters.type.toLowerCase()) {
-            this.state.locations.push(l)
+      if (filter.type !== undefined && filter.price === undefined && filter.fenced === undefined) {
+        all.forEach(l => {
+          if (l.fields.type.toLowerCase() == filter.type.toLowerCase()) {
+            state.locations.push(l)
           }
         })
       }
 
-      // Update locations -- only price filter is active
+      // Only "Price" filter is active
 
-      if (this.state.activeFilters.type === undefined && this.state.activeFilters.price !== undefined) {
-        console.log('price only')
-        this.state.allLocations.forEach(l => {
-          if (l.fields.price.toLowerCase() === this.state.activeFilters.price.toLowerCase()) {
-            this.state.locations.push(l)
+      if (filter.type === undefined && filter.price !== undefined && filter.fenced === undefined) {
+        all.forEach(l => {
+          if (l.fields.price.toLowerCase() == filter.price.toLowerCase()) {
+            state.locations.push(l)
           }
         })
       }
 
-      // If there aren't any filters applied, then display allLocations
+      // Only "Fence" filter is active
 
-      if (this.state.activeFilters.type === undefined && this.state.activeFilters.price === undefined) {
-        this.state.locations = this.state.allLocations;
+      if (filter.type === undefined && filter.price === undefined && filter.fenced !== undefined) {
+        all.forEach(l => {
+          if (l.fields.fenced.toLowerCase() == filter.fenced.toLowerCase()) {
+            state.locations.push(l)
+          }
+        })
+      }
+
+      // Both "Type" and "Price" are active
+
+      if (filter.type !== undefined && filter.price !== undefined && filter.fenced === undefined) {
+        all.forEach(l => {
+          if (l.fields.type.toLowerCase() == filter.type.toLowerCase() && l.fields.price.toLowerCase() == filter.price.toLowerCase()) {
+            state.locations.push(l)
+          }
+        })
+      }
+
+      // Both "Type" and "Fenced" are active
+
+      if (filter.type !== undefined && filter.price === undefined && filter.fenced !== undefined) {
+        all.forEach(l => {
+          if (l.fields.type.toLowerCase() === filter.type.toLowerCase() && l.fields.fenced.toLowerCase() === filter.fenced.toLowerCase()) {
+            state.locations.push(l)
+          }
+        })
+      }
+
+      // Both "Price" and "Fenced" are active
+
+      if (filter.type === undefined && filter.price !== undefined && filter.fenced !== undefined) {
+        all.forEach(l => {
+          if (l.fields.price.toLowerCase() == filter.price.toLowerCase() && l.fields.fenced.toLowerCase() == filter.fenced.toLowerCase()) {
+            state.locations.push(l)
+          }
+        })
       }
 
     },

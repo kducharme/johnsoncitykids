@@ -28,6 +28,9 @@ export default {
       document.querySelector(".clear__price").remove();
     },
     filterByPrice(price) {
+      this.$store.commit("setActiveFilter", {
+        price,
+      });
       this.$store.commit("filterLocations", {
         price,
       });
@@ -35,7 +38,7 @@ export default {
       dropdown.classList.toggle("hide");
 
       const input = document.querySelector("#input__price");
-      input.textContent = this.$store.state.activeFilters.price;
+      input.textContent = `Price: ${this.$store.state.activeFilters.price}`;
       if (document.querySelector(".clear__price") === null) {
         const clearFilters = this.clearPriceFilter();
         dropdown.appendChild(clearFilters);
@@ -80,7 +83,7 @@ export default {
       const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
 
-            const input = document.querySelector(".input");
+      const input = document.querySelector(".input");
       input.classList.add("input__active");
     },
     selectOption(name) {
@@ -90,7 +93,9 @@ export default {
       this.toggleDropdown();
     },
   },
-  created() {},
+  created() {
+    this.$root.$refs.PriceFilter = this;
+  },
 };
 </script>
 

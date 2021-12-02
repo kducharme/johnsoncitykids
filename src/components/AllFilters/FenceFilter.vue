@@ -1,11 +1,11 @@
 <template>
   <section class="filter">
-    <article class="input" @click="displayTypeFilter()" id="input__type">
-      <p class="placeholder">Type</p>
+    <article class="input" @click="displayFenceFilter()" id="input__fenced">
+      <p class="placeholder">Fenced</p>
     </article>
-    <article class="structure hide" id="structure__type">
-      <p v-for="type in types" :key="type" @click="filterByType(type)">
-        {{ type }}
+    <article class="structure hide" id="structure__fenced">
+      <p v-for="o in options" :key="o" @click="filterByFence(o)">
+        {{ o }}
       </p>
     </article>
   </section>
@@ -17,77 +17,78 @@ export default {
   components: {},
   data() {
     return {
-      types: {
-        playground: "Playground",
-        hiking: "Hiking",
-        sports: "Sports",
-        swimming: "Swimming",
-        library: "Books & Education",
-        trampoline: "Trampoline Parks",
+      options: {
+        one: "Yes",
+        two: "No",
       },
     };
   },
   methods: {
-    filterByType(type) {
+    removeClearFilter_Fenced() {
+      document.querySelector(".clear__fenced").remove();
+    },
+    filterByFence(fenced) {
       this.$store.commit("setActiveFilter", {
-        type,
+        fenced,
       });
       this.$store.commit("filterLocations", {
-        type,
+        fenced,
       });
-      const dropdown = document.querySelector("#structure__type");
+      const dropdown = document.querySelector("#structure__fenced");
       dropdown.classList.toggle("hide");
 
-      const input = document.querySelector("#input__type");
-      input.textContent = `Type: ${this.$store.state.activeFilters.type}`;
+      const input = document.querySelector("#input__fenced");
 
-      if (document.querySelector(".clear__type") === null) {
-        const clearFilters = this.clearTypeFilter();
+      if (this.$store.state.activeFilters.fenced === "True") {
+        input.textContent = "Fenced: Yes";
+      }
+
+      if (this.$store.state.activeFilters.fenced === "False") {
+        input.textContent = "Fenced: No";
+      }
+
+      if (document.querySelector(".clear__fenced") === null) {
+        const clearFilters = this.clearFencedFilter();
         dropdown.appendChild(clearFilters);
       }
     },
-    clearTypeFilter() {
+    clearFencedFilter() {
       const clear = document.createElement("article");
       clear.textContent = "Clear filter";
-      clear.classList.add("clear__type");
+      clear.classList.add("clear__fenced");
       clear.addEventListener("click", () => {
-        this.resetTypeFilter();
-        this.removeClearFilter__Type();
-        const typeDropdown = document.querySelector("#structure__type");
-        typeDropdown.classList.add("hide");
+        this.resetFencedFilter();
+        this.removeClearFilter_Fenced();
+        const fenceDropdown = document.querySelector("#structure__fenced");
+        fenceDropdown.classList.add("hide");
 
-        const input = document.querySelector("#input__type");
+        const input = document.querySelector("#input__fenced");
         input.classList.remove("input__active");
-        input.textContent = "Type";
+        input.textContent = "Fenced";
       });
       return clear;
     },
-
-    removeClearFilter__Type() {
-      document.querySelector(".clear__type").remove();
-    },
-    resetTypeFilter() {
-      this.$store.commit("resetTypeFilter");
+    resetFencedFilter() {
+      this.$store.commit("resetFencedFilter");
       this.$store.commit("filterLocations", {
-        type: undefined,
+        fenced: undefined,
       });
     },
 
-    displayTypeFilter() {
-      const dropdown = document.querySelector("#structure__type");
+    displayFenceFilter() {
+      const dropdown = document.querySelector("#structure__fenced");
       dropdown.classList.toggle("hide");
 
-      const input = document.querySelector("#input__type");
+      const input = document.querySelector("#input__fenced");
 
-      if (this.$store.state.activeFilters.type === undefined) {
+      if (this.$store.state.activeFilters.fenced === undefined) {
         input.classList.toggle("input__active");
       } else {
         input.classList.add("input__active");
       }
     },
-
     toggleDropdown() {
-      const dropdown = document.querySelector("#structure__type");
+      const dropdown = document.querySelector("#structure__fenced");
       dropdown.classList.toggle("hide");
 
       const input = document.querySelector(".input");
@@ -101,7 +102,7 @@ export default {
     },
   },
   created() {
-    this.$root.$refs.TypeFilter = this;
+    this.$root.$refs.FenceFilter = this;
   },
 };
 </script>
@@ -192,7 +193,7 @@ export default {
 }
 
 .clear__type,
-.clear__price {
+.clear__fenced {
   font-weight: 600;
   font-family: "avenir";
   color: black;
@@ -201,7 +202,7 @@ export default {
 }
 
 .clear__type:hover,
-.clear__price {
+.clear__fenced {
   cursor: pointer;
   opacity: 0.7;
 }
