@@ -73,7 +73,6 @@ export default new Vuex.Store({
     showPanel(state, payload) {
       state.panel = true;
       state.activeLocation = payload.location.fields;
-      console.log(state.activeLocation);
     },
     hidePanel(state) {
       state.panel = false;

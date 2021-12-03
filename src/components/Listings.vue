@@ -1,12 +1,14 @@
 <template>
   <div class="listings">
     <section class="title">
-      <h1 class="title__header">Activities for Kids in Johnson City, TN</h1>
+      <h1 class="title__header">Outings in Johnson City, TN</h1>
       <p class="title__sub">{{ this.$store.state.locations.length }} results</p>
     </section>
     <Filters />
     <div class="locations">
-      <Card />
+      <CardLoader id="card_loader" />
+      <Card id="card_main" />
+      <!-- <NoResults v-if="$store.state.locations.length === 0 && this.loading === false" /> -->
     </div>
   </div>
 </template>
@@ -15,24 +17,37 @@
 <script>
 import Card from "./Card";
 import Filters from "./Filters";
+import CardLoader from "./CardLoader";
+// import NoResults from "./NoResults";
 
 export default {
   components: {
     Card,
     Filters,
+    CardLoader,
+    // NoResults,
   },
   data() {
-    return {};
+    return {
+      loading: true,
+    };
   },
-  created() {},
-  methods: {},
+  created() {
+    this.displayLoader();
+  },
+  methods: {
+    displayLoader() {
+      setTimeout(() => {
+        document.querySelector("#card_loader").remove();
+      }, 1100);
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .listings {
   margin: 40px 24px 24px;
-
   //title section
   .title {
     font-family: "avenir";
@@ -49,11 +64,6 @@ export default {
   }
 
   // listings section
-
-  .locations {
-    display: flex;
-    flex-wrap: wrap;
-  }
 
   .card {
     display: flex;

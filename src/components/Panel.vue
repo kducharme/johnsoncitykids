@@ -1,75 +1,83 @@
 <template>
-  <section class="panel" v-if="$store.state.panel">
-    <section class="background" @click="closePanel()"></section>
-    <section class="details">
-      <section class="details__left">
-        <img
-          class="details__left__image"
-          :src="`${$store.state.activeLocation.img}`"
-        />
-        <button class="btn__primary" @click="getDirections()">
-          Get directions
-        </button>
-        <button class="btn__secondary" @click="visitWebsite()">
-          Visit website
-        </button>
-      </section>
-      <section class="details__right">
-        <section class="right__header">
-          <p class="right__header__title">
-            {{ $store.state.activeLocation.name }}
-          </p>
-          <span
-            class="material-icons right__header__close"
-            @click="closePanel()"
-            >close</span
-          >
-        </section>
-        <section class="right__content">
-          <star-rating
-            :read-only="true"
-            class="detail__rating"
-            v-model="$store.state.activeLocation.rating"
-            star-rating
-            :increment="0.1"
-            active-color="#009478"
-            :star-size="16"
-          >
-          </star-rating>
-          <section class="detail">
-            <p class="detail__title">Description</p>
-            <p class="detail__content">
-              {{ $store.state.activeLocation.description }}
-            </p>
-          </section>
-          <PlaygroundDetails
-            v-if="$store.state.activeLocation.type === 'Playground'"
+  <div>
+    <PanelLoader v-if="$store.state.panel" />
+    <section id="panel_main" class="panel" v-if="$store.state.panel">
+      <section class="background" @click="closePanel()"></section>
+      <section class="details">
+        <section class="details__left">
+          <img
+            class="details__left__image"
+            :src="`${$store.state.activeLocation.img}`"
           />
-          <section class="detail">
-            <p class="detail__title">Location</p>
-            <p class="detail__content">
-              {{ $store.state.activeLocation.address }},
-              {{ $store.state.activeLocation.city }},
-              {{ $store.state.activeLocation.state }}
-              {{ $store.state.activeLocation.zip }}
+          <button class="btn__primary" @click="getDirections()">
+            Get directions
+          </button>
+          <button class="btn__secondary" @click="visitWebsite()">
+            Visit website
+          </button>
+        </section>
+        <section class="details__right">
+          <section class="right__header">
+            <p class="right__header__title">
+              {{ $store.state.activeLocation.name }}
             </p>
-            <MglMap
-              :accessToken="accessToken"
-              :mapStyle="mapStyle"
-              class="details__map"
+            <span
+              class="material-icons right__header__close"
+              @click="closePanel()"
+              >close</span
             >
-              <MglMarker
-                color="#009478"
-                :key="$store.state.activeLocation.id"
-                :coordinates="$store.state.activeLocation.coordinates"
+          </section>
+          <section class="right__content">
+            <star-rating
+              :read-only="true"
+              class="detail__rating"
+              v-model="$store.state.activeLocation.rating"
+              star-rating
+              :increment="0.1"
+              active-color="#009478"
+              :star-size="16"
+            >
+            </star-rating>
+            <section class="detail">
+              <p class="detail__title">Description</p>
+              <p class="detail__content">
+                {{ $store.state.activeLocation.description }}
+              </p>
+            </section>
+            <PlaygroundDetails
+              v-if="$store.state.activeLocation.type === 'Playground'"
+            />
+            <section class="detail">
+              <p class="detail__title">Location</p>
+              <p class="detail__content">
+                {{ $store.state.activeLocation.address }},
+                {{ $store.state.activeLocation.city }},
+                {{ $store.state.activeLocation.state }}
+                {{ $store.state.activeLocation.zip }}
+              </p>
+              <MglMap
+                :accessToken="accessToken"
+                :mapStyle="mapStyle"
+                class="details__map"
+                :center="[
+                  $store.state.activeLocation.long,
+                  $store.state.activeLocation.lat,
+                ]"
+                :zoom="12"
               >
-              </MglMarker>
-            </MglMap>
+                <MglMarker
+                  color="#009478"
+                  :key="$store.state.activeLocation.id"
+                  :coordinates="$store.state.activeLocation.coordinates"
+                >
+                </MglMarker>
+              </MglMap>
+            </section>
           </section>
         </section>
       </section>
     </section>
-  </section>
+  </div>
 </template>
 
 
@@ -78,6 +86,7 @@ import StarRating from "vue-star-rating";
 import Mapbox from "mapbox-gl";
 import { MglMap, MglMarker } from "vue-mapbox";
 import PlaygroundDetails from "./PlaygroundDetails.vue";
+import PanelLoader from "./PanelLoader.vue";
 
 export default {
   components: {
@@ -85,6 +94,7 @@ export default {
     MglMap,
     MglMarker,
     PlaygroundDetails,
+    PanelLoader,
   },
   data() {
     return {
@@ -129,7 +139,7 @@ export default {
 <style scoped lang="scss">
 .panel {
   display: flex;
-  z-index: 99999;
+  z-index: 99998;
   position: fixed;
   height: 100vh;
   width: 100vw;

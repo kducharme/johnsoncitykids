@@ -1,7 +1,6 @@
 <template>
   <div class="content">
-    
-        <Panel />
+    <Panel />
     <div class="content__top">
       <Nav />
     </div>
@@ -29,7 +28,7 @@ export default {
     Nav,
     Listings,
     Map,
-    Panel
+    Panel,
   },
 
   mounted() {
@@ -48,6 +47,7 @@ body {
   margin: 0;
   font-family: "avenir";
   font-size: 14px;
+  color: #33475b;
 }
 
 .content {
