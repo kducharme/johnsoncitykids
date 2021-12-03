@@ -27,7 +27,9 @@
             {{ location.fields.type }} · {{ location.fields.price }} ·
             {{ location.fields.distance }} miles from downtown
           </p>
-          <p class="card__title">{{ location.fields.name }}</p>
+          <p class="card__title" :id="`title_${location.fields.id}`">
+            {{ location.fields.name }}
+          </p>
           <p class="card__details">{{ location.fields.description }}</p>
         </article>
         <article class="card__right__bottom">
@@ -72,6 +74,10 @@ export default {
       });
     },
     displayVideo(location) {
+      document
+        .querySelector(`#title_${location.fields.id}`)
+        .classList.add("hoverTitle");
+
       if (location.fields.gif) {
         const img = document.querySelector(
           "#card__image__" + location.fields.id
@@ -83,6 +89,10 @@ export default {
       }
     },
     hideVideo(location) {
+      document
+        .querySelector(`#title_${location.fields.id}`)
+        .classList.remove("hoverTitle");
+
       const img = document.querySelector("#card__image__" + location.fields.id);
       img.classList.remove("hide");
 
@@ -156,5 +166,9 @@ export default {
   .hide {
     display: none;
   }
+}
+
+.hoverTitle {
+  text-decoration: underline;
 }
 </style>;

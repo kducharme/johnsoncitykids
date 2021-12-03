@@ -54,10 +54,9 @@ export default {
   font-family: "avenir";
   color: #33475b;
   text-decoration: underline;
-  margin: 16px;
   border: none;
   background: transparent;
-  margin: 0 12px;
+  margin: 0 8px;
 }
 
 .btn__text:hover {
