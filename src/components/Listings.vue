@@ -39,7 +39,7 @@ export default {
     displayLoader() {
       setTimeout(() => {
         document.querySelector("#card_loader").remove();
-      }, 1400);
+      }, 1100);
     },
   },
 };

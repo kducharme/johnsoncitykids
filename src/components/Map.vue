@@ -79,9 +79,8 @@ export default {
   methods: {
     displayLoader() {
       setTimeout(() => {
-        console.log("hi");
         document.querySelector("#map_loader").remove();
-      }, 1400);
+      }, 1100);
     },
   },
   created() {

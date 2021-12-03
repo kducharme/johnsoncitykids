@@ -1,7 +1,6 @@
 <template>
   <div class="content">
-    
-        <Panel />
+    <Panel />
     <div class="content__top">
       <Nav />
     </div>
@@ -29,7 +28,7 @@ export default {
     Nav,
     Listings,
     Map,
-    Panel
+    Panel,
   },
 
   mounted() {

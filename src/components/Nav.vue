@@ -5,14 +5,20 @@
       <p class="logo__text">KIDS</p>
       </div>
     <div class="navigation__right">
-      <button class="btn__contact">Add listing</button>
+      <button class="btn__contact" @click="addListing()">Add listing</button>
     </div>
   </div>
 </template>
 
 
 <script>
-export default {};
+export default {
+  methods: {
+    addListing() {
+      window.open("https://airtable.com/shr0UlLfVQbS8lOhI", "_blank");
+    }
+  }
+};
 </script>
 
 <style lang="scss">
