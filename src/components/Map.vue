@@ -22,7 +22,6 @@
         <MglMarker
           color="#425b76"
           v-for="(l, key) in $store.state.locations"
-          :id="l.id"
           :key="key"
           :coordinates="l.fields.coordinates"
           @click="zoomToMarker(l)"
@@ -134,5 +133,9 @@ export default {
 
 .hide {
   display: none !important;
+}
+
+.mapboxgl-marker > svg {
+  height: 36px !important;
 }
 </style>

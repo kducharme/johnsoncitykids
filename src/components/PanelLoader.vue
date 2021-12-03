@@ -55,7 +55,7 @@ export default {
       setTimeout(() => {
         document.querySelector("#panel_loader")
           .classList.add("panel__loader__hide");
-      }, 800);
+      }, 700);
     },
   },
   created() {
@@ -74,7 +74,7 @@ export default {
   .loader__background {
     width: 50%;
     background-color: #33475b;
-    opacity: 0.8;
+    opacity: 0;
   }
   .loader__details {
     display: flex;
