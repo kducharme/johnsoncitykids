@@ -1,34 +1,42 @@
 <template>
-  <MglMap :accessToken="accessToken" :mapStyle="mapStyle" class="map">
-    <MglMarker
-      color="#009478"
-      v-for="(l, key) in $store.state.locations"
-      :key="key"
-      :coordinates="l.fields.coordinates"
-      @click="zoomToMarker(l)"
+  <div>
+    <MapLoader id="map_loader" />
+    <MglMap
+      :accessToken="accessToken"
+      :mapStyle="mapStyle"
+      class="map"
+      id="map_main"
     >
-      <MglPopup>
-        <div>
-          <section class="pop">
-            <img class="pop__image" :src="`${l.fields.img}`" />
-            <star-rating
-              :read-only="true"
-              class="pop__rating"
-              v-model="l.fields.rating"
-              star-rating
-              :increment="0.1"
-              active-color="#009478"
-              :star-size="12"
-            >
-            </star-rating>
-            <p class="pop__name">{{ l.fields.name }}</p>
-            <p class="pop__address">{{ l.fields.description }}</p>
-            <!-- <a href={ l.website }> View details </a> -->
-          </section>
-        </div>
-      </MglPopup>
-    </MglMarker>
-  </MglMap>
+      <MglMarker
+        color="#009478"
+        v-for="(l, key) in $store.state.locations"
+        :key="key"
+        :coordinates="l.fields.coordinates"
+        @click="zoomToMarker(l)"
+      >
+        <MglPopup>
+          <div>
+            <section class="pop">
+              <img class="pop__image" :src="`${l.fields.img}`" />
+              <star-rating
+                :read-only="true"
+                class="pop__rating"
+                v-model="l.fields.rating"
+                star-rating
+                :increment="0.1"
+                active-color="#009478"
+                :star-size="12"
+              >
+              </star-rating>
+              <p class="pop__name">{{ l.fields.name }}</p>
+              <p class="pop__address">{{ l.fields.description }}</p>
+              <!-- <a href={ l.website }> View details </a> -->
+            </section>
+          </div>
+        </MglPopup>
+      </MglMarker>
+    </MglMap>
+  </div>
 </template>
 
 
@@ -36,6 +44,7 @@
 import Mapbox from "mapbox-gl";
 import { MglMap, MglMarker, MglPopup } from "vue-mapbox";
 import StarRating from "vue-star-rating";
+import MapLoader from "./MapLoader";
 
 export default {
   components: {
@@ -43,6 +52,7 @@ export default {
     MglMarker,
     MglPopup,
     StarRating,
+    MapLoader,
   },
   data() {
     return {
@@ -51,14 +61,20 @@ export default {
       mapStyle: "mapbox://styles/ducharme-kyle/ckwl424ix3ftj14r7h2mqh0yz", // your map style
       center: [-71.61373, 42.13024],
       zoom: 100,
+      loading: true,
     };
   },
   methods: {
-    created() {
-      this.mapbox = Mapbox;
+    displayLoader() {
+      setTimeout(() => {
+        console.log('hi')
+        document.querySelector('#map_loader').remove();
+      }, 1400);
     },
-    zoomToMarker() {
-    },
+  },
+  created() {
+    this.mapbox = Mapbox;
+    this.displayLoader();
   },
 };
 </script>
@@ -103,5 +119,9 @@ export default {
 
 .mapboxgl-popup-close-button {
   display: none;
+}
+
+.hide {
+  display: none !important;
 }
 </style>
