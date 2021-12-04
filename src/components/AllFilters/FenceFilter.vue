@@ -19,8 +19,8 @@ export default {
     return {
       options: {
         one: "Yes",
-        two: "No",
-        three: "Partial"
+        two: "Partial",
+        three: "No",
       },
     };
   },

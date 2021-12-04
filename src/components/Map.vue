@@ -9,45 +9,33 @@
       :center="[-82.35328, 36.31909]"
       :zoom="10"
     >
-      <div class="markers__hover" v-if="this.hover === true">
-        <MglMarker
-          color="#009478"
-          v-for="(l, key) in $store.state.locations"
-          :id="l.id"
-          :key="`hover_${key}`"
-          :coordinates="l.fields.coordinates"
-        ></MglMarker>
-      </div>
-      <div class="markers__active" v-if="this.hover === false">
-        <MglMarker
-          color="#425b76"
-          v-for="(l, key) in $store.state.locations"
-          :key="key"
-          :coordinates="l.fields.coordinates"
-          @click="zoomToMarker(l)"
-        >
-          <MglPopup>
-            <div>
-              <section class="pop">
-                <img class="pop__image" :src="`${l.fields.img}`" />
-                <star-rating
-                  :read-only="true"
-                  class="pop__rating"
-                  v-model="l.fields.rating"
-                  star-rating
-                  :increment="0.1"
-                  active-color="#009478"
-                  :star-size="12"
-                >
-                </star-rating>
-                <p class="pop__name">{{ l.fields.name }}</p>
-                <p class="pop__address">{{ l.fields.description }}</p>
-                <!-- <a href={ l.website }> View details </a> -->
-              </section>
-            </div>
-          </MglPopup>
-        </MglMarker>
-      </div>
+      <MglMarker
+        color="#425b76"
+        v-for="(l, key) in $store.state.locations"
+        :key="key"
+        :coordinates="l.fields.coordinates"
+      >
+        <MglPopup>
+          <div>
+            <section class="pop">
+              <img class="pop__image" :src="`${l.fields.img}`" />
+              <star-rating
+                :read-only="true"
+                class="pop__rating"
+                v-model="l.fields.rating"
+                star-rating
+                :increment="0.1"
+                active-color="#009478"
+                :star-size="12"
+              >
+              </star-rating>
+              <p class="pop__name">{{ l.fields.name }}</p>
+              <p class="pop__address">{{ l.fields.description }}</p>
+              <!-- <a href={ l.website }> View details </a> -->
+            </section>
+          </div>
+        </MglPopup>
+      </MglMarker>
     </MglMap>
   </div>
 </template>
@@ -137,5 +125,11 @@ export default {
 
 .mapboxgl-marker > svg {
   height: 36px !important;
+}
+
+.mapboxgl-marker:hover,
+.mapboxgl-marker-anchor-center:hover {
+  opacity: 0.9;
+  cursor: pointer;
 }
 </style>

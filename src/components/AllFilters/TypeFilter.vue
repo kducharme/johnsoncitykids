@@ -24,6 +24,7 @@ export default {
         swimming: "Swimming",
         library: "Books & Education",
         trampoline: "Trampoline Parks",
+        shopping: "Shopping",
       },
     };
   },
