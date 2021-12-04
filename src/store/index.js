@@ -130,6 +130,9 @@ export default new Vuex.Store({
           case 'No':
             state.activeFilters.fenced = 'False';
             break;
+          case 'Partial':
+            state.activeFilters.fenced = 'Partial';
+            break;
         }
       }
     },

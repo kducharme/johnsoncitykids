@@ -1,8 +1,8 @@
 <template>
   <div class="navigation">
     <div class="navigation__left">
-      <img class="logo" src="../assets/logo.png">
-      <p class="logo__text">KIDS</p>
+      <img class="logo" src="../assets/jclogo.png">
+      <p class="logo__text">JC KIDS</p>
       </div>
     <div class="navigation__right">
       <button class="btn__contact" @click="addListing()">Add listing</button>
@@ -42,7 +42,7 @@ export default {
     justify-content: flex-end;
   }
   .logo {
-    width: 40px;
+    width: 44px;
     margin-right: 8px;
   }
   .logo__text {
@@ -57,7 +57,7 @@ export default {
 .btn__contact {
   color: white;
   padding: 12px 16px;
-  background: #009478;
+  background: #33475b;
   border: none;
   font-weight: 600;
   border-radius: 3px;

@@ -53,6 +53,11 @@
           v-if="$store.state.activeLocation.fenced === 'false'"
           >close</span
         >
+                <span
+          class="material-icons feature__icon__partial"
+          v-if="$store.state.activeLocation.fenced === 'partial'"
+          >check</span
+        >
         <p class="feature__details">Fenced-in play area</p>
       </article>
 
@@ -111,6 +116,10 @@ export default {
   }
   .feature__icon__true {
     color: #009478;
+    margin-right: 12px;
+  }
+  .feature__icon__partial {
+    color: #f5c26b;
     margin-right: 12px;
   }
 

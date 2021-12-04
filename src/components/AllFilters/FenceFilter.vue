@@ -20,6 +20,7 @@ export default {
       options: {
         one: "Yes",
         two: "No",
+        three: "Partial"
       },
     };
   },
@@ -45,6 +46,10 @@ export default {
 
       if (this.$store.state.activeFilters.fenced === "False") {
         input.textContent = "Fenced: No";
+      }
+
+      if (this.$store.state.activeFilters.fenced === "Partial") {
+        input.textContent = "Fenced: Partial";
       }
 
       if (document.querySelector(".clear__fenced") === null) {
