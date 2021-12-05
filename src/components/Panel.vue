@@ -251,4 +251,39 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 760px) {
+  .background {
+    width: 20vw!important;
+
+  }
+  .details {
+    width: 80vw!important;
+  }
+  .details__left {
+    width: 35%!important;
+
+  }
+  .details__right {
+    width: 65%!important;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .background {
+    display: none!important;
+  }
+  .details {
+    width: 100vw!important;
+  }
+  .details__left {
+    width: 35%!important;
+
+  }
+  .details__right {
+    width: 65%!important;
+
+  }
+}
 </style>
