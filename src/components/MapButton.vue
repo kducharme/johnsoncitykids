@@ -18,9 +18,7 @@ export default {
   created() {},
   methods: {
     showMap() {
-      console.log("hewwo");
-      console.log(document.querySelector(".content__bottom__right"))
-      document.querySelector(".content__bottom__right").classList.add("show");
+      this.$store.commit("showMobileMap");
     },
   },
 };
@@ -57,7 +55,7 @@ export default {
 }
 
 .add {
-  opacity: .8!important;
-  width: 100vw!important;
+  opacity: 0.8 !important;
+  width: 100vw !important;
 }
 </style>;
