@@ -24,7 +24,9 @@ export default new Vuex.Store({
 
     activeSort: undefined,
     
-    mobile: true
+    mobile: true,
+
+    mobileMap: false
 
   },
   getters: {
@@ -80,6 +82,9 @@ export default new Vuex.Store({
     },
     onLargeScreen(state) {
       state.mobile = false;
+    },
+    showMobileMap(state) {
+      state.panel = true;
     },
     hidePanel(state) {
       state.panel = false;

@@ -1,6 +1,7 @@
 <template>
   <div class="content">
     <MapButton v-if="this.$store.state.mobile === true" />
+    <MobileMap v-if="this.$store.state.mobileMap === true" />
     <Panel />
     <div class="content__top">
       <Nav />
@@ -22,6 +23,7 @@ import Map from "./components/Map";
 import Nav from "./components/Nav";
 import Panel from "./components/Panel";
 import MapButton from "./components/MapButton";
+import MobileMap from "./components/MobileMap";
 
 export default {
   name: "App",
@@ -32,6 +34,7 @@ export default {
     Map,
     Panel,
     MapButton,
+    MobileMap
   },
   methods: {
     initialMobileCheck() {
