@@ -119,10 +119,6 @@ export default {
   display: none;
 }
 
-.hide {
-  display: none !important;
-}
-
 .mapboxgl-marker > svg {
   height: 36px !important;
 }
@@ -132,4 +128,5 @@ export default {
   opacity: 0.9;
   cursor: pointer;
 }
+
 </style>

@@ -178,4 +178,39 @@ export default {
 .panel__loader__hide {
   display: none !important;
 }
+
+@media screen and (max-width: 760px) {
+  .loader__background {
+    width: 20vw!important;
+
+  }
+  .loader__details {
+    width: 80vw!important;
+  }
+  .ld__left {
+    width: 35%!important;
+
+  }
+  .ld__right {
+    width: 65%!important;
+
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .loader__background {
+    display: none!important;
+  }
+  .loader__details {
+    width: 100vw!important;
+  }
+  .ld__left {
+    width: 35%!important;
+
+  }
+  .ld__right {
+    width: 65%!important;
+
+  }
+}
 </style>

@@ -48,7 +48,7 @@ export default {
   .logo__text {
     font-family: "avenir";
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 800;
     color: #33475b;
     letter-spacing: 0.8px;
   }

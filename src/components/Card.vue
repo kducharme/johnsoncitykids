@@ -171,4 +171,25 @@ export default {
 .hoverTitle {
   text-decoration: underline;
 }
+
+@media screen and (max-width: 600px) {
+  .card {
+    display: flex;
+    flex-direction: column !important;
+    .card__left {
+      width: 100% !important;
+      .card__image {
+        height: 30vh!important;
+        // max-height: 30vh!important;
+        // min-height: 18vh!important;
+        object-position: 80% 40%!important;
+      }
+    }
+    .card__right {
+      width: 100% !important;
+      padding: 0 !important;
+      margin-top: 24px !important;
+    }
+  }
+}
 </style>;

@@ -16,15 +16,16 @@ export default new Vuex.Store({
       type: undefined,
       price: undefined,
       fenced: undefined,
-      // bathrooms: undefined,
-      // rating: undefined
     },
 
     panel: false,
 
     activeLocation: undefined,
 
-    activeSort: undefined
+    activeSort: undefined,
+    
+    mobile: true
+
   },
   getters: {
     getAirtableLocations(state) {
@@ -73,6 +74,12 @@ export default new Vuex.Store({
     showPanel(state, payload) {
       state.panel = true;
       state.activeLocation = payload.location.fields;
+    },
+    onSmallScreen(state) {
+      state.mobile = true;
+    },
+    onLargeScreen(state) {
+      state.mobile = false;
     },
     hidePanel(state) {
       state.panel = false;

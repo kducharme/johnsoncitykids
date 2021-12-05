@@ -1,5 +1,6 @@
 <template>
   <div class="content">
+    <MapButton v-if="this.$store.state.mobile === true" />
     <Panel />
     <div class="content__top">
       <Nav />
@@ -8,7 +9,7 @@
       <div class="content__bottom__left">
         <Listings />
       </div>
-      <div class="content__bottom__right">
+      <div class="content__bottom__right" v-if="this.$store.state.mobile === false">
         <Map />
       </div>
     </div>
@@ -20,6 +21,7 @@ import Listings from "./components/Listings";
 import Map from "./components/Map";
 import Nav from "./components/Nav";
 import Panel from "./components/Panel";
+import MapButton from "./components/MapButton";
 
 export default {
   name: "App",
@@ -29,20 +31,28 @@ export default {
     Listings,
     Map,
     Panel,
+    MapButton,
   },
-
+  methods: {
+    initialMobileCheck() {
+      if (window.innerWidth <= 760) {
+        this.$store.commit("onSmallScreen");
+      }
+      if (window.innerWidth > 760) {
+        this.$store.commit("onLargeScreen");
+      }
+    },
+  },
   mounted() {
     this.$store.getters.getAirtableLocations;
-    // this.$store.commit('sortLocations');
+    this.initialMobileCheck();
   },
-
-  data: () => ({
-    //
-  }),
 };
 </script>
 
 <style lang="scss">
+// desktop styling
+
 body {
   margin: 0;
   font-family: "avenir";
@@ -68,6 +78,17 @@ body {
     .content__bottom__right {
       width: 40vw;
       // height: calc(100vh - 72px);
+    }
+  }
+}
+
+// mobile styling
+
+@media screen and (max-width: 760px) {
+  .content__bottom {
+    width: 100vw !important;
+    .content__bottom__left {
+      width: 100vw !important;
     }
   }
 }
