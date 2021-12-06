@@ -1,13 +1,19 @@
 <template>
   <div>
-    <MapLoader id="map_loader" />
+    <div class="closeButton">
+      <button class="btn__fab__alt" @click="closeMap()">
+        <span class="material-icons btn__fab__icon">list</span>
+        <p class="btn__fab__text">List</p>
+      </button>
+    </div>
+    <!-- <MapLoader id="map_loader" /> -->
     <MglMap
       :accessToken="accessToken"
       :mapStyle="mapStyle"
-      class="map"
+      class="map__mobile"
       id="map_main"
       :center="[-82.35328, 36.31909]"
-      :zoom="10"
+      :zoom="11"
     >
       <MglMarker
         color="#425b76"
@@ -16,12 +22,17 @@
         :coordinates="l.fields.coordinates"
       >
         <MglPopup>
-          <div>
-            <section class="pop">
-              <img class="pop__image" :src="`${l.fields.img}`" />
+          <section class="pop__content__mobile">
+            <section class="pop__content__left">
+              <img class="pop__content__left--image" :src="`${l.fields.img}`" />
+            </section>
+            <section class="pop__content__right">
+              <p class="pop__content__right--subtitle">
+                {{ l.fields.type }} · {{ l.fields.price }}
+              </p>
               <star-rating
                 :read-only="true"
-                class="pop__rating"
+                class="pop__content__right--rating"
                 v-model="l.fields.rating"
                 star-rating
                 :increment="0.1"
@@ -29,11 +40,12 @@
                 :star-size="12"
               >
               </star-rating>
-              <p class="pop__name">{{ l.fields.name }}</p>
-              <p class="pop__address">{{ l.fields.description }}</p>
-              <!-- <a href={ l.website }> View details </a> -->
+              <p class="pop__content__right--name">{{ l.fields.name }}</p>
+              <p class="pop__content__right--description">
+                {{ l.fields.description }}
+              </p>
             </section>
-          </div>
+          </section>
         </MglPopup>
       </MglMarker>
     </MglMap>
@@ -45,7 +57,7 @@
 import Mapbox from "mapbox-gl";
 import { MglMap, MglMarker, MglPopup } from "vue-mapbox";
 import StarRating from "vue-star-rating";
-import MapLoader from "./MapLoader";
+// import MapLoader from "./MapLoader";
 
 export default {
   components: {
@@ -53,7 +65,7 @@ export default {
     MglMarker,
     MglPopup,
     StarRating,
-    MapLoader,
+    // MapLoader,
   },
   data() {
     return {
@@ -64,48 +76,92 @@ export default {
     };
   },
   methods: {
-    displayLoader() {
-      setTimeout(() => {
-        document.querySelector("#map_loader").remove();
-      }, 1100);
+    closeMap() {
+      this.$store.commit("hideMobileMap");
+    },
+    showPanel(location) {
+      this.$store.commit("showPanel", {
+        location,
+      });
     },
   },
   created() {
     this.mapbox = Mapbox;
-    this.displayLoader();
   },
 };
 </script>
 
 <style lang="scss">
-.map {
+.map__mobile {
   position: fixed;
-  top: 72px;
+  top: 0;
   right: 0;
-  height: calc(100vh - 72px);
-  width: 40vw;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999999;
 }
 
-.pop__image {
-  width: 100%;
-  height: 160px;
+// Map popups
+
+.mapboxgl-popup {
+  padding: 0 !important;
+  border-radius: px;
+  width: 94vw;
+  position: fixed !important;
+  max-width: 94vw !important;
+  transform: none !important;
+  bottom: 0px !important;
+  top: 0px !important;
+  margin: 0 3vw 0;
+}
+
+.mapboxgl-popup-content {
+  padding: 0 !important;
+}
+
+.pop__content__left--image {
+  width: 100% !important;
+  height: 108px !important;
   border-radius: 5%;
   object-fit: cover;
   object-position: 25% 20%;
   border-radius: 5px;
 }
 
-.pop__rating {
-  margin: 16px 0 8px;
+.pop__content__mobile {
+  display: flex!important;
 }
 
-.pop__name {
-  font-size: 16px;
+.pop__content__left {
+  width: 30%;
+  margin: 0;
+  padding: 0;
+}
+
+.pop__content__right {
+  padding: 12px;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+}
+.pop__content__right--subtitle {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  color: #6b6b6b;
+}
+.pop__content__right--rating {
+  // margin: 16px 0 0;
+}
+.pop__content__right--name {
+  font-size: 18px;
   font-weight: 600;
+  font-family: "Avenir";
   margin: 0;
 }
-
-.pop__address {
+.pop__content__right--description {
+  margin: 0;
+  padding: 0;
   font-size: 13px;
   color: #6b6b6b;
   display: -webkit-box;
@@ -129,4 +185,38 @@ export default {
   cursor: pointer;
 }
 
+.closeButton {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  z-index: 9999999;
+  bottom: 0px;
+  width: 100%;
+  margin-bottom: 16px;
+  .btn__fab__alt {
+    display: flex;
+    justify-content: center;
+    padding: 16px 20px;
+    background: #fff;
+    color: #33475b;
+    border: 2px solid #33475b;
+    border-radius: 5px;
+    .btn__fab__icon {
+      height: 16px;
+      padding: 0 8px 4px 0;
+      color: #33475b;
+    }
+    .btn__fab__text {
+      font-size: 14px;
+      font-weight: 600;
+      font-family: "Avenir";
+      margin: 0;
+      padding-top: 2px;
+    }
+  }
+}
+
+.mapboxgl-control-container {
+  display: none !important;
+}
 </style>

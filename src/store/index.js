@@ -84,7 +84,10 @@ export default new Vuex.Store({
       state.mobile = false;
     },
     showMobileMap(state) {
-      state.panel = true;
+      state.mobileMap = true;
+    },
+    hideMobileMap(state) {
+      state.mobileMap = false;
     },
     hidePanel(state) {
       state.panel = false;

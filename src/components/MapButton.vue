@@ -53,9 +53,4 @@ export default {
     }
   }
 }
-
-.add {
-  opacity: 0.8 !important;
-  width: 100vw !important;
-}
 </style>;
