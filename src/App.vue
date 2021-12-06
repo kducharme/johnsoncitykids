@@ -93,6 +93,9 @@ body {
     .content__bottom__left {
       width: 100vw !important;
     }
+    .content__bottom__right {
+      display: none!important;
+    }
   }
 }
 </style>

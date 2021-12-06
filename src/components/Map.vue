@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class='map__web'>
     <MapLoader id="map_loader" />
     <MglMap
       :accessToken="accessToken"
@@ -128,4 +128,5 @@ export default {
   opacity: 0.9;
   cursor: pointer;
 }
+
 </style>

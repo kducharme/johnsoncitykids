@@ -27,23 +27,27 @@
               <img class="pop__content__left--image" :src="`${l.fields.img}`" />
             </section>
             <section class="pop__content__right">
-              <p class="pop__content__right--subtitle">
+              <!-- <p class="pop__content__right--subtitle">
                 {{ l.fields.type }} · {{ l.fields.price }}
-              </p>
-              <star-rating
-                :read-only="true"
-                class="pop__content__right--rating"
-                v-model="l.fields.rating"
-                star-rating
-                :increment="0.1"
-                active-color="#009478"
-                :star-size="12"
-              >
-              </star-rating>
-              <p class="pop__content__right--name">{{ l.fields.name }}</p>
-              <p class="pop__content__right--description">
-                {{ l.fields.description }}
-              </p>
+              </p> -->
+              <section class="pop__content__top">
+                <p class="pop__content__right--title">{{ l.fields.name }}</p>
+                <p class="pop__content__right--description">
+                  {{ l.fields.description }}
+                </p>
+              </section>
+              <section class="pop__content__bottom">
+                <star-rating
+                  :read-only="true"
+                  class="pop__content__right--rating"
+                  v-model="l.fields.rating"
+                  star-rating
+                  :increment="0.1"
+                  active-color="#009478"
+                  :star-size="12"
+                >
+                </star-rating>
+              </section>
             </section>
           </section>
         </MglPopup>
@@ -103,25 +107,38 @@ export default {
 
 // Map popups
 
-.mapboxgl-popup {
+.mapboxgl-popup,
+.mapboxgl-popup-anchor-right {
   padding: 0 !important;
-  border-radius: px;
+  border-radius: 8px !important;
   width: 94vw;
   position: fixed !important;
   max-width: 94vw !important;
   transform: none !important;
   bottom: 0px !important;
   top: 0px !important;
-  margin: 0 3vw 0;
+  margin: 8px 3vw 0;
+  height: 112px !important;
+  box-shadow: rgb(0 0 0 / 28%) 0px 8px 28px !important;
+}
+.mapboxgl-popup-tip {
+  display: none !important;
 }
 
 .mapboxgl-popup-content {
   padding: 0 !important;
 }
 
+.pop__content__left {
+  width: 30%;
+  height: 112px !important;
+  margin: 0;
+  padding: 0;
+}
+
 .pop__content__left--image {
   width: 100% !important;
-  height: 108px !important;
+  height: 112px !important;
   border-radius: 5%;
   object-fit: cover;
   object-position: 25% 20%;
@@ -129,13 +146,7 @@ export default {
 }
 
 .pop__content__mobile {
-  display: flex!important;
-}
-
-.pop__content__left {
-  width: 30%;
-  margin: 0;
-  padding: 0;
+  display: flex !important;
 }
 
 .pop__content__right {
@@ -143,29 +154,29 @@ export default {
   width: 70%;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
-.pop__content__right--subtitle {
-  margin: 0;
-  padding: 0;
-  font-size: 12px;
-  color: #6b6b6b;
-}
-.pop__content__right--rating {
-  // margin: 16px 0 0;
-}
-.pop__content__right--name {
-  font-size: 18px;
+
+.pop__content__right--title {
+  font-size: 15px;
   font-weight: 600;
   font-family: "Avenir";
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .pop__content__right--description {
-  margin: 0;
+  margin: 4px 0 0 0;
   padding: 0;
-  font-size: 13px;
-  color: #6b6b6b;
+  font-size: 12px;
+  line-height: 1.5;
+  color: #33475b;
+  opacity: 0.8;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
