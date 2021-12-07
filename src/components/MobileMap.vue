@@ -1,12 +1,12 @@
 <template>
   <div>
+    <!-- <MapLoader id="map_loader" /> -->
     <div class="closeButton">
       <button class="btn__fab__alt" @click="closeMap()">
         <span class="material-icons btn__fab__icon">list</span>
         <p class="btn__fab__text">List</p>
       </button>
     </div>
-    <!-- <MapLoader id="map_loader" /> -->
     <MglMap
       :accessToken="accessToken"
       :mapStyle="mapStyle"
@@ -102,24 +102,59 @@ export default {
   right: 0;
   height: 100vh;
   width: 100vw;
-  z-index: 999999;
+  // z-index: 999997;
+}
+
+// Close button
+
+.closeButton {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+  margin-bottom: 16px;
+  z-index: 999998 !important;
+  .btn__fab__alt {
+    display: flex;
+    justify-content: center;
+    padding: 16px 20px;
+    background: #fff;
+    color: #33475b;
+    border: 2px solid #33475b;
+    border-radius: 5px;
+    .btn__fab__icon {
+      height: 16px;
+      padding: 0 8px 4px 0;
+      color: #33475b;
+    }
+    .btn__fab__text {
+      font-size: 14px;
+      font-weight: 600;
+      font-family: "Avenir";
+      margin: 0;
+      padding-top: 2px;
+    }
+  }
 }
 
 // Map popups
 
 .mapboxgl-popup,
-.mapboxgl-popup-anchor-right {
+.mapboxgl-popup-anchor-right,
+.mapboxgl-popup-anchor-left {
   padding: 0 !important;
   border-radius: 8px !important;
   width: 94vw;
   position: fixed !important;
   max-width: 94vw !important;
   transform: none !important;
-  bottom: 0px !important;
-  top: 0px !important;
-  margin: 8px 3vw 0;
-  height: 112px !important;
+  top: 82px !important;
+  // bottom: 0px !important;
+  margin: 0 3vw;
+  height: 140px !important;
   box-shadow: rgb(0 0 0 / 28%) 0px 8px 28px !important;
+  z-index: 99999 !important;
 }
 .mapboxgl-popup-tip {
   display: none !important;
@@ -127,18 +162,19 @@ export default {
 
 .mapboxgl-popup-content {
   padding: 0 !important;
+  z-index: 99999999 !important;
 }
 
 .pop__content__left {
   width: 30%;
-  height: 112px !important;
+  height: 140px !important;
   margin: 0;
   padding: 0;
 }
 
 .pop__content__left--image {
   width: 100% !important;
-  height: 112px !important;
+  height: 140px !important;
   border-radius: 5%;
   object-fit: cover;
   object-position: 25% 20%;
@@ -194,37 +230,6 @@ export default {
 .mapboxgl-marker-anchor-center:hover {
   opacity: 0.9;
   cursor: pointer;
-}
-
-.closeButton {
-  display: flex;
-  justify-content: center;
-  position: fixed;
-  z-index: 9999999;
-  bottom: 0px;
-  width: 100%;
-  margin-bottom: 16px;
-  .btn__fab__alt {
-    display: flex;
-    justify-content: center;
-    padding: 16px 20px;
-    background: #fff;
-    color: #33475b;
-    border: 2px solid #33475b;
-    border-radius: 5px;
-    .btn__fab__icon {
-      height: 16px;
-      padding: 0 8px 4px 0;
-      color: #33475b;
-    }
-    .btn__fab__text {
-      font-size: 14px;
-      font-weight: 600;
-      font-family: "Avenir";
-      margin: 0;
-      padding-top: 2px;
-    }
-  }
 }
 
 .mapboxgl-control-container {

@@ -1,8 +1,8 @@
 <template>
   <div ref="filterArea" class="filters">
-    <TypeFilter />
     <PriceFilter />
-    <FenceFilter />
+    <TypeFilter />
+    <FenceFilter v-if="this.$store.state.activeFilters.type === 'Playground'" />
     <ResetFilters v-if="Object.values(this.$store.state.activeFilters).some(f => f !== undefined)"/>
   </div>
 </template>
@@ -47,8 +47,8 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 1px solid #e2e2e2;
-  border-radius: 24px;
+  border: 1px solid #cbd6e2;
+  border-radius: 8px;
   height: 36px;
   padding: 4px 16px;
   background-color: white;

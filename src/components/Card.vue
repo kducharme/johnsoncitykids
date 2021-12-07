@@ -4,8 +4,6 @@
       class="card"
       v-for="location in this.$store.state.locations"
       :key="location.fields.id"
-      @mouseenter="displayVideo(location)"
-      @mouseleave="hideVideo(location)"
       @click="showPanel(location)"
       :id="`location__${location.fields.id}`"
     >
@@ -15,11 +13,11 @@
           :src="`${location.fields.img}`"
           :id="`card__image__${location.fields.id}`"
         />
-        <img
+        <!-- <img
           class="card__gif hide"
           :src="`${location.fields.gif}`"
           :id="`card__gif__${location.fields.id}`"
-        />
+        /> -->
       </section>
       <section class="card__right">
         <article class="card__right__top">
@@ -73,32 +71,32 @@ export default {
         location,
       });
     },
-    displayVideo(location) {
-      document
-        .querySelector(`#title_${location.fields.id}`)
-        .classList.add("hoverTitle");
+    // displayVideo(location) {
+    //   document
+    //     .querySelector(`#title_${location.fields.id}`)
+    //     .classList.add("hoverTitle");
 
-      if (location.fields.gif) {
-        const img = document.querySelector(
-          "#card__image__" + location.fields.id
-        );
-        img.classList.add("hide");
+    //   if (location.fields.gif) {
+    //     const img = document.querySelector(
+    //       "#card__image__" + location.fields.id
+    //     );
+    //     img.classList.add("hide");
 
-        const gif = document.querySelector("#card__gif__" + location.fields.id);
-        gif.classList.remove("hide");
-      }
-    },
-    hideVideo(location) {
-      document
-        .querySelector(`#title_${location.fields.id}`)
-        .classList.remove("hoverTitle");
+    //     const gif = document.querySelector("#card__gif__" + location.fields.id);
+    //     gif.classList.remove("hide");
+    //   }
+    // },
+    // hideVideo(location) {
+    //   document
+    //     .querySelector(`#title_${location.fields.id}`)
+    //     .classList.remove("hoverTitle");
 
-      const img = document.querySelector("#card__image__" + location.fields.id);
-      img.classList.remove("hide");
+    //   const img = document.querySelector("#card__image__" + location.fields.id);
+    //   img.classList.remove("hide");
 
-      const gif = document.querySelector("#card__gif__" + location.fields.id);
-      gif.classList.add("hide");
-    },
+    //   const gif = document.querySelector("#card__gif__" + location.fields.id);
+    //   gif.classList.add("hide");
+    // },
   },
 };
 </script>

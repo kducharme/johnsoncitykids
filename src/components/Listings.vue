@@ -103,4 +103,10 @@ export default {
     }
   }
 }
+
+@media screen and (max-width: 600px) {
+  .title__header {
+    font-size: 22px!important;
+  }
+}
 </style>;

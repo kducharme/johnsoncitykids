@@ -5,7 +5,7 @@
       <p class="logo__text">JC KIDS</p>
       </div>
     <div class="navigation__right">
-      <button class="btn__contact" @click="addListing()">Add listing</button>
+      <button class="btn__contact" @click="addListing()">Contact us</button>
     </div>
   </div>
 </template>
