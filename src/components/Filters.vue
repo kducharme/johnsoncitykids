@@ -37,7 +37,7 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 16px 0;
+  padding: 8px 0 16px;
   margin: 0 0 16px;
 }
 
