@@ -1,10 +1,10 @@
 <template>
-  <div class='map__web'>
+  <div class="map__web">
     <MapLoader id="map_loader" />
     <MglMap
       :accessToken="accessToken"
       :mapStyle="mapStyle"
-      class="map"
+      class="map__web"
       id="map_main"
       :center="[-82.35328, 36.31909]"
       :zoom="10"
@@ -17,8 +17,15 @@
       >
         <MglPopup>
           <div>
-            <section class="pop">
+            <section class="pop__content__mobile">
               <img class="pop__image" :src="`${l.fields.img}`" />
+              <p class="pop__subtitle">
+                {{ l.fields.type }} · {{ l.fields.price }}
+              </p>
+              <p class="pop__title">{{ l.fields.name }}</p>
+              <p class="pop__description">
+                {{ l.fields.description }}
+              </p>
               <star-rating
                 :read-only="true"
                 class="pop__rating"
@@ -29,9 +36,6 @@
                 :star-size="12"
               >
               </star-rating>
-              <p class="pop__name">{{ l.fields.name }}</p>
-              <p class="pop__address">{{ l.fields.description }}</p>
-              <!-- <a href={ l.website }> View details </a> -->
             </section>
           </div>
         </MglPopup>
@@ -78,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss">
-.map {
+.map__web {
   position: fixed;
   top: 72px;
   right: 0;
@@ -99,13 +103,13 @@ export default {
   margin: 16px 0 8px;
 }
 
-.pop__name {
+.pop__title {
   font-size: 16px;
   font-weight: 600;
   margin: 0;
 }
 
-.pop__address {
+.pop__description {
   font-size: 13px;
   color: #6b6b6b;
   display: -webkit-box;
@@ -128,5 +132,4 @@ export default {
   opacity: 0.9;
   cursor: pointer;
 }
-
 </style>
