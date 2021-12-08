@@ -6,7 +6,7 @@
     </section>
     <Filters />
     <div class="locations">
-      <CardLoader id="card_loader" />
+      <CardLoader id="card_loader"/>
       <Card id="card_main" />
       <!-- <NoResults v-if="$store.state.locations.length === 0 && this.loading === false" /> -->
     </div>
@@ -40,7 +40,7 @@ export default {
       setTimeout(() => {
         document.querySelector("#card_loader").remove();
       }, 1100);
-    },
+    }
   },
 };
 </script>

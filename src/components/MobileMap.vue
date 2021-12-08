@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <MapLoader id="map_loader" /> -->
     <div class="closeButton">
       <button class="btn__fab__alt" @click="closeMap()">
         <span class="material-icons btn__fab__icon">list</span>
@@ -27,9 +26,9 @@
               <img class="pop__content__left--image" :src="`${l.fields.img}`" />
             </section>
             <section class="pop__content__right">
-              <!-- <p class="pop__content__right--subtitle">
+              <p class="pop__content__right--subtitle">
                 {{ l.fields.type }} · {{ l.fields.price }}
-              </p> -->
+              </p>
               <section class="pop__content__top">
                 <p class="pop__content__right--title">{{ l.fields.name }}</p>
                 <p class="pop__content__right--description">
@@ -61,7 +60,6 @@
 import Mapbox from "mapbox-gl";
 import { MglMap, MglMarker, MglPopup } from "vue-mapbox";
 import StarRating from "vue-star-rating";
-// import MapLoader from "./MapLoader";
 
 export default {
   components: {
@@ -69,7 +67,6 @@ export default {
     MglMarker,
     MglPopup,
     StarRating,
-    // MapLoader,
   },
   data() {
     return {
@@ -82,6 +79,7 @@ export default {
   methods: {
     closeMap() {
       this.$store.commit("hideMobileMap");
+      document.querySelector('#mapButton').classList.toggle('hideButton')
     },
     showPanel(location) {
       this.$store.commit("showPanel", {
@@ -96,14 +94,6 @@ export default {
 </script>
 
 <style lang="scss">
-.map__mobile {
-  position: fixed;
-  top: 0;
-  right: 0;
-  height: 100vh;
-  width: 100vw;
-  // z-index: 999997;
-}
 
 // Close button
 
@@ -138,9 +128,22 @@ export default {
   }
 }
 
+.map__mobile {
+  position: auto;
+  top: 72px;
+  right: 0;
+  height: calc(100vh - 72px)!important;
+  width: 100vw;
+}
+
 // Map popups
 
 @media screen and (max-width: 760px) {
+
+  .mapboxgl-map {
+    height: 100vh!important;
+  }
+
   .mapboxgl-popup,
   .mapboxgl-popup-anchor-right,
   .mapboxgl-popup-anchor-left {
@@ -157,6 +160,7 @@ export default {
     box-shadow: rgb(0 0 0 / 28%) 0px 8px 28px !important;
     z-index: 99999 !important;
   }
+
   .mapboxgl-popup-tip {
     display: none !important;
   }
@@ -194,6 +198,13 @@ export default {
     justify-content: space-between;
   }
 
+  .pop__content__right--subtitle {
+    font-size: 12px;
+    font-family: "Avenir";
+    margin: 0;
+
+  }
+
   .pop__content__right--title {
     font-size: 15px;
     font-weight: 600;
@@ -205,6 +216,7 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
   .pop__content__right--description {
     margin: 4px 0 0 0;
     padding: 0;
@@ -236,5 +248,14 @@ export default {
   .mapboxgl-control-container {
     display: none !important;
   }
+}
+
+.map__mobile {
+  position: fixed;
+  top: 72px;
+  right: 0;
+  height: 100vh!important;
+  width: 100%;
+  z-index: 999997;
 }
 </style>

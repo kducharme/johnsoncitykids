@@ -81,7 +81,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .map__web {
   position: fixed;
   top: 72px;
@@ -131,5 +131,9 @@ export default {
 .mapboxgl-marker-anchor-center:hover {
   opacity: 0.9;
   cursor: pointer;
+}
+
+.mapboxgl-control-container {
+  display: none !important;
 }
 </style>

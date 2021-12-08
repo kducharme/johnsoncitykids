@@ -29,6 +29,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 24px;
+  z-index: 999999;
 
   .navigation__left {
     width: 50vw !important;

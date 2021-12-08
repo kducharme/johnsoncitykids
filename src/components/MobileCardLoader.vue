@@ -132,23 +132,4 @@ export default {
   }
 }
 
-@media screen and (max-width: 600px) {
-  .placeholder {
-    display: flex;
-    flex-direction: column !important;
-    .placeholder__left {
-      width: 100% !important;
-      .placeholder__image {
-        height: 30vh!important;
-        object-position: 80% 40%!important;
-      }
-    }
-    .placeholder__right {
-      width: 100% !important;
-      padding: 0 !important;
-      margin-top: 24px !important;
-    }
-  }
-}
-
 </style>;

@@ -6,11 +6,14 @@
     <div class="content__top">
       <Nav />
     </div>
-    <div class="content__bottom">
+    <div class="content__bottom" id="content_bottom" v-show="this.$store.state.mobileMap === false">
       <div class="content__bottom__left">
         <Listings />
       </div>
-      <div class="content__bottom__right" v-if="this.$store.state.mobile === false">
+      <div
+        class="content__bottom__right"
+        v-show="this.$store.state.mobile === false"
+      >
         <Map />
       </div>
     </div>
@@ -34,7 +37,7 @@ export default {
     Map,
     Panel,
     MapButton,
-    MobileMap
+    MobileMap,
   },
   methods: {
     initialMobileCheck() {
@@ -85,6 +88,10 @@ body {
   }
 }
 
+.hideMobileMap {
+  visibility: none !important;
+}
+
 // mobile styling
 
 @media screen and (max-width: 760px) {
@@ -94,7 +101,7 @@ body {
       width: 100vw !important;
     }
     .content__bottom__right {
-      display: none!important;
+      display: none !important;
     }
   }
 }
