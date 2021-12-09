@@ -15,12 +15,15 @@ export default {
     resetAllFilters() {
       if (this.$store.state.activeFilters.type !== undefined) {
         this.resetTypeFilter();
+        this.$root.$refs.Map.removeMarkers();
       }
       if (this.$store.state.activeFilters.price !== undefined) {
         this.resetPriceFilter();
+        this.$root.$refs.Map.removeMarkers();
       }
       if (this.$store.state.activeFilters.fenced !== undefined) {
         this.resetFencedFilter();
+        this.$root.$refs.Map.removeMarkers();
       }
     },
     resetTypeFilter() {
