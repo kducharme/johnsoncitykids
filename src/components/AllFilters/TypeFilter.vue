@@ -36,6 +36,7 @@ export default {
       this.$store.commit("filterLocations", {
         type,
       });
+        this.$root.$refs.Map.removeMarkers();
       const dropdown = document.querySelector("#structure__type");
       dropdown.classList.toggle("hide");
 

@@ -19,7 +19,7 @@ export default {
     };
   },
   methods: {
-    initiateMapbox() {
+    loadMap() {
       const mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
 
       mapboxgl.accessToken =
@@ -28,7 +28,7 @@ export default {
         container: "map_mobile",
         style: "mapbox://styles/mapbox/streets-v11",
         center: [-82.35328, 36.31909],
-        zoom: 12,
+        zoom: 10,
       });
 
       map.on("load", () => {
@@ -187,7 +187,7 @@ export default {
     this.$store.getters.getAirtableLocations;
   },
   mounted() {
-    this.initiateMapbox();
+    this.loadMap();
   },
 };
 </script>
