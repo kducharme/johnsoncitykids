@@ -1,19 +1,16 @@
 <template>
   <div class="content">
     <MapButton v-if="this.$store.state.mobile === true" />
-    <MobileMap v-if="this.$store.state.mobileMap === true" />
     <Panel />
     <div class="content__top">
       <Nav />
     </div>
-    <div class="content__bottom" id="content_bottom" v-show="this.$store.state.mobileMap === false">
+    <div class="content__bottom" id="content_bottom">
       <div class="content__bottom__left">
-        <Listings />
+        <MobileMap v-if="this.$store.state.mobileMap === true" />
+        <Listings v-show="this.$store.state.mobileMap === false" />
       </div>
-      <div
-        class="content__bottom__right"
-        v-show="this.$store.state.mobile === false"
-      >
+      <div class="content__bottom__right">
         <Map />
       </div>
     </div>
