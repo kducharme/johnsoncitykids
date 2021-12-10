@@ -1,9 +1,15 @@
 <template>
-  <div ref="filterArea" class="filters">
+  <div class="filters">
     <PriceFilter />
     <TypeFilter />
     <FenceFilter v-if="this.$store.state.activeFilters.type === 'Playground'" />
-    <ResetFilters v-if="Object.values(this.$store.state.activeFilters).some(f => f !== undefined)"/>
+    <ResetFilters
+      v-if="
+        Object.values(this.$store.state.activeFilters).some(
+          (f) => f !== undefined
+        )
+      "
+    />
   </div>
 </template>
 
@@ -19,15 +25,12 @@ export default {
     TypeFilter,
     PriceFilter,
     FenceFilter,
-    ResetFilters
+    ResetFilters,
   },
   data() {
-    return {
-
-    };
+    return {};
   },
-  methods: {
-  },
+  methods: {},
   created() {},
 };
 </script>
@@ -36,6 +39,7 @@ export default {
 .filters {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   padding: 8px 0 16px;
   margin: 0 0 16px;
@@ -85,12 +89,12 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 280px;
   overflow: scroll;
   background-color: white;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-  padding: 6px 0;
+  padding: 6px 24px 6px 0;
   z-index: 9999;
+  min-width: 120px;
   position: absolute;
   margin-top: 16px;
   border: 1px solid #e2e2e2;
@@ -127,5 +131,16 @@ export default {
 .clear__price {
   cursor: pointer;
   opacity: 0.7;
+}
+
+.placeholder {
+  font-size: 13px !important;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 600px) {
+  .placeholder {
+    font-size: 13px !important;
+  }
 }
 </style>;
