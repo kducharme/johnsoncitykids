@@ -154,7 +154,6 @@ export default {
           while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
           }
-          console.log(e.features[0].properties.name);
           new mapboxgl.Popup(e)
             .setLngLat(coordinates)
             .setHTML(

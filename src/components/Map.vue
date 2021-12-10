@@ -30,9 +30,6 @@ export default {
         document.querySelector("#map_loader").remove();
       }, 1100);
     },
-    sayHi() {
-      console.log("hi");
-    },
     removeMarkers() {
       this.map.removeLayer("cluster-count");
       this.map.removeLayer("clusters");
@@ -44,7 +41,6 @@ export default {
       this.addFilteredMarkers();
     },
     addFilteredMarkers() {
-      console.log(this.$store.state.locations);
       this.$store.state.locations.forEach((l) => {
         this.featureCollection.push({
           type: "Feature",
@@ -165,7 +161,6 @@ export default {
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
-        console.log(e.features[0].properties.name);
         new mapboxgl.Popup(e)
           .setLngLat(coordinates)
           .setHTML(
@@ -201,8 +196,8 @@ export default {
       this.map = new mapboxgl.Map({
         container: "map_test",
         style: "mapbox://styles/mapbox/streets-v11",
-        center: [-82.35328, 36.31909],
-        zoom: 10,
+        center: [-82.35331420043877, 36.313509326567996],
+        zoom: 9.8,
       });
       this.displayAllMarkers();
     },
@@ -328,22 +323,21 @@ export default {
           while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
           }
-          console.log(e.features[0].properties.name);
           new mapboxgl.Popup(e)
             .setLngLat(coordinates)
             .setHTML(
               `<div>
-            <section class="pop__content__mobile">
-              <img class="pop__image" src="${image}" />
-              <p class="pop__subtitle">
-                ${type} · ${price}
-              </p>
-              <p class="pop__title">${name}</p>
-              <p class="pop__description">
-                ${description}
-              </p>
-            </section>
-          </div>`
+                <section class="pop__content">
+                  <img class="pop__image" src="${image}" />
+                  <p class="pop__subtitle">
+                    ${type} · ${price}
+                  </p>
+                  <p class="pop__title">${name}</p>
+                  <p class="pop__description">
+                    ${description}
+                  </p>
+                </section>
+              </div>`
             )
             .addTo(this.map);
         });
@@ -352,6 +346,12 @@ export default {
           this.map.getCanvas().style.cursor = "pointer";
         });
         this.map.on("mouseleave", "clusters", () => {
+          this.map.getCanvas().style.cursor = "";
+        });
+        this.map.on("mouseenter", "unclustered-point", () => {
+          this.map.getCanvas().style.cursor = "pointer";
+        });
+        this.map.on("mouseleave", "unclustered-point", () => {
           this.map.getCanvas().style.cursor = "";
         });
       });
@@ -366,7 +366,6 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped>
 .mapboxgl-map {
   height: calc(100vh - 72px);
@@ -374,31 +373,57 @@ export default {
   position: fixed;
   top: 72px;
 }
+</style>
+
+
+
+<style lang="scss">
+// Popup styling
+
+.mapboxgl-popup-content {
+  background: white;
+  box-shadow: rgb(0 0 0 / 28%) 0px 8px 28px !important;
+  padding: 0 !important;
+}
+
+.mapboxgl-popup {
+  max-width: 280px !important;
+}
+
 .pop__image {
   width: 100%;
   height: 160px;
-  border-radius: 5%;
   object-fit: cover;
   object-position: 25% 20%;
-  border-radius: 5px;
+  border-radius: 0 !important;
 }
 
-.pop__rating {
-  margin: 16px 0 8px;
+.pop__subtitle {
+  font-family: "avenir";
+  font-size: 13px;
+  color: #33475b;
+  opacity: 0.7;
+  padding: 0 16px;
+  margin: 12px 0 8px 0;
 }
 
 .pop__title {
+  font-family: "avenir";
   font-size: 16px !important;
   font-weight: 600;
+  padding: 0 16px;
+  line-height: 1.4;
   margin: 0;
   color: #33475b;
 }
 
 .pop__description {
-  font-size: 13px;
+  font-family: "avenir";
+  margin: 8px 16px 24px;
+  font-size: 14px !important;
   color: #33475b;
-  opacity: 0.8;
   display: -webkit-box;
+  line-height: 1.5;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -406,6 +431,6 @@ export default {
 }
 
 .mapboxgl-popup-close-button {
-  display: none;
+  display: none !important;
 }
 </style>
