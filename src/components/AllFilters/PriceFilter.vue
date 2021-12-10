@@ -34,6 +34,7 @@ export default {
       this.$store.commit("filterLocations", {
         price,
       });
+      this.$root.$refs.Map.removeMarkers();
       const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
 

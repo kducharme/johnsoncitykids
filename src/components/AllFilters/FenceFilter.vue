@@ -35,6 +35,7 @@ export default {
       this.$store.commit("filterLocations", {
         fenced,
       });
+      this.$root.$refs.Map.removeMarkers();
       const dropdown = document.querySelector("#structure__fenced");
       dropdown.classList.toggle("hide");
 

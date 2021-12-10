@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import Airtable from "airtable";
-// import { filter } from 'vue/types/umd';
 
 Vue.use(Vuex)
 
@@ -23,7 +22,7 @@ export default new Vuex.Store({
     activeLocation: undefined,
 
     activeSort: undefined,
-    
+
     mobile: true,
 
     mobileMap: false
@@ -39,7 +38,7 @@ export default new Vuex.Store({
 
       base('Locations').select({
         // Selecting the first 25 records in Grid view:
-        maxRecords: 25,
+        maxRecords: 50,
         view: "Grid view"
       }).eachPage(function page(records, fetchNextPage) {
         // This function (`page`) will get called for each page of records.
@@ -119,7 +118,8 @@ export default new Vuex.Store({
           case undefined:
             state.activeFilters.type = undefined;
             break;
-          default: state.activeFilters.type = filter.type
+          default:
+            state.activeFilters.type = filter.type
         }
       }
 
@@ -153,7 +153,6 @@ export default new Vuex.Store({
     },
     filterLocations(state) {
 
-      console.log(state.activeFilters)
 
       const filter = state.activeFilters;
       const all = state.allLocations;
@@ -241,9 +240,6 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    getLocations() {
-
-    }
   },
   modules: {
   }

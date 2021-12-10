@@ -57,8 +57,7 @@ export default {
       hover: false,
     };
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     showPanel(location) {
       this.$store.commit("showPanel", {
@@ -118,6 +117,11 @@ export default {
       font-size: 14px;
       line-height: 1.8;
       margin: 12px 0;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
@@ -145,10 +149,10 @@ export default {
     .card__left {
       width: 100% !important;
       .card__image {
-        height: 30vh!important;
+        height: 30vh !important;
         // max-height: 30vh!important;
         // min-height: 18vh!important;
-        object-position: 80% 40%!important;
+        object-position: 80% 40% !important;
       }
     }
     .card__right {

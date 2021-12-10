@@ -19,7 +19,7 @@ export default {
     };
   },
   methods: {
-    initiateMapbox() {
+    loadMap() {
       const mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
 
       mapboxgl.accessToken =
@@ -28,7 +28,7 @@ export default {
         container: "map_mobile",
         style: "mapbox://styles/mapbox/streets-v11",
         center: [-82.35328, 36.31909],
-        zoom: 12,
+        zoom: 10,
       });
 
       map.on("load", () => {
@@ -154,7 +154,6 @@ export default {
           while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
           }
-          console.log(e.features[0].properties.name);
           new mapboxgl.Popup(e)
             .setLngLat(coordinates)
             .setHTML(
@@ -187,7 +186,7 @@ export default {
     this.$store.getters.getAirtableLocations;
   },
   mounted() {
-    this.initiateMapbox();
+    this.loadMap();
   },
 };
 </script>

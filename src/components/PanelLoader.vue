@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     hideLoader() {
-      console.log("hi");
       setTimeout(() => {
         document.querySelector("#panel_loader")
           .classList.add("panel__loader__hide");
