@@ -9,10 +9,10 @@
             class="details__left__image"
             :src="`${$store.state.activeLocation.img}`"
           />
-          <button class="btn__primary" @click="getDirections()">
+          <button class="btn__primary" @click="getDirections()" v-if="this.$store.state.mobile === false">
             Get directions
           </button>
-          <button class="btn__secondary" @click="visitWebsite()">
+          <button class="btn__secondary" @click="visitWebsite()" v-if="this.$store.state.mobile === false">
             Visit website
           </button>
         </section>
@@ -254,36 +254,16 @@ export default {
 
 @media screen and (max-width: 760px) {
   .background {
-    width: 20vw!important;
-
+    width: 20vw !important;
   }
   .details {
-    width: 80vw!important;
+    width: 80vw !important;
   }
   .details__left {
-    width: 35%!important;
-
+    width: 35% !important;
   }
   .details__right {
-    width: 65%!important;
-
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .background {
-    display: none!important;
-  }
-  .details {
-    width: 100vw!important;
-  }
-  .details__left {
-    width: 35%!important;
-
-  }
-  .details__right {
-    width: 65%!important;
-
+    width: 65% !important;
   }
 }
 </style>

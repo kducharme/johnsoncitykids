@@ -124,7 +124,8 @@ export default {
 }
 
 .clear__type,
-.clear__price {
+.clear__price,
+.clear__fenced {
   font-weight: 600;
   font-family: "avenir";
   color: black;
@@ -133,7 +134,8 @@ export default {
 }
 
 .clear__type:hover,
-.clear__price {
+.clear__price,
+.clear__fenced {
   cursor: pointer;
   opacity: 0.7;
 }

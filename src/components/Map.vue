@@ -392,7 +392,7 @@ export default {
 }
 .pop__description {
   font-family: "avenir";
-  margin: 8px 16px 24px;
+  margin: 8px 16px 20px;
   font-size: 14px !important;
   color: #33475b;
   display: -webkit-box;
