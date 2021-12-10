@@ -144,13 +144,13 @@ export default {
   height: 100vh;
   width: 100vw;
   .background {
-    width: 50%;
+    width: 45%;
     background-color: #33475b;
     opacity: 0.8;
   }
   .details {
     display: flex;
-    width: 50%;
+    width: 55%;
     background: white;
     right: 0;
     box-shadow: rgb(0 0 0 / 8%) 0px 1px 12px !important;

@@ -1,6 +1,7 @@
 <template>
   <section class="rest">
-    <button class="btn__text" @click="resetAllFilters()">Clear filters</button>
+    <button class="btn__text" @click="resetAllFilters()" v-if="this.$store.state.mobile === false">Clear filters</button>
+    <button class="btn__text" @click="resetAllFilters()" v-if="this.$store.state.mobile === true">Clear</button>
   </section>
 </template>
 
@@ -58,11 +59,12 @@ export default {
 .btn__text {
   font-weight: 600;
   font-family: "avenir";
+  font-size: 14px!important;
   color: #33475b;
   text-decoration: underline;
   border: none;
   background: transparent;
-  margin: 0 8px;
+  margin: 0 4px;
 }
 
 .btn__text:hover {

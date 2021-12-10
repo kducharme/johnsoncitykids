@@ -128,8 +128,4 @@ export default {
 
 <style lang="scss">
 
-.filter {
-  margin-right: 12px;
-}
-
 </style>;

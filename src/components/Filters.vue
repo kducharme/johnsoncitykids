@@ -1,8 +1,8 @@
 <template>
   <div class="filters">
-    <PriceFilter />
+    <PriceFilter v-if="this.$store.state.mobile === false"/>
     <TypeFilter />
-    <FenceFilter v-if="this.$store.state.activeFilters.type === 'Playground'" />
+    <FenceFilter v-if="this.$store.state.activeFilters.type === 'Playground' " />
     <ResetFilters
       v-if="
         Object.values(this.$store.state.activeFilters).some(
@@ -44,6 +44,11 @@ export default {
   padding: 8px 0 16px;
   margin: 0 0 16px;
 }
+
+.filter {
+  margin-right: 12px;
+}
+
 
 /* Input styling */
 .input {
@@ -140,7 +145,7 @@ export default {
 
 @media screen and (max-width: 600px) {
   .placeholder {
-    font-size: 13px !important;
+    font-size: 14px !important;
   }
 }
 </style>;
