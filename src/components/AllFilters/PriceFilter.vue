@@ -69,6 +69,8 @@ export default {
     },
 
     displayPriceFilter() {
+      this.hideTypeFilter();
+      this.hideFenceFilter();
       const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
 
@@ -78,6 +80,26 @@ export default {
         input.classList.toggle("input__active");
       } else {
         input.classList.add("input__active");
+      }
+    },
+    hideTypeFilter() {
+      const typeFilter = document.querySelector("#structure__type");
+      if (typeFilter !== null) {
+        typeFilter.classList.add("hide");
+        if (this.$store.state.activeFilters.type === undefined) {
+          const typeInput = document.querySelector("#input__type");
+          typeInput.classList.remove("input__active");
+        }
+      }
+    },
+    hideFenceFilter() {
+      const fenceFilter = document.querySelector("#structure__fenced");
+      if (fenceFilter !== null) {
+        fenceFilter.classList.add("hide");
+        if (this.$store.state.activeFilters.fenced === undefined) {
+          const fenceInput = document.querySelector("#input__fenced");
+          fenceInput.classList.remove("input__active");
+        }
       }
     },
     toggleDropdown() {

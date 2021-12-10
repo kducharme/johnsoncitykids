@@ -82,6 +82,8 @@ export default {
     },
 
     displayFenceFilter() {
+      this.hideTypeFilter();
+      this.hidePriceFilter();
       const dropdown = document.querySelector("#structure__fenced");
       dropdown.classList.toggle("hide");
 
@@ -91,6 +93,26 @@ export default {
         input.classList.toggle("input__active");
       } else {
         input.classList.add("input__active");
+      }
+    },
+    hideTypeFilter() {
+      const typeFilter = document.querySelector("#structure__type");
+      if (typeFilter !== null) {
+        typeFilter.classList.add("hide");
+        if (this.$store.state.activeFilters.type === undefined) {
+          const typeInput = document.querySelector("#input__type");
+          typeInput.classList.remove("input__active");
+        }
+      }
+    },
+    hidePriceFilter() {
+      const priceFilter = document.querySelector("#structure__price");
+      if (priceFilter !== null) {
+        priceFilter.classList.add("hide");
+        if (this.$store.state.activeFilters.price === undefined) {
+          const priceInput = document.querySelector("#input__price");
+          priceInput.classList.remove("input__active");
+        }
       }
     },
     toggleDropdown() {
