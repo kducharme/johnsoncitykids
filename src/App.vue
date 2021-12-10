@@ -1,19 +1,15 @@
 <template>
   <div class="content">
-    <MapButton
-      v-if="
-        this.$store.state.mobile === true && this.$store.state.panel === false
-      "
-    />
+    <MapButton v-if="this.$store.state.mobile === true &&  this.$store.state.panelMobile === false" />
     <Panel v-if="this.$store.state.mobile === false" />
     <PanelMobile v-if="this.$store.state.mobile === true" />
-    <div class="content__top" v-if="this.$store.state.panel === false">
+    <div class="content__top" v-if="this.$store.state.panelMobile === false">
       <Nav />
     </div>
     <div
       class="content__bottom"
       id="content_bottom"
-      v-if="this.$store.state.panel === false"
+      v-if="this.$store.state.panelMobile === false"
     >
       <div class="content__bottom__left">
         <MobileMap v-if="this.$store.state.mobileMap === true" />
@@ -21,7 +17,7 @@
       </div>
       <div
         class="content__bottom__right"
-        v-if="this.$store.state.panel === false"
+        v-if="this.$store.state.panelMobile === false"
       >
         <Map />
       </div>

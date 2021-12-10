@@ -1,7 +1,7 @@
 <template>
   <div>
-    <PanelMobileLoader v-if="$store.state.panel" />
-    <section id="panel_main" class="panel__mob" v-if="$store.state.panel">
+    <PanelMobileLoader v-if="$store.state.panelMobile === true" />
+    <section id="panel_main" class="panel__mob" v-if="$store.state.panelMobile">
       <span
         id="panel_close"
         class="material-icons panel__mob__close"
@@ -91,7 +91,6 @@ export default {
     },
     closePanel() {
       this.$store.commit("hidePanel");
-      //   document.querySelector("#panel_close").remove();
     },
     created() {},
   },

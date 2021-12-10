@@ -54,12 +54,11 @@ export default {
   },
   methods: {
     hideLoader() {
-      console.log("jo");
       setTimeout(() => {
         document
           .querySelector("#panel_loader_mob")
           .classList.add("panel__loader__mob__hide");
-      }, 7000);
+      }, 800);
     },
   },
   created() {
@@ -98,17 +97,17 @@ export default {
 }
 
 .loader__mob__rating {
-  margin: 8px 0 0;
-  padding: 0 24px;
+  margin: 0;
+  padding: 0 24px 16px;
 }
 .loader__mob__block {
-  margin: 0 32px;
+  margin: 16px 24px;
 }
 .loader__mob__label {
   height: 10px;
   width: 120px;
   background: #eaf0f6;
-  margin: 24px 0 12px;
+  margin: 0 0 12px;
 }
 .loader__mob__description {
   background: #eaf0f6;
@@ -130,12 +129,13 @@ export default {
 }
 
 .loader__mob__button {
-  margin: 20px 24px 32px;
+  margin: 32px 0 32px;
   height: 40px;
   background: #eaf0f6;
   border: none;
   border-radius: 5px;
   padding: 12px 16px;
+  width: 180px;
 }
 
 .panel__loader__mob__hide {
