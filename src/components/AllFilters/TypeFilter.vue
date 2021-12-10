@@ -41,7 +41,7 @@ export default {
       dropdown.classList.toggle("hide");
 
       const input = document.querySelector("#input__type");
-      input.textContent = `Type: ${this.$store.state.activeFilters.type}`;
+      input.textContent = `${this.$store.state.activeFilters.type}`;
 
       if (document.querySelector(".clear__type") === null) {
         const clearFilters = this.clearTypeFilter();
@@ -104,7 +104,7 @@ export default {
       if (fenceFilter !== null) {
         fenceFilter.classList.add("hide");
         if (this.$store.state.activeFilters.fenced === undefined) {
-          const fenceInput = document.querySelector("#input__fenced");
+          const fenceInput = document.querySelector("#input__fence");
           fenceInput.classList.remove("input__active");
         }
       }

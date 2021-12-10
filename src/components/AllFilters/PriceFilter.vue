@@ -39,7 +39,7 @@ export default {
       dropdown.classList.toggle("hide");
 
       const input = document.querySelector("#input__price");
-      input.textContent = `Price: ${this.$store.state.activeFilters.price}`;
+      input.textContent = `${this.$store.state.activeFilters.price}`;
       if (document.querySelector(".clear__price") === null) {
         const clearFilters = this.clearPriceFilter();
         dropdown.appendChild(clearFilters);

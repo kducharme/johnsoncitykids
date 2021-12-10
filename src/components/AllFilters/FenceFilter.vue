@@ -1,7 +1,7 @@
 <template>
   <section class="filter">
     <article class="input" @click="displayFenceFilter()" id="input__fenced">
-      <p class="placeholder">Fenced</p>
+      <p class="placeholder">Fencing</p>
     </article>
     <article class="structure hide" id="structure__fenced">
       <p v-for="o in options" :key="o" @click="filterByFence(o)">
@@ -42,15 +42,15 @@ export default {
       const input = document.querySelector("#input__fenced");
 
       if (this.$store.state.activeFilters.fenced === "True") {
-        input.textContent = "Fenced: Yes";
+        input.textContent = "Fenced";
       }
 
       if (this.$store.state.activeFilters.fenced === "False") {
-        input.textContent = "Fenced: No";
+        input.textContent = "Not Fenced";
       }
 
       if (this.$store.state.activeFilters.fenced === "Partial") {
-        input.textContent = "Fenced: Partial";
+        input.textContent = "Partially Fenced";
       }
 
       if (document.querySelector(".clear__fenced") === null) {

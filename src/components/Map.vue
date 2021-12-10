@@ -9,7 +9,6 @@
 <script>
 import MapLoader from "./MapLoader";
 const mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
-
 export default {
   components: {
     MapLoader,
@@ -35,9 +34,7 @@ export default {
       this.map.removeLayer("clusters");
       this.map.removeLayer("unclustered-point");
       this.map.removeSource("locationData");
-
       this.featureCollection = [];
-
       this.addFilteredMarkers();
     },
     addFilteredMarkers() {
@@ -71,7 +68,6 @@ export default {
         clusterMaxZoom: 14,
         clusterRadius: 50,
       });
-
       this.map.addLayer({
         id: "clusters",
         type: "circle",
@@ -101,7 +97,6 @@ export default {
           "circle-stroke-opacity": 0.2,
         },
       });
-
       this.map.addLayer({
         id: "cluster-count",
         type: "symbol",
@@ -116,7 +111,6 @@ export default {
           "text-color": "#ffffff",
         },
       });
-
       this.map.addLayer({
         id: "unclustered-point",
         type: "circle",
@@ -129,7 +123,6 @@ export default {
           "circle-stroke-color": "#fff",
         },
       });
-
       this.map.on("click", "clusters", (e) => {
         const features = this.map.queryRenderedFeatures(e.point, {
           layers: ["clusters"],
@@ -139,14 +132,12 @@ export default {
           .getSource("locationData")
           .getClusterExpansionZoom(clusterId, (err, zoom) => {
             if (err) return;
-
             this.map.easeTo({
               center: features[0].geometry.coordinates,
               zoom: zoom,
             });
           });
       });
-
       this.map.on("click", "unclustered-point", (e) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
         const name = e.features[0].properties.name;
@@ -154,7 +145,6 @@ export default {
         const description = e.features[0].properties.description;
         const type = e.features[0].properties.type;
         const price = e.features[0].properties.price;
-
         // Ensure that if the map is zoomed out such that
         // multiple copies of the feature are visible, the
         // popup appears over the copy being pointed to.
@@ -179,7 +169,6 @@ export default {
           )
           .addTo(this.map);
       });
-
       this.map.on("mouseenter", "clusters", () => {
         this.map.getCanvas().style.cursor = "pointer";
       });
@@ -189,10 +178,8 @@ export default {
     },
     loadMap() {
       const mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
-
       mapboxgl.accessToken =
         "pk.eyJ1IjoiZHVjaGFybWUta3lsZSIsImEiOiJja3c3NGtwdG5jZDQ5Mm9xMTd6NnA0eGIzIn0.UeLLcHA6s3e_hxm2sLJ-oA";
-
       this.map = new mapboxgl.Map({
         container: "map_test",
         style: "mapbox://styles/mapbox/streets-v11",
@@ -233,7 +220,6 @@ export default {
           clusterMaxZoom: 14,
           clusterRadius: 50,
         });
-
         this.map.addLayer({
           id: "clusters",
           type: "circle",
@@ -263,7 +249,6 @@ export default {
             "circle-stroke-opacity": 0.2,
           },
         });
-
         this.map.addLayer({
           id: "cluster-count",
           type: "symbol",
@@ -278,7 +263,6 @@ export default {
             "text-color": "#ffffff",
           },
         });
-
         this.map.addLayer({
           id: "unclustered-point",
           type: "circle",
@@ -291,7 +275,6 @@ export default {
             "circle-stroke-color": "#fff",
           },
         });
-
         this.map.on("click", "clusters", (e) => {
           const features = this.map.queryRenderedFeatures(e.point, {
             layers: ["clusters"],
@@ -301,14 +284,12 @@ export default {
             .getSource("locationData")
             .getClusterExpansionZoom(clusterId, (err, zoom) => {
               if (err) return;
-
               this.map.easeTo({
                 center: features[0].geometry.coordinates,
                 zoom: zoom,
               });
             });
         });
-
         this.map.on("click", "unclustered-point", (e) => {
           const coordinates = e.features[0].geometry.coordinates.slice();
           const name = e.features[0].properties.name;
@@ -316,7 +297,6 @@ export default {
           const description = e.features[0].properties.description;
           const type = e.features[0].properties.type;
           const price = e.features[0].properties.price;
-
           // Ensure that if the map is zoomed out such that
           // multiple copies of the feature are visible, the
           // popup appears over the copy being pointed to.
@@ -341,7 +321,6 @@ export default {
             )
             .addTo(this.map);
         });
-
         this.map.on("mouseenter", "clusters", () => {
           this.map.getCanvas().style.cursor = "pointer";
         });
@@ -379,17 +358,14 @@ export default {
 
 <style lang="scss">
 // Popup styling
-
 .mapboxgl-popup-content {
   background: white;
   box-shadow: rgb(0 0 0 / 28%) 0px 8px 28px !important;
   padding: 0 !important;
 }
-
 .mapboxgl-popup {
   max-width: 280px !important;
 }
-
 .pop__image {
   width: 100%;
   height: 160px;
@@ -397,7 +373,6 @@ export default {
   object-position: 25% 20%;
   border-radius: 0 !important;
 }
-
 .pop__subtitle {
   font-family: "avenir";
   font-size: 13px;
@@ -406,7 +381,6 @@ export default {
   padding: 0 16px;
   margin: 12px 0 8px 0;
 }
-
 .pop__title {
   font-family: "avenir";
   font-size: 16px !important;
@@ -416,7 +390,6 @@ export default {
   margin: 0;
   color: #33475b;
 }
-
 .pop__description {
   font-family: "avenir";
   margin: 8px 16px 24px;
@@ -429,7 +402,6 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
 .mapboxgl-popup-close-button {
   display: none !important;
 }
