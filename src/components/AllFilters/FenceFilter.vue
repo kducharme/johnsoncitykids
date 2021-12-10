@@ -1,7 +1,8 @@
 <template>
   <section class="filter">
     <article class="input" @click="displayFenceFilter()" id="input__fenced">
-      <p class="placeholder">Fencing</p>
+      <p class="placeholder" id="placeholder_fenced">Fencing</p>
+      <img src="../../assets/chevronGray.svg" alt="svg" />
     </article>
     <article class="structure hide" id="structure__fenced">
       <p v-for="o in options" :key="o" @click="filterByFence(o)">
@@ -39,18 +40,18 @@ export default {
       const dropdown = document.querySelector("#structure__fenced");
       dropdown.classList.toggle("hide");
 
-      const input = document.querySelector("#input__fenced");
+      const placeholderText = document.querySelector("#placeholder_fenced");
 
       if (this.$store.state.activeFilters.fenced === "True") {
-        input.textContent = "Fenced";
+        placeholderText.textContent = "Fenced";
       }
 
       if (this.$store.state.activeFilters.fenced === "False") {
-        input.textContent = "Not Fenced";
+        placeholderText.textContent = "Not Fenced";
       }
 
       if (this.$store.state.activeFilters.fenced === "Partial") {
-        input.textContent = "Partially Fenced";
+        placeholderText.textContent = "Partially Fenced";
       }
 
       if (document.querySelector(".clear__fenced") === null) {
@@ -70,7 +71,9 @@ export default {
 
         const input = document.querySelector("#input__fenced");
         input.classList.remove("input__active");
-        input.textContent = "Fenced";
+
+        const placeholderText = document.querySelector("#placeholder_fanced");
+        placeholderText.textContent = "Fencing";
       });
       return clear;
     },

@@ -1,7 +1,8 @@
 <template>
   <section class="filter">
     <article class="input" @click="displayTypeFilter()" id="input__type">
-      <p class="placeholder">Type</p>
+      <p class="placeholder" id="placeholder_type">Type</p>
+      <img src="../../assets/chevronGray.svg" alt="svg" />
     </article>
     <article class="structure hide" id="structure__type">
       <p v-for="type in types" :key="type" @click="filterByType(type)">
@@ -40,8 +41,8 @@ export default {
       const dropdown = document.querySelector("#structure__type");
       dropdown.classList.toggle("hide");
 
-      const input = document.querySelector("#input__type");
-      input.textContent = `${this.$store.state.activeFilters.type}`;
+      const placeholderText = document.querySelector("#placeholder_type");
+      placeholderText.textContent = `${this.$store.state.activeFilters.type}`;
 
       if (document.querySelector(".clear__type") === null) {
         const clearFilters = this.clearTypeFilter();
@@ -60,7 +61,9 @@ export default {
 
         const input = document.querySelector("#input__type");
         input.classList.remove("input__active");
-        input.textContent = "Type";
+
+        const placeholderText = document.querySelector("#placeholder_type");
+        placeholderText.textContent = "Type";
       });
       return clear;
     },
@@ -91,6 +94,7 @@ export default {
     },
     hidePriceFilter() {
       const priceFilter = document.querySelector("#structure__price");
+      console.log(priceFilter);
       if (priceFilter !== null) {
         priceFilter.classList.add("hide");
         if (this.$store.state.activeFilters.price === undefined) {
@@ -101,10 +105,13 @@ export default {
     },
     hideFenceFilter() {
       const fenceFilter = document.querySelector("#structure__fenced");
+      console.log(fenceFilter);
       if (fenceFilter !== null) {
+        console.log("first step");
         fenceFilter.classList.add("hide");
         if (this.$store.state.activeFilters.fenced === undefined) {
-          const fenceInput = document.querySelector("#input__fence");
+          console.log("second");
+          const fenceInput = document.querySelector("#input__fenced");
           fenceInput.classList.remove("input__active");
         }
       }
@@ -147,11 +154,16 @@ export default {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  align-items: center;
   border: 1px solid #e2e2e2;
   border-radius: 24px;
   height: 36px;
   padding: 4px 16px;
   background-color: white;
+}
+
+.input > img {
+  margin-left: 8px;
 }
 
 .input__active {

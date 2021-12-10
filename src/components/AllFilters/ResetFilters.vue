@@ -31,21 +31,24 @@ export default {
       this.$root.$refs.TypeFilter.removeClearFilter__Type();
       const typeInput = document.querySelector("#input__type");
       typeInput.classList.remove("input__active");
-      typeInput.textContent = "Type";
+      const placeholderText = document.querySelector("#placeholder_type");
+      placeholderText.textContent = "Type";
     },
     resetPriceFilter() {
       this.$root.$refs.PriceFilter.resetPriceFilter();
       this.$root.$refs.PriceFilter.removeClearFilter__Price();
       const priceInput = document.querySelector("#input__price");
       priceInput.classList.remove("input__active");
-      priceInput.textContent = "Price";
+      const placeholderText = document.querySelector("#placeholder_price");
+      placeholderText.textContent = "Price";
     },
     resetFencedFilter() {
       this.$root.$refs.FenceFilter.resetFencedFilter();
       this.$root.$refs.FenceFilter.removeClearFilter_Fenced();
       const fencedInput = document.querySelector("#input__fenced");
       fencedInput.classList.remove("input__active");
-      fencedInput.textContent = "Fenced";
+      const placeholderText = document.querySelector("#placeholder_fenced");
+      placeholderText.textContent = "Fencing";
     },
   },
 };

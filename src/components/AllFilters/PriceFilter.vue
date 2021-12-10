@@ -1,7 +1,8 @@
 <template>
   <section class="filter">
     <article class="input" @click="displayPriceFilter()" id="input__price">
-      <p class="placeholder">Price</p>
+      <p class="placeholder" id="placeholder_price">Price</p>
+      <img src="../../assets/chevronGray.svg" alt="svg" />
     </article>
     <article class="structure hide" id="structure__price">
       <p v-for="price in prices" :key="price" @click="filterByPrice(price)">
@@ -38,8 +39,9 @@ export default {
       const dropdown = document.querySelector("#structure__price");
       dropdown.classList.toggle("hide");
 
-      const input = document.querySelector("#input__price");
-      input.textContent = `${this.$store.state.activeFilters.price}`;
+      const placeholderText = document.querySelector("#placeholder_price");
+      placeholderText.textContent = `${this.$store.state.activeFilters.price}`;
+
       if (document.querySelector(".clear__price") === null) {
         const clearFilters = this.clearPriceFilter();
         dropdown.appendChild(clearFilters);
@@ -57,7 +59,9 @@ export default {
 
         const input = document.querySelector("#input__price");
         input.classList.remove("input__active");
-        input.textContent = "Price";
+
+        const placeholderText = document.querySelector("#placeholder_price");
+        placeholderText.textContent = "Price";
       });
       return clear;
     },
