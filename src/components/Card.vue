@@ -60,6 +60,7 @@ export default {
   mounted() {},
   methods: {
     showPanel(location) {
+      window.scrollTo(0, 0);
       this.$store.commit("showPanel", {
         location,
       });
