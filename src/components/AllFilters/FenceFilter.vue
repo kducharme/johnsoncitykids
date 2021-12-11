@@ -72,7 +72,7 @@ export default {
         const input = document.querySelector("#input__fenced");
         input.classList.remove("input__active");
 
-        const placeholderText = document.querySelector("#placeholder_fanced");
+        const placeholderText = document.querySelector("#placeholder_fenced");
         placeholderText.textContent = "Fencing";
       });
       return clear;
