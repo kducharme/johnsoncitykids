@@ -147,7 +147,7 @@ export default {
 
 @media screen and (max-width: 600px) {
   .placeholder {
-    font-size: 14px !important;
+    font-size: 13px !important;
   }
 }
 </style>;

@@ -121,10 +121,9 @@ export default {
 .panel__mob {
   display: flex;
   z-index: 99998;
-  position: fixed;
-  height: 100vh;
   width: 100vw;
   overflow: scroll;
+  margin: 0 0 32px 0;
   .details__mob {
     display: flex;
     flex-direction: column;
@@ -171,7 +170,7 @@ export default {
       padding: 0 24px;
     }
     .btn__mob__primary {
-      margin: 20px 24px 32px;
+      margin: 20px 24px 0;
       height: 40px;
       background: #009478;
       color: white;
