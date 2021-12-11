@@ -13,7 +13,7 @@
     >
       <div class="content__bottom__left">
         <MobileMap v-if="this.$store.state.mobileMap === true" />
-        <Listings v-if="this.$store.state.mobileMap === false" />
+        <Listings v-show="this.$store.state.mobileMap === false" />
       </div>
       <div
         class="content__bottom__right"

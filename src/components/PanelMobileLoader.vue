@@ -3,7 +3,7 @@
     <section
       id="panel_loader_mob"
       class="loader__mob"
-      v-if="$store.state.panel"
+      v-if="$store.state.panelMobile"
     >
       <section class="loader__mob__details">
         <article class="loader__mob__image"></article>
@@ -56,9 +56,8 @@ export default {
     hideLoader() {
       setTimeout(() => {
         document
-          .querySelector("#panel_loader_mob")
-          .classList.add("panel__loader__mob__hide");
-      }, 800);
+          .querySelector("#panel_loader_mob").remove();
+      }, 600);
     },
   },
   created() {

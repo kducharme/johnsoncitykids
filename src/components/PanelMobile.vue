@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PanelMobileLoader v-if="$store.state.panelMobile === true" />
+    <PanelMobileLoader v-if="this.$store.state.panelMobile" />
     <section id="panel_main" class="panel__mob" v-if="$store.state.panelMobile">
       <span
         id="panel_close"
