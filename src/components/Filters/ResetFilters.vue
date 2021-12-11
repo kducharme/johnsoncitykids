@@ -64,7 +64,6 @@ export default {
   text-decoration: underline;
   border: none;
   background: transparent;
-  margin: 0 4px;
 }
 
 .btn__text:hover {

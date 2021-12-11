@@ -15,10 +15,10 @@
 
 
 <script>
-import TypeFilter from "./AllFilters/TypeFilter";
-import PriceFilter from "./AllFilters/PriceFilter";
-import FenceFilter from "./AllFilters/FenceFilter";
-import ResetFilters from "./AllFilters/ResetFilters";
+import TypeFilter from "./TypeFilter";
+import PriceFilter from "./PriceFilter";
+import FenceFilter from "./FenceFilter";
+import ResetFilters from "./ResetFilters";
 
 export default {
   components: {

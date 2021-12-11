@@ -15,9 +15,9 @@
 
 
 <script>
-import Card from "./Card";
-import Filters from "./Filters";
-import CardLoader from "./CardLoader";
+import Card from "../Cards/Card";
+import Filters from "../Filters/Filters";
+import CardLoader from "../Cards/CardLoader";
 // import NoResults from "./NoResults";
 
 export default {

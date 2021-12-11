@@ -31,13 +31,13 @@
 </template>
 
 <script>
-import Listings from "./components/Listings";
-import Map from "./components/Map";
-import Nav from "./components/Nav";
-import Panel from "./components/Panel";
-import PanelMobile from "./components/PanelMobile";
-import MapButton from "./components/MapButton";
-import MobileMap from "./components/MobileMap";
+import Listings from "./components/Structure/Listings";
+import Map from "./components/Maps/Map";
+import Nav from "./components/Structure/Nav";
+import Panel from "./components/Panel/Panel";
+import PanelMobile from "./components/Panel/PanelMobile";
+import MapButton from "./components/Maps/MapButton";
+import MobileMap from "./components/Maps/MobileMap";
 
 export default {
   name: "App",
