@@ -9,10 +9,18 @@
             class="details__left__image"
             :src="`${$store.state.activeLocation.img}`"
           />
-          <button class="btn__primary" @click="getDirections()" v-if="this.$store.state.mobile === false">
+          <button
+            class="btn__primary"
+            @click="getDirections()"
+            v-if="this.$store.state.mobile === false"
+          >
             Get directions
           </button>
-          <button class="btn__secondary" @click="visitWebsite()" v-if="this.$store.state.mobile === false">
+          <button
+            class="btn__secondary"
+            @click="visitWebsite()"
+            v-if="this.$store.state.mobile === false"
+          >
             Visit website
           </button>
         </section>
@@ -128,10 +136,15 @@ export default {
     },
     closePanel() {
       this.$store.commit("hidePanel");
+      if (this.$store.state.mobile === false) {
+        document.body.classList.remove('noscroll');
+      }
     },
     created() {
       this.mapbox = Mapbox;
     },
+  },
+  created() {
   },
 };
 </script>
@@ -152,9 +165,11 @@ export default {
     display: flex;
     width: 55%;
     background: white;
+    top: 0;
     right: 0;
     box-shadow: rgb(0 0 0 / 8%) 0px 1px 12px !important;
     padding: 32px;
+    overflow-y: scroll;
     .details__left {
       display: flex;
       flex-direction: column;
@@ -245,7 +260,7 @@ export default {
         }
         .details__map {
           height: 180px;
-          margin: 16px 0 0;
+          margin: 16px 0 32px;
         }
       }
     }

@@ -60,16 +60,30 @@ export default {
   mounted() {},
   methods: {
     showPanel(location) {
-      window.scrollTo(0, 0);
+      if (this.$store.state.mobile === true) {
+        window.scrollTo(0, 0);
+      }
       this.$store.commit("showPanel", {
         location,
       });
+      this.preventScroll();
+    },
+    preventScroll() {
+      if (this.$store.state.mobile === false) {
+        document.body.classList.add("noscroll");
+      }
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.noscroll {
+  overflow: hidden !important;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
+
 .card:hover {
   cursor: pointer;
 }

@@ -61,7 +61,9 @@ export default {
       }
     },
     resetScroll() {
-      window.scrollTo(0, 0);
+      if (this.$store.state.mobile === true) {
+        window.scrollTo(0, 0);
+      }
     },
   },
   mounted() {
