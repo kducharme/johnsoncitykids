@@ -45,7 +45,7 @@
             {{ $store.state.activeLocation.zip }}
           </p>
           <button class="btn__mob__primary" @click="getDirections()">
-            Get directions
+            View on Waze
           </button>
         </section>
       </section>
@@ -70,20 +70,29 @@ export default {
   },
   methods: {
     getDirections() {
-      const urlSuffix =
+      //   const urlSuffix =
+      //     this.$store.state.activeLocation.lat +
+      //     "_" +
+      //     this.$store.state.activeLocation.long
+      //       ? `${this.$store.state.activeLocation.lat},${this.$store.state.activeLocation.long}`
+      //       : this.$store.state.activeLocation.address;
+      //   ", " +
+      //     this.$store.state.activeLocation.city +
+      //     ", " +
+      //     this.$store.state.activeLocation.zip;
+
+      //   window.open(
+      //     "https://www.google.com/maps/search/?api=1&query=" + urlSuffix,
+      //     "_blank"
+      //   );
+
+      let destination =
         this.$store.state.activeLocation.lat +
-        "_" +
-        this.$store.state.activeLocation.long
-          ? `${this.$store.state.activeLocation.lat},${this.$store.state.activeLocation.long}`
-          : this.$store.state.activeLocation.address;
-      ", " +
-        this.$store.state.activeLocation.city +
-        ", " +
-        this.$store.state.activeLocation.zip;
+        "," +
+        this.$store.state.activeLocation.long;
 
       window.open(
-        "https://www.google.com/maps/search/?api=1&query=" + urlSuffix,
-        "_blank"
+        window.open("https://waze.com/ul?ll="+destination+"&navigate=yes&z=10")
       );
     },
     visitWebsite() {
