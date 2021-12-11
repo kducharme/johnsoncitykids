@@ -1,6 +1,11 @@
 <template>
   <div class="content">
-    <MapButton v-if="this.$store.state.mobile === true &&  this.$store.state.panelMobile === false" />
+    <MapButton
+      v-if="
+        this.$store.state.mobile === true &&
+        this.$store.state.panelMobile === false
+      "
+    />
     <Panel v-if="this.$store.state.mobile === false" />
     <PanelMobile v-if="this.$store.state.mobile === true" />
     <div class="content__top" v-if="this.$store.state.panelMobile === false">
@@ -55,10 +60,14 @@ export default {
         this.$store.commit("onLargeScreen");
       }
     },
+    resetScroll() {
+      window.scrollTo(0, 0);
+    },
   },
   mounted() {
     this.$store.getters.getAirtableLocations;
     this.initialMobileCheck();
+    this.resetScroll();
   },
 };
 </script>
