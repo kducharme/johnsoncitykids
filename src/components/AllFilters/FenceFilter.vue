@@ -47,11 +47,11 @@ export default {
       }
 
       if (this.$store.state.activeFilters.fenced === "False") {
-        placeholderText.textContent = "Not Fenced";
+        placeholderText.textContent = "No Fence";
       }
 
       if (this.$store.state.activeFilters.fenced === "Partial") {
-        placeholderText.textContent = "Partially Fenced";
+        placeholderText.textContent = "Partial";
       }
 
       if (document.querySelector(".clear__fenced") === null) {
