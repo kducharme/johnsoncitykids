@@ -9,10 +9,10 @@
             class="details__left__image"
             :src="`${$store.state.activeLocation.img}`"
           />
-          <button class="btn__primary" @click="getDirections()">
+          <button class="btn__primary" @click="getDirections()" v-if="this.$store.state.mobile === false">
             Get directions
           </button>
-          <button class="btn__secondary" @click="visitWebsite()">
+          <button class="btn__secondary" @click="visitWebsite()" v-if="this.$store.state.mobile === false">
             Visit website
           </button>
         </section>
@@ -144,13 +144,13 @@ export default {
   height: 100vh;
   width: 100vw;
   .background {
-    width: 50%;
+    width: 45%;
     background-color: #33475b;
     opacity: 0.8;
   }
   .details {
     display: flex;
-    width: 50%;
+    width: 55%;
     background: white;
     right: 0;
     box-shadow: rgb(0 0 0 / 8%) 0px 1px 12px !important;
@@ -254,36 +254,16 @@ export default {
 
 @media screen and (max-width: 760px) {
   .background {
-    width: 20vw!important;
-
+    width: 20vw !important;
   }
   .details {
-    width: 80vw!important;
+    width: 80vw !important;
   }
   .details__left {
-    width: 35%!important;
-
+    width: 35% !important;
   }
   .details__right {
-    width: 65%!important;
-
-  }
-}
-
-@media screen and (max-width: 600px) {
-  .background {
-    display: none!important;
-  }
-  .details {
-    width: 100vw!important;
-  }
-  .details__left {
-    width: 35%!important;
-
-  }
-  .details__right {
-    width: 65%!important;
-
+    width: 65% !important;
   }
 }
 </style>

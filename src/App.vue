@@ -1,16 +1,24 @@
 <template>
   <div class="content">
-    <MapButton v-if="this.$store.state.mobile === true" />
-    <Panel />
-    <div class="content__top">
+    <MapButton v-if="this.$store.state.mobile === true &&  this.$store.state.panelMobile === false" />
+    <Panel v-if="this.$store.state.mobile === false" />
+    <PanelMobile v-if="this.$store.state.mobile === true" />
+    <div class="content__top" v-if="this.$store.state.panelMobile === false">
       <Nav />
     </div>
-    <div class="content__bottom" id="content_bottom">
+    <div
+      class="content__bottom"
+      id="content_bottom"
+      v-if="this.$store.state.panelMobile === false"
+    >
       <div class="content__bottom__left">
         <MobileMap v-if="this.$store.state.mobileMap === true" />
         <Listings v-show="this.$store.state.mobileMap === false" />
       </div>
-      <div class="content__bottom__right">
+      <div
+        class="content__bottom__right"
+        v-if="this.$store.state.panelMobile === false"
+      >
         <Map />
       </div>
     </div>
@@ -22,6 +30,7 @@ import Listings from "./components/Listings";
 import Map from "./components/Map";
 import Nav from "./components/Nav";
 import Panel from "./components/Panel";
+import PanelMobile from "./components/PanelMobile";
 import MapButton from "./components/MapButton";
 import MobileMap from "./components/MobileMap";
 
@@ -33,6 +42,7 @@ export default {
     Listings,
     Map,
     Panel,
+    PanelMobile,
     MapButton,
     MobileMap,
   },

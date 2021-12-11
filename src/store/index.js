@@ -19,11 +19,13 @@ export default new Vuex.Store({
 
     panel: false,
 
+    panelMobile: false,
+
     activeLocation: undefined,
 
     activeSort: undefined,
 
-    mobile: true,
+    mobile: false,
 
     mobileMap: false
 
@@ -73,7 +75,9 @@ export default new Vuex.Store({
   },
   mutations: {
     showPanel(state, payload) {
-      state.panel = true;
+
+      if (state.mobile === false) { state.panel = true; }
+      if (state.mobile === true) { state.panelMobile = true; }
       state.activeLocation = payload.location.fields;
     },
     onSmallScreen(state) {
@@ -89,7 +93,8 @@ export default new Vuex.Store({
       state.mobileMap = false;
     },
     hidePanel(state) {
-      state.panel = false;
+      if (state.mobile === false) { state.panel = false; }
+      if (state.mobile === true) { state.panelMobile = false; }
       state.activeLocation = undefined;
     },
     resetAllFilters(state) {

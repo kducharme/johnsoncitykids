@@ -1,7 +1,8 @@
 <template>
   <section class="filter">
     <article class="input" @click="displayFenceFilter()" id="input__fenced">
-      <p class="placeholder">Fenced</p>
+      <p class="placeholder" id="placeholder_fenced">Fencing</p>
+      <img src="../../assets/chevronGray.svg" alt="svg" />
     </article>
     <article class="structure hide" id="structure__fenced">
       <p v-for="o in options" :key="o" @click="filterByFence(o)">
@@ -39,18 +40,18 @@ export default {
       const dropdown = document.querySelector("#structure__fenced");
       dropdown.classList.toggle("hide");
 
-      const input = document.querySelector("#input__fenced");
+      const placeholderText = document.querySelector("#placeholder_fenced");
 
       if (this.$store.state.activeFilters.fenced === "True") {
-        input.textContent = "Fenced: Yes";
+        placeholderText.textContent = "Fenced";
       }
 
       if (this.$store.state.activeFilters.fenced === "False") {
-        input.textContent = "Fenced: No";
+        placeholderText.textContent = "Not Fenced";
       }
 
       if (this.$store.state.activeFilters.fenced === "Partial") {
-        input.textContent = "Fenced: Partial";
+        placeholderText.textContent = "Partially Fenced";
       }
 
       if (document.querySelector(".clear__fenced") === null) {
@@ -70,7 +71,9 @@ export default {
 
         const input = document.querySelector("#input__fenced");
         input.classList.remove("input__active");
-        input.textContent = "Fenced";
+
+        const placeholderText = document.querySelector("#placeholder_fanced");
+        placeholderText.textContent = "Fencing";
       });
       return clear;
     },
@@ -82,6 +85,8 @@ export default {
     },
 
     displayFenceFilter() {
+      this.hideTypeFilter();
+      this.hidePriceFilter();
       const dropdown = document.querySelector("#structure__fenced");
       dropdown.classList.toggle("hide");
 
@@ -91,6 +96,26 @@ export default {
         input.classList.toggle("input__active");
       } else {
         input.classList.add("input__active");
+      }
+    },
+    hideTypeFilter() {
+      const typeFilter = document.querySelector("#structure__type");
+      if (typeFilter !== null) {
+        typeFilter.classList.add("hide");
+        if (this.$store.state.activeFilters.type === undefined) {
+          const typeInput = document.querySelector("#input__type");
+          typeInput.classList.remove("input__active");
+        }
+      }
+    },
+    hidePriceFilter() {
+      const priceFilter = document.querySelector("#structure__price");
+      if (priceFilter !== null) {
+        priceFilter.classList.add("hide");
+        if (this.$store.state.activeFilters.price === undefined) {
+          const priceInput = document.querySelector("#input__price");
+          priceInput.classList.remove("input__active");
+        }
       }
     },
     toggleDropdown() {
@@ -114,102 +139,5 @@ export default {
 </script>
 
 <style lang="scss">
-.filters {
-  display: flex;
-  flex-direction: row;
-  padding: 16px 0;
-  margin: 0 0 16px;
-}
 
-.filter {
-  margin-right: 12px;
-}
-
-/* Input styling */
-.input {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid #e2e2e2;
-  border-radius: 24px;
-  height: 36px;
-  padding: 4px 16px;
-  background-color: white;
-}
-
-.input__active {
-  border: 2px solid #009478 !important;
-  margin: -1px;
-  background: #fafafa;
-}
-
-.input__placeholder {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.input:hover {
-  cursor: pointer;
-  border: 1px solid #b4b4b4;
-}
-
-.placeholder {
-  color: var(--colorPlaceholder);
-}
-
-.input__selected {
-  color: var(--colorPrimaryDark);
-}
-
-/* Dropdown styling */
-.structure {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  width: 280px;
-  overflow: scroll;
-  background-color: white;
-  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-  padding: 6px 0;
-  z-index: 9999;
-  position: absolute;
-  margin-top: 16px;
-  border: 1px solid #e2e2e2;
-  border-radius: 3px;
-}
-
-.structure > p {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 16px;
-  margin: 0;
-}
-
-.structure > p:hover {
-  background-color: #fafafa;
-  cursor: pointer;
-}
-
-.hide {
-  display: none;
-}
-
-.clear__type,
-.clear__fenced {
-  font-weight: 600;
-  font-family: "avenir";
-  color: black;
-  text-decoration: underline;
-  margin: 16px;
-}
-
-.clear__type:hover,
-.clear__fenced {
-  cursor: pointer;
-  opacity: 0.7;
-}
 </style>;
