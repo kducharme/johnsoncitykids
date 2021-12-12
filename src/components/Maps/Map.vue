@@ -77,11 +77,11 @@ export default {
           "circle-color": [
             "step",
             ["get", "point_count"],
-            "#33475b",
+            "#364259",
             100,
-            "#f1f075",
+            "#364259",
             750,
-            "#f28cb1",
+            "#364259",
           ],
           "circle-radius": [
             "step",
@@ -117,7 +117,7 @@ export default {
         source: "locationData",
         filter: ["!", ["has", "point_count"]],
         paint: {
-          "circle-color": "#33475b",
+          "circle-color": "#364259",
           "circle-radius": 9,
           "circle-stroke-width": 2,
           "circle-stroke-color": "#fff",
@@ -229,11 +229,11 @@ export default {
             "circle-color": [
               "step",
               ["get", "point_count"],
-              "#33475b",
+              "#364259",
               100,
-              "#f1f075",
+              "#364259",
               750,
-              "#f28cb1",
+              "#364259",
             ],
             "circle-radius": [
               "step",
@@ -245,7 +245,7 @@ export default {
               40,
             ],
             "circle-stroke-width": 7,
-            "circle-stroke-color": "#33475b",
+            "circle-stroke-color": "#364259",
             "circle-stroke-opacity": 0.2,
           },
         });
@@ -269,7 +269,7 @@ export default {
           source: "locationData",
           filter: ["!", ["has", "point_count"]],
           paint: {
-            "circle-color": "#33475b",
+            "circle-color": "#364259",
             "circle-radius": 9,
             "circle-stroke-width": 2,
             "circle-stroke-color": "#fff",
@@ -357,6 +357,9 @@ export default {
 
 
 <style lang="scss">
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 // Popup styling
 .mapboxgl-popup-content {
   background: white;
@@ -374,27 +377,23 @@ export default {
   border-radius: 0 !important;
 }
 .pop__subtitle {
-  font-family: "avenir";
   font-size: 13px;
-  color: #33475b;
-  opacity: 0.7;
+  color: $colorFontLight;
   padding: 0 16px;
   margin: 12px 0 8px 0;
 }
 .pop__title {
-  font-family: "avenir";
   font-size: 16px !important;
   font-weight: 600;
   padding: 0 16px;
   line-height: 1.4;
   margin: 0;
-  color: #33475b;
+  color: $colorFontDark;
 }
 .pop__description {
-  font-family: "avenir";
   margin: 8px 16px 20px;
   font-size: 14px !important;
-  color: #33475b;
+  color: $colorFontMedium;
   display: -webkit-box;
   line-height: 1.5;
   -webkit-line-clamp: 3;

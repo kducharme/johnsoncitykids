@@ -9,11 +9,19 @@
             class="details__left__image"
             :src="`${$store.state.activeLocation.img}`"
           />
-          <button class="btn__primary" @click="getDirections()" v-if="this.$store.state.mobile === false">
-            Get directions
-          </button>
-          <button class="btn__secondary" @click="visitWebsite()" v-if="this.$store.state.mobile === false">
+          <button
+            class="btn__primary"
+            @click="visitWebsite()"
+            v-if="this.$store.state.mobile === false"
+          >
             Visit website
+          </button>
+          <button
+            class="btn__secondary"
+            @click="getDirections()"
+            v-if="this.$store.state.mobile === false"
+          >
+            Get directions
           </button>
         </section>
         <section class="details__right">
@@ -128,15 +136,22 @@ export default {
     },
     closePanel() {
       this.$store.commit("hidePanel");
+      if (this.$store.state.mobile === false) {
+        document.body.classList.remove("noscroll");
+      }
     },
     created() {
       this.mapbox = Mapbox;
     },
   },
+  created() {},
 };
 </script>
 
 <style scoped lang="scss">
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .panel {
   display: flex;
   z-index: 99998;
@@ -152,9 +167,11 @@ export default {
     display: flex;
     width: 55%;
     background: white;
+    top: 0;
     right: 0;
     box-shadow: rgb(0 0 0 / 8%) 0px 1px 12px !important;
     padding: 32px;
+    overflow-y: scroll;
     .details__left {
       display: flex;
       flex-direction: column;
@@ -168,30 +185,28 @@ export default {
       }
       .btn__primary {
         margin: 16px 0;
-        height: 40px;
+        height: 44px;
         width: 100%;
-        background: #009478;
+        background: $colorPrimary;
         color: white;
-        font-weight: 600;
+        font-weight: $weightHeavy;
         border: none;
         border-radius: 5px;
       }
       .btn__primary:hover {
-        background: #00866e;
-        cursor: pointer;
+        background: $colorPrimaryDark;
       }
       .btn__secondary {
-        height: 40px;
+        height: 44px;
         width: 100%;
         background: white;
-        color: #009478;
-        font-weight: 600;
-        border: 2px solid #009478;
+        color: $colorPrimary;
+        font-weight: $weightHeavy;
+        border: 2px solid $colorPrimary;
         border-radius: 5px;
       }
       .btn__secondary:hover {
-        background: #006b570e;
-        cursor: pointer;
+        background: $colorPrimaryLight;
       }
     }
     .details__right {
@@ -211,7 +226,7 @@ export default {
           padding: 0;
         }
         .right__header__close {
-          color: #516f90;
+          color: $colorFontLight;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -220,9 +235,9 @@ export default {
           border-radius: 100%;
         }
         .right__header__close:hover {
-          color: #33475b;
+          color: $colorFontMedium;
           cursor: pointer;
-          background: #eaf0f6;
+          background: $grayLoader;
         }
       }
       .right__content {
@@ -233,19 +248,17 @@ export default {
         }
         .detail__title {
           font-size: 12px;
-          color: #8f8f8f;
+          color: $colorFontLight;
           margin: 24px 0 12px;
-          font-weight: 600;
+          font-weight: $weightHeavy;
         }
         .detail__content {
           margin: 0;
-          font-size: 14px;
-          color: #33475b;
           line-height: 1.6;
         }
         .details__map {
           height: 180px;
-          margin: 16px 0 0;
+          margin: 16px 0 32px;
         }
       }
     }

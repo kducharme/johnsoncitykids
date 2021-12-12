@@ -32,7 +32,7 @@
             v-model="location.fields.rating"
             star-rating
             :increment="0.1"
-            active-color="#009478"
+            active-color="#1B998B"
             :star-size="16"
           >
           </star-rating>
@@ -60,83 +60,95 @@ export default {
   mounted() {},
   methods: {
     showPanel(location) {
-      window.scrollTo(0, 0);
+      if (this.$store.state.mobile === true) {
+        window.scrollTo(0, 0);
+      }
       this.$store.commit("showPanel", {
         location,
       });
+      this.preventScroll();
+    },
+    preventScroll() {
+      if (this.$store.state.mobile === false) {
+        document.body.classList.add("noscroll");
+      }
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.noscroll {
+  overflow: hidden !important;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
+
 .card:hover {
   cursor: pointer;
 }
 
 .card {
-  display: flex;
-  border-top: 1px solid #e2e2e2;
+  @include display-flex(flex-start, space-between, row);
+  border-top: 1px solid $grayBorder;
   flex: 0 1 100%;
   padding: 24px 0;
+}
 
-  .card__left {
-    width: 30%;
-    .card__image {
-      width: 100%;
-      height: 200px;
-      border-radius: 5%;
-      object-position: 100px 200px;
-      object-fit: cover;
-    }
-    .card__gif {
-      width: 100%;
-      height: 200px;
-      border-radius: 5%;
-      object-fit: cover;
-      object-position: 25% 20%;
-    }
+.card__left {
+  width: 30%;
+  .card__image {
+    width: 100%;
+    height: 200px;
+    border-radius: 5%;
+    object-fit: cover;
+    object-position: 50% 25%;
   }
+}
 
-  .card__right {
-    width: 70%;
-    padding: 0 32px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    .card__subtitle {
-      font-size: 12px;
-      color: #6b6b6b;
-      margin: 0 0 12px;
-    }
-    .card__title {
-      font-size: 20px;
-      font-weight: 600;
-      margin: 4px 0;
-    }
-    .card__details {
-      font-size: 14px;
-      line-height: 1.8;
-      margin: 12px 0;
-      display: -webkit-box;
-      -webkit-line-clamp: 3;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+.card__right {
+  width: 70%;
+  padding: 0 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  .card__subtitle {
+    font-size: 12px;
+    color: $colorFontLight;
+    margin: 0 0 16px;
+  }
+  .card__title {
+    font-size: 18px;
+    font-weight: $weightHeavy;
+    margin: 4px 0;
+    color: $colorFontDark;
+  }
+  .card__details {
+    font-size: 14px;
+    line-height: 1.8;
+    color: $colorFontMedium;
+    margin: 12px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .card__right__bottom {
     display: flex;
-    .reviews__count {
-      margin-left: 8px;
-      color: #6b6b6b;
-    }
   }
+  .vue-star-rating-rating-text {
+    color: $colorFontMedium;
+    font-size: 13px;
+  }
+}
 
-  .hide {
-    display: none;
-  }
+.hide {
+  display: none;
 }
 
 .hoverTitle {

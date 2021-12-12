@@ -20,8 +20,8 @@
             v-model="l.rating"
             star-rating
             :increment="0.1"
-            inactive-color="#f5f8fa"
-            active-color="#eaf0f6"
+            inactive-color="#F0F3FC"
+            active-color="#F0F3FC"
             :star-size="16"
           >
           </star-rating>
@@ -71,10 +71,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../styles/variables";
+@import "../../styles/mixins";
 
 .placeholder {
   display: flex;
-  border-top: 1px solid #eaf0f6;
+  border-top: 1px solid $grayLoader;
   flex: 0 1 100%;
   padding: 24px 0;
   width: 100%;
@@ -85,7 +87,7 @@ export default {
       width: 100%;
       height: 200px;
       border-radius: 5%;
-      background: #eaf0f6;
+      background: $grayLoader;
     }
   }
 
@@ -98,27 +100,27 @@ export default {
     .placeholder__subtitle {
       height: 8px;
       width: 200px;
-      background: #eaf0f6;
+      background: $grayLoader;
       opacity: .8;
       margin: 0 0 12px;
     }
     .placeholder__title {
       height: 14px;
       width: 260px;
-      background: #eaf0f6;
+      background: $grayLoader;
       margin: 24px 0;
     }
     .placeholder__details {
       height: 8px;
       width: 90%;
-      background: #eaf0f6;
+      background: $grayLoader;
       opacity: .8;
       margin: 12px 0;
     }
     .placeholder__details__short {
       height: 8px;
       width: 220px;
-      background: #eaf0f6;
+      background: $grayLoader;
       margin: 16px 0;
     }
   }

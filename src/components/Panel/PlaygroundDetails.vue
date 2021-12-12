@@ -95,16 +95,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .detail__title {
   font-size: 12px;
-  color: #8f8f8f;
+  color: $colorFontLight;
   margin: 24px 0 12px;
-  font-weight: 600;
+  font-weight: $weightHeavy;
 }
 .detail__content {
   margin: 0;
   font-size: 14px;
-  color: #33475b;
   line-height: 1.6;
 }
 .feature {
@@ -115,16 +117,16 @@ export default {
     margin: 8px 0;
   }
   .feature__icon__true {
-    color: #009478;
+    color: $colorPrimary;
     margin-right: 12px;
   }
   .feature__icon__partial {
-    color: #f5c26b;
+    color: $colorWarning;
     margin-right: 12px;
   }
 
   .feature__icon__false {
-    color: #f2547d;
+    color: $colorFailure;
     margin-right: 12px;
   }
 }

@@ -36,6 +36,10 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
 .filters {
   display: flex;
   flex-direction: row;
@@ -49,24 +53,22 @@ export default {
   margin-right: 12px;
 }
 
-
 /* Input styling */
 .input {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  border: 1px solid #cbd6e2;
+  border: 1px solid $grayBorder;
   border-radius: 8px;
-  height: 36px;
+  height: 40px;
   padding: 4px 16px;
-  background-color: white;
 }
 
 .input__active {
-  border: 2px solid #009478 !important;
+  border: 2px solid $colorPrimary !important;
   margin: -1px;
-  background: #fafafa;
+  background: $grayLight;
 }
 
 .input__placeholder {
@@ -78,15 +80,12 @@ export default {
 
 .input:hover {
   cursor: pointer;
-  border: 1px solid #b4b4b4;
+  border: 1px solid $colorFontLight;
+  background: $grayLight;
 }
 
 .placeholder {
-  color: var(--colorPlaceholder);
-}
-
-.input__selected {
-  color: var(--colorPrimaryDark);
+  color: $colorFontDark;
 }
 
 /* Dropdown styling */
@@ -97,12 +96,12 @@ export default {
   overflow: scroll;
   background-color: white;
   box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1);
-  padding: 6px 24px 6px 0;
+  padding: 6px 0 6px 0;
   z-index: 9999;
   min-width: 120px;
   position: absolute;
   margin-top: 16px;
-  border: 1px solid #e2e2e2;
+  border: 1px solid $grayBorder;
   border-radius: 3px;
 }
 
@@ -110,12 +109,13 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 16px;
+  padding: 16px 24px 16px 16px;
   margin: 0;
+  width: 100%;
 }
 
 .structure > p:hover {
-  background-color: #fafafa;
+  background-color: $grayLoader;
   cursor: pointer;
 }
 
@@ -128,9 +128,10 @@ export default {
 .clear__fenced {
   font-weight: 600;
   font-family: "avenir";
-  color: black;
+  color: $colorFontDark;
   text-decoration: underline;
   margin: 16px;
+  font-size: 14px;
 }
 
 .clear__type:hover,

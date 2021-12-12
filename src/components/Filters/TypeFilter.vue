@@ -20,10 +20,11 @@ export default {
     return {
       types: {
         playground: "Playground",
-        hiking: "Hiking",
-        sports: "Sports",
+        hiking: "Walking & Hiking",
         swimming: "Swimming",
-        library: "Books & Education",
+        sports: "Sports",
+        library: "Education",
+        classes: "Classes",
         trampoline: "Trampoline Parks",
         shopping: "Shopping",
       },
