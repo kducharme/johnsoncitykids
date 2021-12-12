@@ -22,6 +22,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .navigation {
   background: #fff;
   height: 72px;
@@ -47,10 +50,7 @@ export default {
     margin-right: 8px;
   }
   .logo__text {
-    font-family: "avenir";
-    font-size: 14px;
-    font-weight: 800;
-    color: #33475b;
+    font-weight: $weightBlack;
     letter-spacing: 0.8px;
   }
 }
@@ -58,7 +58,7 @@ export default {
 .btn__contact {
   color: white;
   padding: 12px 16px;
-  background: #33475b;
+  background: $colorFontDark;
   border: none;
   font-weight: 600;
   border-radius: 3px;

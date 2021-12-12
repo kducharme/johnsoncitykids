@@ -56,11 +56,13 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .btn__text {
   font-weight: 600;
   font-family: "avenir";
-  font-size: 14px!important;
-  color: #33475b;
+  color: $colorFontDark;
   text-decoration: underline;
   border: none;
   background: transparent;

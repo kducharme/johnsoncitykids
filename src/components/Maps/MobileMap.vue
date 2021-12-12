@@ -74,11 +74,11 @@ export default {
             "circle-color": [
               "step",
               ["get", "point_count"],
-              "#33475b",
+              "#272F3F",
               100,
-              "#f1f075",
+              "#272F3F",
               750,
-              "#f28cb1",
+              "#272F3F",
             ],
             "circle-radius": [
               "step",
@@ -90,7 +90,7 @@ export default {
               40,
             ],
             "circle-stroke-width": 7,
-            "circle-stroke-color": "#33475b",
+            "circle-stroke-color": "#272F3F",
             "circle-stroke-opacity": 0.2,
           },
         });
@@ -116,7 +116,7 @@ export default {
           source: "locationData",
           filter: ["!", ["has", "point_count"]],
           paint: {
-            "circle-color": "#33475b",
+            "circle-color": "#272F3F",
             "circle-radius": 9,
             "circle-stroke-width": 2,
             "circle-stroke-color": "#fff",
@@ -192,6 +192,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../styles/variables";
+@import "../../styles/mixins";
 
 .mapboxgl-map {
   height: calc(100vh - 72px);
@@ -214,12 +216,12 @@ export default {
   font-size: 16px!important;
   font-weight: 600;
   margin: 0;
-  color: #33475b;
+  color: $colorFontDark;
 }
 
 .pop__description {
   font-size: 13px;
-  color: #33475b;
+  color: $colorFontDark;
   opacity: .8;
   display: -webkit-box;
   -webkit-line-clamp: 3;

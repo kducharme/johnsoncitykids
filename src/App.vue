@@ -75,14 +75,9 @@ export default {
 </script>
 
 <style lang="scss">
-// desktop styling
-
-body {
-  margin: 0;
-  font-family: "avenir";
-  font-size: 14px;
-  color: #33475b;
-}
+@import "./styles/variables";
+@import "./styles/mixins";
+@import "./styles/global";
 
 .content {
   background: #fff;

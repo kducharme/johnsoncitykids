@@ -137,19 +137,21 @@ export default {
     closePanel() {
       this.$store.commit("hidePanel");
       if (this.$store.state.mobile === false) {
-        document.body.classList.remove('noscroll');
+        document.body.classList.remove("noscroll");
       }
     },
     created() {
       this.mapbox = Mapbox;
     },
   },
-  created() {
-  },
+  created() {},
 };
 </script>
 
 <style scoped lang="scss">
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .panel {
   display: flex;
   z-index: 99998;
@@ -183,30 +185,28 @@ export default {
       }
       .btn__primary {
         margin: 16px 0;
-        height: 40px;
+        height: 44px;
         width: 100%;
-        background: #009478;
+        background: $colorPrimary;
         color: white;
-        font-weight: 600;
+        font-weight: $weightHeavy;
         border: none;
         border-radius: 5px;
       }
       .btn__primary:hover {
-        background: #00866e;
-        cursor: pointer;
+        background: $colorPrimaryDark;
       }
       .btn__secondary {
-        height: 40px;
+        height: 44px;
         width: 100%;
         background: white;
-        color: #009478;
-        font-weight: 600;
-        border: 2px solid #009478;
+        color: $colorPrimary;
+        font-weight: $weightHeavy;
+        border: 2px solid $colorPrimary;
         border-radius: 5px;
       }
       .btn__secondary:hover {
-        background: #006b570e;
-        cursor: pointer;
+        background: $colorPrimaryLight;
       }
     }
     .details__right {
@@ -226,7 +226,7 @@ export default {
           padding: 0;
         }
         .right__header__close {
-          color: #516f90;
+          color: $colorFontLight;
           display: flex;
           justify-content: center;
           align-items: center;
@@ -235,9 +235,9 @@ export default {
           border-radius: 100%;
         }
         .right__header__close:hover {
-          color: #33475b;
+          color: $colorFontMedium;
           cursor: pointer;
-          background: #eaf0f6;
+          background: $grayLoader;
         }
       }
       .right__content {
@@ -248,14 +248,12 @@ export default {
         }
         .detail__title {
           font-size: 12px;
-          color: #8f8f8f;
+          color: $colorFontLight;
           margin: 24px 0 12px;
-          font-weight: 600;
+          font-weight: $weightHeavy;
         }
         .detail__content {
           margin: 0;
-          font-size: 14px;
-          color: #33475b;
           line-height: 1.6;
         }
         .details__map {

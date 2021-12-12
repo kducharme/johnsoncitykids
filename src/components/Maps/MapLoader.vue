@@ -17,6 +17,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .mapLoader {
   z-index: 99999;
   position: fixed;
@@ -24,7 +27,7 @@ export default {
   right: 0;
   height: calc(100vh - 72px);
   width: 40vw;
-  background: #eaf0f6;
+  background: $grayLoader;
 }
 
 @media screen and (max-width: 760px) {
@@ -35,7 +38,7 @@ export default {
   right: 0;
   height: calc(100vh - 72px);
   width: 40vw;
-  background: #eaf0f6;
+  background: $grayLoader;
   }
 }
 </style>;
