@@ -51,6 +51,7 @@ export default {
       font-family: "Avenir";
       margin: 0;
       padding-top: 2px;
+      color: white;
     }
   }
 }
