@@ -131,6 +131,7 @@ export default {
   color: $colorFontDark;
   text-decoration: underline;
   margin: 16px;
+  font-size: 14px;
 }
 
 .clear__type:hover,

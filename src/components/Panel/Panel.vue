@@ -11,17 +11,17 @@
           />
           <button
             class="btn__primary"
-            @click="getDirections()"
-            v-if="this.$store.state.mobile === false"
-          >
-            Get directions
-          </button>
-          <button
-            class="btn__secondary"
             @click="visitWebsite()"
             v-if="this.$store.state.mobile === false"
           >
             Visit website
+          </button>
+          <button
+            class="btn__secondary"
+            @click="getDirections()"
+            v-if="this.$store.state.mobile === false"
+          >
+            Get directions
           </button>
         </section>
         <section class="details__right">

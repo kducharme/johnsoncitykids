@@ -1,7 +1,7 @@
 <template>
   <div class="navigation">
     <div class="navigation__left">
-      <img class="logo" src="../../assets/logo__primary.png">
+      <img class="logo" src="../../assets/logo__final.png">
       <p class="logo__text">JC KIDS</p>
       </div>
     <div class="navigation__right">
