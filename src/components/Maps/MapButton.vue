@@ -26,6 +26,9 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .mapButton {
   display: flex;
   justify-content: center;
@@ -37,8 +40,8 @@ export default {
     display: flex;
     justify-content: center;
     padding: 16px 20px;
-    background: #33475b;
-    border: 1px solid #33475b;
+    background: $colorFontDark;
+    border: 1px solid $colorFontDark;
     border-radius: 5px;
     color: white;
     .btn__fab__icon {
