@@ -217,7 +217,7 @@ export default {
             features: this.featureCollection,
           },
           cluster: true,
-          clusterMaxZoom: 14,
+          clusterMaxZoom: 10,
           clusterRadius: 50,
         });
         this.map.addLayer({
@@ -230,16 +230,16 @@ export default {
               "step",
               ["get", "point_count"],
               "#364259",
-              100,
+              5,
               "#364259",
-              750,
+              10,
               "#364259",
             ],
             "circle-radius": [
               "step",
               ["get", "point_count"],
               20,
-              100,
+              50,
               30,
               750,
               40,
@@ -297,16 +297,20 @@ export default {
           const description = e.features[0].properties.description;
           const type = e.features[0].properties.type;
           const price = e.features[0].properties.price;
+
           // Ensure that if the map is zoomed out such that
           // multiple copies of the feature are visible, the
           // popup appears over the copy being pointed to.
           while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
           }
-          new mapboxgl.Popup(e)
+          new mapboxgl.Popup({
+            closeOnMove: false,
+            focusAfterOpen: true,
+          })
             .setLngLat(coordinates)
             .setHTML(
-              `<div>
+              `<div id="panelContent">
                 <section class="pop__content">
                   <img class="pop__image" src="${image}" />
                   <p class="pop__subtitle">
@@ -320,6 +324,8 @@ export default {
               </div>`
             )
             .addTo(this.map);
+
+          this.setEventListener();
         });
         this.map.on("mouseenter", "clusters", () => {
           this.map.getCanvas().style.cursor = "pointer";
@@ -334,6 +340,13 @@ export default {
           this.map.getCanvas().style.cursor = "";
         });
       });
+    },
+    setEventListener() {
+      document
+        .getElementById("panelContent")
+        .addEventListener("click", function () {
+          console.log("hiiiii");
+        });
     },
   },
   created() {
