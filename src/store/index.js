@@ -27,7 +27,9 @@ export default new Vuex.Store({
 
     mobile: false,
 
-    mobileMap: false
+    mobileMap: false,
+
+    loading: true,
 
   },
   getters: {

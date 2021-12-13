@@ -8,7 +8,12 @@
     <div class="locations">
       <CardLoader id="card_loader" />
       <Card id="card_main" />
-      <NoResults v-if="$store.state.locations.length === 0" />
+      <NoResults
+        v-if="
+          $store.state.locations.length === 0 &&
+          this.$store.state.loading === false
+        "
+      />
     </div>
   </div>
 </template>
@@ -40,13 +45,15 @@ export default {
       setTimeout(() => {
         document.querySelector("#card_loader").remove();
       }, 1000);
+      setTimeout(() => {
+        this.$store.state.loading = false;
+      }, 3000);
     },
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
 .listings {
   margin: 40px 24px 24px;
   //title section
