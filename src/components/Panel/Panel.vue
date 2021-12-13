@@ -192,9 +192,15 @@ export default {
         font-weight: $weightHeavy;
         border: none;
         border-radius: 5px;
+        transition-property: background;
+        transition-duration: 0.3s;
+        transition-delay: 0s;
       }
       .btn__primary:hover {
         background: $colorPrimaryDark;
+        transition-property: background;
+        transition-duration: 0.3s;
+        transition-delay: 0s;
       }
       .btn__secondary {
         height: 44px;
@@ -204,9 +210,15 @@ export default {
         font-weight: $weightHeavy;
         border: 2px solid $colorPrimary;
         border-radius: 5px;
+        transition-property: background;
+        transition-duration: 0.3s;
+        transition-delay: 0s;
       }
       .btn__secondary:hover {
         background: $colorPrimaryLight;
+        transition-property: background;
+        transition-duration: 0.3s;
+        transition-delay: 0s;
       }
     }
     .details__right {

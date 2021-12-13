@@ -52,6 +52,9 @@ export default {
       placeholderText.textContent = "Fencing";
     },
   },
+  created() {
+    this.$root.$refs.ResetFilters = this;
+  }
 };
 </script>
 

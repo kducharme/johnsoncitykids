@@ -8,7 +8,7 @@
     <div class="locations">
       <CardLoader id="card_loader" />
       <Card id="card_main" />
-      <!-- <NoResults v-if="$store.state.locations.length === 0 && this.loading === false" /> -->
+      <NoResults v-if="$store.state.locations.length === 0" />
     </div>
   </div>
 </template>
@@ -18,14 +18,14 @@
 import Card from "../Cards/Card";
 import Filters from "../Filters/Filters";
 import CardLoader from "../Cards/CardLoader";
-// import NoResults from "./NoResults";
+import NoResults from "./NoResults";
 
 export default {
   components: {
     Card,
     Filters,
     CardLoader,
-    // NoResults,
+    NoResults,
   },
   data() {
     return {
@@ -39,7 +39,7 @@ export default {
     displayLoader() {
       setTimeout(() => {
         document.querySelector("#card_loader").remove();
-      }, 900);
+      }, 1000);
     },
   },
 };

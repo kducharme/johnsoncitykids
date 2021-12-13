@@ -17,8 +17,7 @@
       <section class="card__right">
         <article class="card__right__top">
           <p class="card__subtitle">
-            {{ location.fields.type }} · {{ location.fields.price }} ·
-            {{ location.fields.distance }} miles from downtown
+            {{ location.fields.type }} · {{ location.fields.price }}
           </p>
           <p class="card__title" :id="`title_${location.fields.id}`">
             {{ location.fields.name }}

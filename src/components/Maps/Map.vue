@@ -27,7 +27,7 @@ export default {
     displayLoader() {
       setTimeout(() => {
         document.querySelector("#map_loader").remove();
-      }, 900);
+      }, 1000);
     },
     removeMarkers() {
       this.map.removeLayer("cluster-count");
