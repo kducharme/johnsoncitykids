@@ -349,12 +349,16 @@ export default {
           }
         });
       });
-      document.querySelector(".mappopup").addEventListener("mouseenter", (e) => {
-        this.addUnderline(e.target.offsetParent.firstChild.id)
-      });
-      document.querySelector(".mappopup").addEventListener("mouseleave", (e) => {
-        this.removeUnderline(e.target.offsetParent.firstChild.id)
-      });
+      document
+        .querySelector(".mappopup")
+        .addEventListener("mouseenter", (e) => {
+          this.addUnderline(e.target.offsetParent.firstChild.id);
+        });
+      document
+        .querySelector(".mappopup")
+        .addEventListener("mouseleave", (e) => {
+          this.removeUnderline(e.target.offsetParent.firstChild.id);
+        });
     },
     showPanel(location) {
       this.$store.commit("showPanel", {
@@ -362,14 +366,10 @@ export default {
       });
     },
     addUnderline(id) {
-      document
-        .querySelector(`#title_${id}`)
-        .classList.add("hoverTitle");
+      document.querySelector(`#title_${id}`).classList.add("hoverTitle");
     },
     removeUnderline(id) {
-      document
-        .querySelector(`#title_${id}`)
-        .classList.remove("hoverTitle");
+      document.querySelector(`#title_${id}`).classList.remove("hoverTitle");
     },
   },
   created() {
