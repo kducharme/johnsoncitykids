@@ -21,6 +21,7 @@ export default {
       hover: true,
       featureCollection: [],
       map: undefined,
+      panel: false,
     };
   },
   methods: {
@@ -198,6 +199,7 @@ export default {
               coordinates: l.fields.coordinates,
             },
             properties: {
+              id: l.id,
               image: l.fields.img,
               name: l.fields.name,
               description: l.fields.description,
@@ -291,6 +293,7 @@ export default {
             });
         });
         this.map.on("click", "unclustered-point", (e) => {
+          const id = e.features[0].properties.id;
           const coordinates = e.features[0].geometry.coordinates.slice();
           const name = e.features[0].properties.name;
           const image = e.features[0].properties.image;
@@ -298,9 +301,6 @@ export default {
           const type = e.features[0].properties.type;
           const price = e.features[0].properties.price;
 
-          // Ensure that if the map is zoomed out such that
-          // multiple copies of the feature are visible, the
-          // popup appears over the copy being pointed to.
           while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
           }
@@ -310,13 +310,13 @@ export default {
           })
             .setLngLat(coordinates)
             .setHTML(
-              `<div id="panelContent">
+              `<div id="${id}" class="mappopup">
                 <section class="pop__content">
                   <img class="pop__image" src="${image}" />
                   <p class="pop__subtitle">
                     ${type} · ${price}
                   </p>
-                  <p class="pop__title">${name}</p>
+                  <p class="pop__title" id="title_${id}">${name}</p>
                   <p class="pop__description">
                     ${description}
                   </p>
@@ -325,7 +325,7 @@ export default {
             )
             .addTo(this.map);
 
-          this.setEventListener();
+          this.configurePop();
         });
         this.map.on("mouseenter", "clusters", () => {
           this.map.getCanvas().style.cursor = "pointer";
@@ -341,12 +341,34 @@ export default {
         });
       });
     },
-    setEventListener() {
-      document
-        .getElementById("panelContent")
-        .addEventListener("click", function () {
-          console.log("hiiiii");
+    configurePop() {
+      document.querySelector(".mappopup").addEventListener("click", (e) => {
+        this.$store.state.locations.forEach((l) => {
+          if (l.id === e.target.offsetParent.firstChild.id) {
+            this.showPanel(l);
+          }
         });
+      });
+      document.querySelector(".mappopup").addEventListener("mouseenter", (e) => {
+        // this.addUnderline(e)
+        console.log(e.target.offsetParent.firstChild.id)
+
+      });
+    },
+    showPanel(location) {
+      this.$store.commit("showPanel", {
+        location,
+      });
+    },
+    addUnderline(location) {
+      document
+        .querySelector(`#title_${location.fields.id}`)
+        .classList.add("hoverTitle");
+    },
+    removeUnderline(location) {
+      document
+        .querySelector(`#title_${location.fields.id}`)
+        .classList.remove("hoverTitle");
     },
   },
   created() {
@@ -416,5 +438,9 @@ export default {
 }
 .mapboxgl-popup-close-button {
   display: none !important;
+}
+
+.hoverTitle {
+  text-decoration: underline;
 }
 </style>
