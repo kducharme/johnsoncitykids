@@ -61,7 +61,7 @@ export default {
             features: featureCollection,
           },
           cluster: true,
-          clusterMaxZoom: 14,
+          clusterMaxZoom: 10,
           clusterRadius: 50,
         });
 
@@ -74,11 +74,11 @@ export default {
             "circle-color": [
               "step",
               ["get", "point_count"],
-              "#272F3F",
+              "#364259",
               100,
-              "#272F3F",
+              "#364259",
               750,
-              "#272F3F",
+              "#364259",
             ],
             "circle-radius": [
               "step",
@@ -90,7 +90,7 @@ export default {
               40,
             ],
             "circle-stroke-width": 7,
-            "circle-stroke-color": "#272F3F",
+            "circle-stroke-color": "#364259",
             "circle-stroke-opacity": 0.2,
           },
         });
@@ -116,7 +116,7 @@ export default {
           source: "locationData",
           filter: ["!", ["has", "point_count"]],
           paint: {
-            "circle-color": "#272F3F",
+            "circle-color": "#364259",
             "circle-radius": 9,
             "circle-stroke-width": 2,
             "circle-stroke-color": "#fff",
