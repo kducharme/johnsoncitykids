@@ -21,7 +21,7 @@
             @click="getDirections()"
             v-if="this.$store.state.mobile === false"
           >
-            Get directions
+            View on Google Maps
           </button>
         </section>
         <section class="details__right">
@@ -42,7 +42,7 @@
               v-model="$store.state.activeLocation.rating"
               star-rating
               :increment="0.1"
-              active-color="#009478"
+              active-color="#1B998B"
               :star-size="16"
             >
             </star-rating>
@@ -74,7 +74,7 @@
                 :zoom="12"
               >
                 <MglMarker
-                  color="#009478"
+                  color="#1B998B"
                   :key="$store.state.activeLocation.id"
                   :coordinates="$store.state.activeLocation.coordinates"
                 >
@@ -192,9 +192,15 @@ export default {
         font-weight: $weightHeavy;
         border: none;
         border-radius: 5px;
+        transition-property: background;
+        transition-duration: 0.3s;
+        transition-delay: 0s;
       }
       .btn__primary:hover {
         background: $colorPrimaryDark;
+        transition-property: background;
+        transition-duration: 0.3s;
+        transition-delay: 0s;
       }
       .btn__secondary {
         height: 44px;
@@ -204,9 +210,15 @@ export default {
         font-weight: $weightHeavy;
         border: 2px solid $colorPrimary;
         border-radius: 5px;
+        transition-property: background;
+        transition-duration: 0.3s;
+        transition-delay: 0s;
       }
       .btn__secondary:hover {
         background: $colorPrimaryLight;
+        transition-property: background;
+        transition-duration: 0.3s;
+        transition-delay: 0s;
       }
     }
     .details__right {

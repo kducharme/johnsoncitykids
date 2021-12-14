@@ -5,6 +5,8 @@
       v-for="location in this.$store.state.locations"
       :key="location.fields.id"
       @click="showPanel(location)"
+      @mouseenter="addUnderline(location)"
+      @mouseleave="removeUnderline(location)"
       :id="`location__${location.fields.id}`"
     >
       <section class="card__left">
@@ -17,8 +19,7 @@
       <section class="card__right">
         <article class="card__right__top">
           <p class="card__subtitle">
-            {{ location.fields.type }} · {{ location.fields.price }} ·
-            {{ location.fields.distance }} miles from downtown
+            {{ location.fields.type }} · {{ location.fields.price }}
           </p>
           <p class="card__title" :id="`title_${location.fields.id}`">
             {{ location.fields.name }}
@@ -73,6 +74,12 @@ export default {
         document.body.classList.add("noscroll");
       }
     },
+    addUnderline(location) {
+    document.querySelector(`#title_${location.fields.id}`).classList.add('hoverTitle')
+    },
+    removeUnderline(location) {
+    document.querySelector(`#title_${location.fields.id}`).classList.remove('hoverTitle')
+    }
   },
 };
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div class="filters">
-    <PriceFilter v-if="this.$store.state.mobile === false"/>
+    <PriceFilter v-if="this.$store.state.mobile === false" />
     <TypeFilter />
-    <FenceFilter v-if="this.$store.state.activeFilters.type === 'Playground' " />
+    <FenceFilter v-if="this.$store.state.activeFilters.type === 'Playground'" />
     <ResetFilters
       v-if="
         Object.values(this.$store.state.activeFilters).some(
@@ -39,7 +39,6 @@ export default {
 @import "../../styles/variables";
 @import "../../styles/mixins";
 
-
 .filters {
   display: flex;
   flex-direction: row;
@@ -65,6 +64,12 @@ export default {
   padding: 4px 16px;
 }
 
+.input:hover {
+  cursor: pointer;
+  border: 1px solid $colorFontLight;
+  background-color: $grayLight;
+}
+
 .input__active {
   border: 2px solid $colorPrimary !important;
   margin: -1px;
@@ -76,12 +81,6 @@ export default {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-}
-
-.input:hover {
-  cursor: pointer;
-  border: 1px solid $colorFontLight;
-  background: $grayLight;
 }
 
 .placeholder {

@@ -21,13 +21,14 @@ export default {
       hover: true,
       featureCollection: [],
       map: undefined,
+      panel: false,
     };
   },
   methods: {
     displayLoader() {
       setTimeout(() => {
         document.querySelector("#map_loader").remove();
-      }, 900);
+      }, 1000);
     },
     removeMarkers() {
       this.map.removeLayer("cluster-count");
@@ -198,6 +199,7 @@ export default {
               coordinates: l.fields.coordinates,
             },
             properties: {
+              id: l.id,
               image: l.fields.img,
               name: l.fields.name,
               description: l.fields.description,
@@ -217,7 +219,7 @@ export default {
             features: this.featureCollection,
           },
           cluster: true,
-          clusterMaxZoom: 14,
+          clusterMaxZoom: 10,
           clusterRadius: 50,
         });
         this.map.addLayer({
@@ -230,16 +232,16 @@ export default {
               "step",
               ["get", "point_count"],
               "#364259",
-              100,
+              5,
               "#364259",
-              750,
+              10,
               "#364259",
             ],
             "circle-radius": [
               "step",
               ["get", "point_count"],
               20,
-              100,
+              50,
               30,
               750,
               40,
@@ -291,28 +293,30 @@ export default {
             });
         });
         this.map.on("click", "unclustered-point", (e) => {
+          const id = e.features[0].properties.id;
           const coordinates = e.features[0].geometry.coordinates.slice();
           const name = e.features[0].properties.name;
           const image = e.features[0].properties.image;
           const description = e.features[0].properties.description;
           const type = e.features[0].properties.type;
           const price = e.features[0].properties.price;
-          // Ensure that if the map is zoomed out such that
-          // multiple copies of the feature are visible, the
-          // popup appears over the copy being pointed to.
+
           while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
           }
-          new mapboxgl.Popup(e)
+          new mapboxgl.Popup({
+            closeOnMove: false,
+            focusAfterOpen: true,
+          })
             .setLngLat(coordinates)
             .setHTML(
-              `<div>
+              `<div id="${id}" class="mappopup">
                 <section class="pop__content">
                   <img class="pop__image" src="${image}" />
                   <p class="pop__subtitle">
                     ${type} · ${price}
                   </p>
-                  <p class="pop__title">${name}</p>
+                  <p class="pop__title" id="title_${id}">${name}</p>
                   <p class="pop__description">
                     ${description}
                   </p>
@@ -320,6 +324,8 @@ export default {
               </div>`
             )
             .addTo(this.map);
+
+          this.configurePop();
         });
         this.map.on("mouseenter", "clusters", () => {
           this.map.getCanvas().style.cursor = "pointer";
@@ -334,6 +340,36 @@ export default {
           this.map.getCanvas().style.cursor = "";
         });
       });
+    },
+    configurePop() {
+      document.querySelector(".mappopup").addEventListener("click", (e) => {
+        this.$store.state.locations.forEach((l) => {
+          if (l.id === e.target.offsetParent.firstChild.id) {
+            this.showPanel(l);
+          }
+        });
+      });
+      document
+        .querySelector(".mappopup")
+        .addEventListener("mouseenter", (e) => {
+          this.addUnderline(e.target.offsetParent.firstChild.id);
+        });
+      document
+        .querySelector(".mappopup")
+        .addEventListener("mouseleave", (e) => {
+          this.removeUnderline(e.target.offsetParent.firstChild.id);
+        });
+    },
+    showPanel(location) {
+      this.$store.commit("showPanel", {
+        location,
+      });
+    },
+    addUnderline(id) {
+      document.querySelector(`#title_${id}`).classList.add("hoverTitle");
+    },
+    removeUnderline(id) {
+      document.querySelector(`#title_${id}`).classList.remove("hoverTitle");
     },
   },
   created() {
@@ -369,6 +405,9 @@ export default {
 .mapboxgl-popup {
   max-width: 280px !important;
 }
+.mapboxgl-popup:hover {
+  cursor: pointer;
+}
 .pop__image {
   width: 100%;
   height: 160px;
@@ -403,5 +442,10 @@ export default {
 }
 .mapboxgl-popup-close-button {
   display: none !important;
+}
+
+.hoverTitle {
+  text-decoration: underline;
+  cursor: pointer;
 }
 </style>

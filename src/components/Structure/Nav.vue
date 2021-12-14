@@ -1,9 +1,9 @@
 <template>
   <div class="navigation">
     <div class="navigation__left">
-      <img class="logo" src="../../assets/logo__final.png">
+      <img class="logo" src="../../assets/logo__final.png" />
       <p class="logo__text">JC KIDS</p>
-      </div>
+    </div>
     <div class="navigation__right">
       <button class="btn__contact" @click="addListing()">Contact us</button>
     </div>
@@ -16,8 +16,8 @@ export default {
   methods: {
     addListing() {
       window.open("https://airtable.com/shr0UlLfVQbS8lOhI", "_blank");
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -32,7 +32,7 @@ export default {
   display: flex;
   align-items: center;
   padding: 0 24px;
-  z-index: 9999999!important;
+  z-index: 9999999 !important;
 
   .navigation__left {
     width: 50vw !important;
@@ -60,8 +60,29 @@ export default {
   padding: 12px 16px;
   background: $colorFontDark;
   border: none;
-  font-weight: 600;
+  font-weight: $weightMedium;
   border-radius: 3px;
-  font-family: 'avenir';
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-delay: 0s;
+  opacity: 1;
 }
+
+.btn__contact:hover {
+  opacity: 0.8;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-delay: 0s;
+}
+
+// @keyframes hover {
+//   from {
+//     opacity: 1;
+//     border: none;
+//   }
+//   to {
+//     opacity: 0.8;
+//     border: 1px solid $colorFontDark;
+//   }
+// }
 </style>
