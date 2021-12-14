@@ -350,9 +350,10 @@ export default {
         });
       });
       document.querySelector(".mappopup").addEventListener("mouseenter", (e) => {
-        // this.addUnderline(e)
-        console.log(e.target.offsetParent.firstChild.id)
-
+        this.addUnderline(e.target.offsetParent.firstChild.id)
+      });
+      document.querySelector(".mappopup").addEventListener("mouseleave", (e) => {
+        this.removeUnderline(e.target.offsetParent.firstChild.id)
       });
     },
     showPanel(location) {
@@ -360,14 +361,14 @@ export default {
         location,
       });
     },
-    addUnderline(location) {
+    addUnderline(id) {
       document
-        .querySelector(`#title_${location.fields.id}`)
+        .querySelector(`#title_${id}`)
         .classList.add("hoverTitle");
     },
-    removeUnderline(location) {
+    removeUnderline(id) {
       document
-        .querySelector(`#title_${location.fields.id}`)
+        .querySelector(`#title_${id}`)
         .classList.remove("hoverTitle");
     },
   },
@@ -403,6 +404,9 @@ export default {
 }
 .mapboxgl-popup {
   max-width: 280px !important;
+}
+.mapboxgl-popup:hover {
+  cursor: pointer;
 }
 .pop__image {
   width: 100%;
@@ -442,5 +446,6 @@ export default {
 
 .hoverTitle {
   text-decoration: underline;
+  cursor: pointer;
 }
 </style>
