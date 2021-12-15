@@ -1,11 +1,5 @@
 <template>
   <div class="content">
-    <MapButton
-      v-if="
-        this.$store.state.mobile === true &&
-        this.$store.state.panelMobile === false
-      "
-    />
     <Panel v-if="this.$store.state.mobile === false" />
     <PanelMobile v-if="this.$store.state.mobile === true" />
     <div class="content__top" v-if="this.$store.state.panelMobile === false">
@@ -36,7 +30,7 @@ import Map from "./components/Maps/Map";
 import Nav from "./components/Structure/Nav";
 import Panel from "./components/Panel/Panel";
 import PanelMobile from "./components/Panel/PanelMobile";
-import MapButton from "./components/Maps/MapButton";
+// import MapButton from "./components/Maps/MapButton";
 import MobileMap from "./components/Maps/MobileMap";
 
 export default {
@@ -48,7 +42,7 @@ export default {
     Map,
     Panel,
     PanelMobile,
-    MapButton,
+    // MapButton,
     MobileMap,
   },
   methods: {
