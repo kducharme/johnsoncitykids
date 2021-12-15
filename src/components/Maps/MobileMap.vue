@@ -185,13 +185,13 @@ export default {
       });
     },
     configurePop() {
-      document.querySelector(".mappopup").addEventListener("click", (e) => {
-        this.$store.state.locations.forEach((l) => {
-          if (l.id === e.target.offsetParent.firstChild.id) {
-            this.showPanel(l);
-          }
-        });
-      });
+      // document.querySelector(".mappopup").addEventListener("click", (e) => {
+      //   this.$store.state.locations.forEach((l) => {
+      //     if (l.id === e.target.offsetParent.firstChild.id) {
+      //       this.showPanel(l);
+      //     }
+      //   });
+      // });
     },
     showPanel(location) {
       this.$store.commit("showPanel", {
