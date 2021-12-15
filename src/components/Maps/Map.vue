@@ -37,6 +37,13 @@ export default {
       this.map.removeSource("locationData");
       this.featureCollection = [];
       this.addFilteredMarkers();
+      this.closePopups();
+    },
+    closePopups() {
+      const pop = document.querySelector(".mapboxgl-popup");
+      if (pop) {
+        pop.remove();
+      }
     },
     addFilteredMarkers() {
       this.$store.state.locations.forEach((l) => {
@@ -148,29 +155,10 @@ export default {
         const description = e.features[0].properties.description;
         const type = e.features[0].properties.type;
         const price = e.features[0].properties.price;
-        // Ensure that if the map is zoomed out such that
-        // multiple copies of the feature are visible, the
-        // popup appears over the copy being pointed to.
+
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
-        // new mapboxgl.Popup(e)
-        //   .setLngLat(coordinates)
-        //   .setHTML(
-        //     `<div id="${id}" class="mappopup">
-        //         <section class="pop__content">
-        //           <img class="pop__image" src="${image}" />
-        //           <p class="pop__subtitle">
-        //             ${type} · ${price}
-        //           </p>
-        //           <p class="pop__title" id="title_${id}">${name}</p>
-        //           <p class="pop__description">
-        //             ${description}
-        //           </p>
-        //         </section>
-        //       </div>`
-        //   )
-        //   .addTo(this.map);
         this.configurePop();
       });
       this.map.on("mouseenter", "clusters", () => {
@@ -351,7 +339,6 @@ export default {
       });
     },
     configurePop() {
-      console.log('hi')
       document.querySelector(".mappopup").addEventListener("click", (e) => {
         this.$store.state.locations.forEach((l) => {
           if (l.id === e.target.offsetParent.firstChild.id) {
