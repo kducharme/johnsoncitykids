@@ -47,6 +47,7 @@ export default {
             coordinates: l.fields.coordinates,
           },
           properties: {
+            id: l.fields.id,
             image: l.fields.img,
             name: l.fields.name,
             description: l.fields.description,
@@ -66,7 +67,7 @@ export default {
           features: this.featureCollection,
         },
         cluster: true,
-        clusterMaxZoom: 14,
+        clusterMaxZoom: 10,
         clusterRadius: 50,
       });
       this.map.addLayer({
@@ -140,6 +141,7 @@ export default {
           });
       });
       this.map.on("click", "unclustered-point", (e) => {
+        const id = e.features[0].properties.id;
         const coordinates = e.features[0].geometry.coordinates.slice();
         const name = e.features[0].properties.name;
         const image = e.features[0].properties.image;
@@ -155,25 +157,32 @@ export default {
         new mapboxgl.Popup(e)
           .setLngLat(coordinates)
           .setHTML(
-            `<div>
-            <section class="pop__content__mobile">
-              <img class="pop__image" src="${image}" />
-              <p class="pop__subtitle">
-                ${type} · ${price}
-              </p>
-              <p class="pop__title">${name}</p>
-              <p class="pop__description">
-                ${description}
-              </p>
-            </section>
-          </div>`
+            `<div id="${id}" class="mappopup">
+                <section class="pop__content">
+                  <img class="pop__image" src="${image}" />
+                  <p class="pop__subtitle">
+                    ${type} · ${price}
+                  </p>
+                  <p class="pop__title" id="title_${id}">${name}</p>
+                  <p class="pop__description">
+                    ${description}
+                  </p>
+                </section>
+              </div>`
           )
           .addTo(this.map);
+        this.configurePop();
       });
       this.map.on("mouseenter", "clusters", () => {
         this.map.getCanvas().style.cursor = "pointer";
       });
       this.map.on("mouseleave", "clusters", () => {
+        this.map.getCanvas().style.cursor = "";
+      });
+      this.map.on("mouseenter", "unclustered-point", () => {
+        this.map.getCanvas().style.cursor = "pointer";
+      });
+      this.map.on("mouseleave", "unclustered-point", () => {
         this.map.getCanvas().style.cursor = "";
       });
     },
@@ -342,6 +351,7 @@ export default {
       });
     },
     configurePop() {
+      console.log('hi')
       document.querySelector(".mappopup").addEventListener("click", (e) => {
         this.$store.state.locations.forEach((l) => {
           if (l.id === e.target.offsetParent.firstChild.id) {

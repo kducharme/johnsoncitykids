@@ -42,6 +42,7 @@ export default {
               coordinates: l.fields.coordinates,
             },
             properties: {
+              id: l.id,
               image: l.fields.img,
               name: l.fields.name,
               description: l.fields.description,
@@ -141,6 +142,7 @@ export default {
         });
 
         map.on("click", "unclustered-point", (e) => {
+          const id = e.features[0].properties.id;
           const coordinates = e.features[0].geometry.coordinates.slice();
           const name = e.features[0].properties.name;
           const image = e.features[0].properties.image;
@@ -157,28 +159,43 @@ export default {
           new mapboxgl.Popup(e)
             .setLngLat(coordinates)
             .setHTML(
-              `<div>
-            <section class="pop__content__mobile">
-              <img class="pop__image" src="${image}" />
-              <p class="pop__subtitle">
-                ${type} · ${price}
-              </p>
-              <p class="pop__title">${name}</p>
-              <p class="pop__description">
-                ${description}
-              </p>
-            </section>
-          </div>`
+              `<div id="${id}" class="mappopup">
+                <section class="pop__content">
+                  <img class="pop__image" src="${image}" />
+                  <p class="pop__subtitle">
+                    ${type} · ${price}
+                  </p>
+                  <p class="pop__title" id="title_${id}">${name}</p>
+                  <p class="pop__description">
+                    ${description}
+                  </p>
+                </section>
+              </div>`
             )
             .addTo(map);
-        });
 
+          this.configurePop();
+        });
         map.on("mouseenter", "clusters", () => {
           map.getCanvas().style.cursor = "pointer";
         });
         map.on("mouseleave", "clusters", () => {
           map.getCanvas().style.cursor = "";
         });
+      });
+    },
+    configurePop() {
+      document.querySelector(".mappopup").addEventListener("click", (e) => {
+        this.$store.state.locations.forEach((l) => {
+          if (l.id === e.target.offsetParent.firstChild.id) {
+            this.showPanel(l);
+          }
+        });
+      });
+    },
+    showPanel(location) {
+      this.$store.commit("showPanel", {
+        location,
       });
     },
   },
@@ -213,7 +230,7 @@ export default {
 }
 
 .pop__title {
-  font-size: 16px!important;
+  font-size: 16px !important;
   font-weight: 600;
   margin: 0;
   color: $colorFontDark;
@@ -222,7 +239,7 @@ export default {
 .pop__description {
   font-size: 13px;
   color: $colorFontDark;
-  opacity: .8;
+  opacity: 0.8;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -233,5 +250,4 @@ export default {
 .mapboxgl-popup-close-button {
   display: none;
 }
-
 </style>
