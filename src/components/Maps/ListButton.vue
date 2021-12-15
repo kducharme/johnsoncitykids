@@ -33,7 +33,7 @@ export default {
   position: fixed;
   bottom: 0px;
   width: 100%;
-  margin-bottom: 16px;
+  margin-bottom: 100px;
   .btn__fab__alt {
     display: flex;
     justify-content: center;
