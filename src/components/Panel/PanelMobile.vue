@@ -86,19 +86,28 @@ export default {
     },
     closePanel() {
       this.$store.commit("hideMobilePanel");
+      document.querySelector('#listings_content').classList.remove("noscroll");
     },
     resetScroll() {
-      console.log('hi')
       window.scrollTo(0, 0);
-    }
+    },
+    preventScroll() {
+      document.querySelector('#listings_content').classList.add("noscroll");
+    },
   },
   created() {
     this.resetScroll();
+    this.preventScroll();
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.noscroll {
+  overflow: hidden !important;
+  overflow-y: hidden !important;
+  overflow-x: hidden !important;
+}
 .panel__mob__close {
   color: #516f90;
   position: fixed;

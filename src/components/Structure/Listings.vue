@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="listings_content">
     <MapButton
       v-show="
         this.$store.state.mobile === true &&
@@ -51,6 +51,7 @@ export default {
   },
   created() {
     this.displayLoader();
+    this.resetScroll();
   },
   methods: {
     displayLoader() {
@@ -61,6 +62,12 @@ export default {
         this.$store.state.loading = false;
       }, 3000);
     },
+    resetScroll() {
+      if (this.$store.state.mobile === true) {
+        console.log('hi')
+        window.scrollTo(0, 0);
+      }
+    }
   },
 };
 </script>

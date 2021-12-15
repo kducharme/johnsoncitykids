@@ -1,7 +1,16 @@
 <template>
   <div class="content">
-    <Panel v-if="this.$store.state.mobile === false && this.$store.state.panel === true" />
-    <PanelMobile v-if="this.$store.state.mobile === true && this.$store.state.panelMobile === true" />
+    <Panel
+      v-if="
+        this.$store.state.mobile === false && this.$store.state.panel === true
+      "
+    />
+    <PanelMobile
+      v-if="
+        this.$store.state.mobile === true &&
+        this.$store.state.panelMobile === true
+      "
+    />
     <div class="content__top" v-if="this.$store.state.panelMobile === false">
       <Nav />
     </div>
@@ -12,7 +21,12 @@
     >
       <div class="content__bottom__left">
         <MobileMap v-if="this.$store.state.mobileMap === true" />
-        <Listings v-show="this.$store.state.mobileMap === false" />
+        <Listings
+          v-if="
+            this.$store.state.mobileMap === false &&
+            this.$store.state.panelMobile === false
+          "
+        />
       </div>
       <div
         class="content__bottom__right"
@@ -54,16 +68,12 @@ export default {
         this.$store.commit("onLargeScreen");
       }
     },
-    resetScroll() {
-      if (this.$store.state.mobile === true) {
-        window.scrollTo(0, 0);
-      }
-    },
   },
   mounted() {
     this.$store.getters.getAirtableLocations;
+  },
+  created() {
     this.initialMobileCheck();
-    this.resetScroll();
   },
 };
 </script>
