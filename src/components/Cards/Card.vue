@@ -62,7 +62,7 @@ export default {
   methods: {
     showPanel(location) {
       if (this.$store.state.mobile === true) {
-        window.scrollTo(0, 0);
+        // window.scrollTo(0, 0);
       }
       this.$store.commit("showPanel", {
         location,
