@@ -61,13 +61,12 @@ export default {
   mounted() {},
   methods: {
     showPanel(location) {
-      if (this.$store.state.mobile === true) {
-        // window.scrollTo(0, 0);
-      }
+      // if (this.$store.state.mobile === true) {
+      // }
       this.$store.commit("showPanel", {
         location,
       });
-      this.preventScroll();
+      // this.preventScroll();
     },
     preventScroll() {
       if (this.$store.state.mobile === false) {

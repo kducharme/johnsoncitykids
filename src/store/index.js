@@ -95,8 +95,11 @@ export default new Vuex.Store({
       state.mobileMap = false;
     },
     hidePanel(state) {
-      if (state.mobile === false) { state.panel = false; }
-      if (state.mobile === true) { state.panelMobile = false; }
+      state.panel = false;
+      state.activeLocation = undefined;
+    },
+    hideMobilePanel(state) {
+      state.panelMobile = false;
       state.activeLocation = undefined;
     },
     resetAllFilters(state) {

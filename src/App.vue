@@ -1,7 +1,7 @@
 <template>
   <div class="content">
-    <Panel v-if="this.$store.state.mobile === false" />
-    <PanelMobile v-if="this.$store.state.mobile === true" />
+    <Panel v-if="this.$store.state.mobile === false && this.$store.state.panel === true" />
+    <PanelMobile v-if="this.$store.state.mobile === true && this.$store.state.panelMobile === true" />
     <div class="content__top" v-if="this.$store.state.panelMobile === false">
       <Nav />
     </div>

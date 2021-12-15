@@ -76,16 +76,24 @@ export default {
         this.$store.state.activeLocation.long;
 
       window.open(
-        window.open("https://waze.com/ul?ll="+destination+"&navigate=yes&z=10")
+        window.open(
+          "https://waze.com/ul?ll=" + destination + "&navigate=yes&z=10"
+        )
       );
     },
     visitWebsite() {
       window.open(this.$store.state.activeLocation.website, "_blank");
     },
     closePanel() {
-      this.$store.commit("hidePanel");
+      this.$store.commit("hideMobilePanel");
     },
-    created() {},
+    resetScroll() {
+      console.log('hi')
+      window.scrollTo(0, 0);
+    }
+  },
+  created() {
+    this.resetScroll();
   },
 };
 </script>
