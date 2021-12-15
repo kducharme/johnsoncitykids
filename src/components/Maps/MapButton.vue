@@ -19,7 +19,7 @@ export default {
   methods: {
     showMap() {
       this.$store.commit("showMobileMap");
-      document.querySelector('#mapButton').classList.toggle('hideButton')
+      document.querySelector('#mapButton').classList.add('hideButton')
     },
   },
 };
