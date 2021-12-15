@@ -61,12 +61,10 @@ export default {
   mounted() {},
   methods: {
     showPanel(location) {
-      // if (this.$store.state.mobile === true) {
-      // }
       this.$store.commit("showPanel", {
         location,
       });
-      // this.preventScroll();
+      this.preventScroll();
     },
     preventScroll() {
       if (this.$store.state.mobile === false) {
@@ -74,11 +72,15 @@ export default {
       }
     },
     addUnderline(location) {
-    document.querySelector(`#title_${location.fields.id}`).classList.add('hoverTitle')
+      document
+        .querySelector(`#title_${location.fields.id}`)
+        .classList.add("hoverTitle");
     },
     removeUnderline(location) {
-    document.querySelector(`#title_${location.fields.id}`).classList.remove('hoverTitle')
-    }
+      document
+        .querySelector(`#title_${location.fields.id}`)
+        .classList.remove("hoverTitle");
+    },
   },
 };
 </script>
