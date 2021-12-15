@@ -31,6 +31,18 @@ export default {
     };
   },
   methods: {
+    setActiveFilter() {
+      console.log('hi')
+      // const placeholderText = document.querySelector("#placeholder_type");
+      // if (this.$store.state.activeFilters.type === undefined) {
+      //   placeholderText.textContent = `Type`;
+      //   // document.querySelector("#input__type").classList.remove('input__active')
+      //   // console.log('remove')
+      // } else {
+      //   placeholderText.textContent = `${this.$store.state.activeFilters.type}`;
+      //   document.querySelector("#input__type").classList.add('input__active')
+      // }
+    },
     filterByType(type) {
       this.$store.commit("setActiveFilter", {
         type,
@@ -134,10 +146,11 @@ export default {
   created() {
     this.$root.$refs.TypeFilter = this;
   },
+  mounted() {
+    this.setActiveFilter();
+  },
 };
 </script>
 
 <style lang="scss">
-
-
 </style>;

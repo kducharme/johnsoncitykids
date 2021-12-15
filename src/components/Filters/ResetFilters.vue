@@ -30,6 +30,7 @@ export default {
     resetTypeFilter() {
       this.$root.$refs.TypeFilter.resetTypeFilter();
       this.$root.$refs.TypeFilter.removeClearFilter__Type();
+      this.$root.$refs.TypeFilter.setActiveFilter();
       const typeInput = document.querySelector("#input__type");
       typeInput.classList.remove("input__active");
       const placeholderText = document.querySelector("#placeholder_type");

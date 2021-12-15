@@ -86,7 +86,7 @@ export default {
     },
     closePanel() {
       this.$store.commit("hideMobilePanel");
-      document.querySelector('#listings_content').classList.remove("noscroll");
+      // document.querySelector('#listings_content').classList.remove("noscroll");
     },
     resetScroll() {
       window.scrollTo(0, 0);

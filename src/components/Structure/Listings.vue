@@ -64,7 +64,6 @@ export default {
     },
     resetScroll() {
       if (this.$store.state.mobile === true) {
-        console.log('hi')
         window.scrollTo(0, 0);
       }
     }
