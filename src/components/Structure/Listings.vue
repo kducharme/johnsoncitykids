@@ -1,19 +1,29 @@
 <template>
-  <div class="listings">
-    <section class="title">
-      <h1 class="title__header">Outings in Johnson City, TN</h1>
-      <p class="title__sub">{{ this.$store.state.locations.length }} results</p>
-    </section>
-    <Filters />
-    <div class="locations">
-      <CardLoader id="card_loader" />
-      <Card id="card_main" />
-      <NoResults
-        v-if="
-          $store.state.locations.length === 0 &&
-          this.$store.state.loading === false
-        "
-      />
+  <div>
+    <MapButton
+      v-if="
+        this.$store.state.mobile === true &&
+        this.$store.state.panelMobile === false
+      "
+    />
+    <div class="listings">
+      <section class="title">
+        <h1 class="title__header">Outings in Johnson City, TN</h1>
+        <p class="title__sub">
+          {{ this.$store.state.locations.length }} results
+        </p>
+      </section>
+      <Filters />
+      <div class="locations">
+        <CardLoader id="card_loader" />
+        <Card id="card_main" />
+        <NoResults
+          v-if="
+            $store.state.locations.length === 0 &&
+            this.$store.state.loading === false
+          "
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -24,6 +34,7 @@ import Card from "../Cards/Card";
 import Filters from "../Filters/Filters";
 import CardLoader from "../Cards/CardLoader";
 import NoResults from "./NoResults";
+import MapButton from "../Maps/MapButton";
 
 export default {
   components: {
@@ -31,6 +42,7 @@ export default {
     Filters,
     CardLoader,
     NoResults,
+    MapButton,
   },
   data() {
     return {

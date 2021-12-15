@@ -70,22 +70,6 @@ export default {
   },
   methods: {
     getDirections() {
-      //   const urlSuffix =
-      //     this.$store.state.activeLocation.lat +
-      //     "_" +
-      //     this.$store.state.activeLocation.long
-      //       ? `${this.$store.state.activeLocation.lat},${this.$store.state.activeLocation.long}`
-      //       : this.$store.state.activeLocation.address;
-      //   ", " +
-      //     this.$store.state.activeLocation.city +
-      //     ", " +
-      //     this.$store.state.activeLocation.zip;
-
-      //   window.open(
-      //     "https://www.google.com/maps/search/?api=1&query=" + urlSuffix,
-      //     "_blank"
-      //   );
-
       let destination =
         this.$store.state.activeLocation.lat +
         "," +
@@ -110,7 +94,7 @@ export default {
 .panel__mob__close {
   color: #516f90;
   position: fixed;
-  z-index: 99999;
+  // z-index: 99999;
   display: flex;
   justify-content: center;
   align-items: center;
