@@ -21,7 +21,7 @@
             @click="getDirections()"
             v-if="this.$store.state.mobile === false"
           >
-            View on Google Maps
+            Get directions
           </button>
         </section>
         <section class="details__right">

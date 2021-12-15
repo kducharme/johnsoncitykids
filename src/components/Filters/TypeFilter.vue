@@ -32,7 +32,6 @@ export default {
   },
   methods: {
     setActiveFilter() {
-      console.log('hi')
       // const placeholderText = document.querySelector("#placeholder_type");
       // if (this.$store.state.activeFilters.type === undefined) {
       //   placeholderText.textContent = `Type`;

@@ -47,7 +47,7 @@ export default {
             coordinates: l.fields.coordinates,
           },
           properties: {
-            id: l.fields.id,
+            id: l.id,
             image: l.fields.img,
             name: l.fields.name,
             description: l.fields.description,
@@ -154,23 +154,23 @@ export default {
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
-        new mapboxgl.Popup(e)
-          .setLngLat(coordinates)
-          .setHTML(
-            `<div id="${id}" class="mappopup">
-                <section class="pop__content">
-                  <img class="pop__image" src="${image}" />
-                  <p class="pop__subtitle">
-                    ${type} · ${price}
-                  </p>
-                  <p class="pop__title" id="title_${id}">${name}</p>
-                  <p class="pop__description">
-                    ${description}
-                  </p>
-                </section>
-              </div>`
-          )
-          .addTo(this.map);
+        // new mapboxgl.Popup(e)
+        //   .setLngLat(coordinates)
+        //   .setHTML(
+        //     `<div id="${id}" class="mappopup">
+        //         <section class="pop__content">
+        //           <img class="pop__image" src="${image}" />
+        //           <p class="pop__subtitle">
+        //             ${type} · ${price}
+        //           </p>
+        //           <p class="pop__title" id="title_${id}">${name}</p>
+        //           <p class="pop__description">
+        //             ${description}
+        //           </p>
+        //         </section>
+        //       </div>`
+        //   )
+        //   .addTo(this.map);
         this.configurePop();
       });
       this.map.on("mouseenter", "clusters", () => {
