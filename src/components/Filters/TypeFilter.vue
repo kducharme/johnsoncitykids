@@ -31,17 +31,7 @@ export default {
     };
   },
   methods: {
-    setActiveFilter() {
-      // const placeholderText = document.querySelector("#placeholder_type");
-      // if (this.$store.state.activeFilters.type === undefined) {
-      //   placeholderText.textContent = `Type`;
-      //   // document.querySelector("#input__type").classList.remove('input__active')
-      //   // console.log('remove')
-      // } else {
-      //   placeholderText.textContent = `${this.$store.state.activeFilters.type}`;
-      //   document.querySelector("#input__type").classList.add('input__active')
-      // }
-    },
+    setActiveFilter() {},
     filterByType(type) {
       this.$store.commit("setActiveFilter", {
         type,

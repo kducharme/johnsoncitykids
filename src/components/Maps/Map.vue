@@ -182,7 +182,7 @@ export default {
         container: "map_test",
         style: "mapbox://styles/mapbox/streets-v11",
         center: [-82.35331420043877, 36.313509326567996],
-        zoom: 9.8,
+        zoom: 9.3,
       });
       this.displayAllMarkers();
     },

@@ -139,6 +139,7 @@ export default {
       if (this.$store.state.mobile === false) {
         document.body.classList.remove("noscroll");
       }
+      this.$root.$refs.Map.removeMarkers();
     },
     created() {
       this.mapbox = Mapbox;

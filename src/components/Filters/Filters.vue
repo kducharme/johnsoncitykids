@@ -1,8 +1,8 @@
 <template>
   <div class="filters">
-    <PriceFilter v-if="this.$store.state.mobile === false" />
     <TypeFilter />
     <FenceFilter v-if="this.$store.state.activeFilters.type === 'Playground'" />
+    <PriceFilter v-if="this.$store.state.mobile === false" />
     <ResetFilters
       v-if="
         Object.values(this.$store.state.activeFilters).some(
@@ -72,7 +72,7 @@ export default {
 
 .input__active {
   border: 2px solid $colorPrimary !important;
-  margin: -1px;
+  margin: 0px!important;
   background: $grayLight;
 }
 
