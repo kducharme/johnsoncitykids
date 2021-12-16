@@ -1,8 +1,8 @@
 <template>
   <div class="filters">
-    <PriceFilter v-if="this.$store.state.mobile === false" />
     <TypeFilter />
     <FenceFilter v-if="this.$store.state.activeFilters.type === 'Playground'" />
+    <PriceFilter v-if="this.$store.state.mobile === false" />
     <ResetFilters
       v-if="
         Object.values(this.$store.state.activeFilters).some(
@@ -62,17 +62,18 @@ export default {
   border-radius: 8px;
   height: 40px;
   padding: 4px 16px;
+  margin: 1px!important;
 }
 
 .input:hover {
   cursor: pointer;
-  border: 1px solid $colorFontLight;
+  border-color: $colorFontLight;
   background-color: $grayLight;
 }
 
 .input__active {
+  margin: 1px 0px!important;
   border: 2px solid $colorPrimary !important;
-  margin: -1px;
   background: $grayLight;
 }
 
@@ -134,8 +135,8 @@ export default {
 }
 
 .clear__type:hover,
-.clear__price,
-.clear__fenced {
+.clear__price:hover,
+.clear__fenced:hover {
   cursor: pointer;
   opacity: 0.7;
 }

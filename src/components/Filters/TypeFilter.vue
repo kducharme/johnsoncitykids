@@ -22,27 +22,16 @@ export default {
         playground: "Playground",
         hiking: "Walking & Hiking",
         swimming: "Swimming",
+        camping: "Camping",
         sports: "Sports",
         library: "Education",
-        classes: "Classes",
         trampoline: "Trampoline Parks",
         shopping: "Shopping",
       },
     };
   },
   methods: {
-    setActiveFilter() {
-      console.log('hi')
-      // const placeholderText = document.querySelector("#placeholder_type");
-      // if (this.$store.state.activeFilters.type === undefined) {
-      //   placeholderText.textContent = `Type`;
-      //   // document.querySelector("#input__type").classList.remove('input__active')
-      //   // console.log('remove')
-      // } else {
-      //   placeholderText.textContent = `${this.$store.state.activeFilters.type}`;
-      //   document.querySelector("#input__type").classList.add('input__active')
-      // }
-    },
+    setActiveFilter() {},
     filterByType(type) {
       this.$store.commit("setActiveFilter", {
         type,

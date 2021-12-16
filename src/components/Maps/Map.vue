@@ -37,6 +37,13 @@ export default {
       this.map.removeSource("locationData");
       this.featureCollection = [];
       this.addFilteredMarkers();
+      this.closePopups();
+    },
+    closePopups() {
+      const pop = document.querySelector(".mapboxgl-popup");
+      if (pop) {
+        pop.remove();
+      }
     },
     addFilteredMarkers() {
       this.$store.state.locations.forEach((l) => {
@@ -47,7 +54,7 @@ export default {
             coordinates: l.fields.coordinates,
           },
           properties: {
-            id: l.fields.id,
+            id: l.id,
             image: l.fields.img,
             name: l.fields.name,
             description: l.fields.description,
@@ -141,36 +148,11 @@ export default {
           });
       });
       this.map.on("click", "unclustered-point", (e) => {
-        const id = e.features[0].properties.id;
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const name = e.features[0].properties.name;
-        const image = e.features[0].properties.image;
-        const description = e.features[0].properties.description;
-        const type = e.features[0].properties.type;
-        const price = e.features[0].properties.price;
-        // Ensure that if the map is zoomed out such that
-        // multiple copies of the feature are visible, the
-        // popup appears over the copy being pointed to.
+
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
-        new mapboxgl.Popup(e)
-          .setLngLat(coordinates)
-          .setHTML(
-            `<div id="${id}" class="mappopup">
-                <section class="pop__content">
-                  <img class="pop__image" src="${image}" />
-                  <p class="pop__subtitle">
-                    ${type} · ${price}
-                  </p>
-                  <p class="pop__title" id="title_${id}">${name}</p>
-                  <p class="pop__description">
-                    ${description}
-                  </p>
-                </section>
-              </div>`
-          )
-          .addTo(this.map);
         this.configurePop();
       });
       this.map.on("mouseenter", "clusters", () => {
@@ -194,7 +176,7 @@ export default {
         container: "map_test",
         style: "mapbox://styles/mapbox/streets-v11",
         center: [-82.35331420043877, 36.313509326567996],
-        zoom: 9.8,
+        zoom: 9.3,
       });
       this.displayAllMarkers();
     },
@@ -351,7 +333,6 @@ export default {
       });
     },
     configurePop() {
-      console.log('hi')
       document.querySelector(".mappopup").addEventListener("click", (e) => {
         this.$store.state.locations.forEach((l) => {
           if (l.id === e.target.offsetParent.firstChild.id) {

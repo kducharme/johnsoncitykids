@@ -21,12 +21,7 @@
     >
       <div class="content__bottom__left">
         <MobileMap v-if="this.$store.state.mobileMap === true" />
-        <Listings
-          v-show="
-            this.$store.state.mobileMap === false &&
-            this.$store.state.panelMobile === false
-          "
-        />
+        <Listings />
       </div>
       <div
         class="content__bottom__right"
@@ -90,6 +85,7 @@ export default {
     position: fixed;
     top: 0;
     width: 100vw;
+    z-index: 9999999;
   }
   .content__bottom {
     display: flex;

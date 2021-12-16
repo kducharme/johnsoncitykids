@@ -64,11 +64,12 @@ export default {
       this.$store.commit("showPanel", {
         location,
       });
+      this.preventScroll();
     },
     preventScroll() {
-      // if (this.$store.state.mobile === false) {
-      //   document.body.classList.add("noscroll");
-      // }
+      if (this.$store.state.mobile === false) {
+        document.body.classList.add("noscroll");
+      }
     },
     addUnderline(location) {
       document

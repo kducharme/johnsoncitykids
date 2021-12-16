@@ -21,7 +21,7 @@
             @click="getDirections()"
             v-if="this.$store.state.mobile === false"
           >
-            View on Google Maps
+            Get directions
           </button>
         </section>
         <section class="details__right">
@@ -74,7 +74,7 @@
                 :zoom="12"
               >
                 <MglMarker
-                  color="#1B998B"
+                  color="#272F3F"
                   :key="$store.state.activeLocation.id"
                   :coordinates="$store.state.activeLocation.coordinates"
                 >
@@ -139,6 +139,7 @@ export default {
       if (this.$store.state.mobile === false) {
         document.body.classList.remove("noscroll");
       }
+      this.$root.$refs.Map.removeMarkers();
     },
     created() {
       this.mapbox = Mapbox;
