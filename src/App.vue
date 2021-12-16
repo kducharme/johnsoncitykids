@@ -85,7 +85,6 @@ export default {
     position: fixed;
     top: 0;
     width: 100vw;
-    z-index: 9999999;
   }
   .content__bottom {
     display: flex;
