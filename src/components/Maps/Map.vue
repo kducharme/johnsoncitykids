@@ -337,6 +337,7 @@ export default {
         this.$store.state.locations.forEach((l) => {
           if (l.id === e.target.offsetParent.firstChild.id) {
             this.showPanel(l);
+            this.preventScroll();
           }
         });
       });
@@ -355,6 +356,11 @@ export default {
       this.$store.commit("showPanel", {
         location,
       });
+    },
+    preventScroll() {
+      if (this.$store.state.mobile === false) {
+        document.body.classList.add("noscroll");
+      }
     },
     addUnderline(id) {
       document.querySelector(`#title_${id}`).classList.add("hoverTitle");
