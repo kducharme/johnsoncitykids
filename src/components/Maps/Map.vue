@@ -394,11 +394,6 @@ export default {
 @import "../../styles/mixins";
 
 // Popup styling
-.mapboxgl-popup-content {
-  background: white;
-  box-shadow: rgb(0 0 0 / 16%) 0px 8px 28px !important;
-  padding: 0 !important;
-}
 .mapboxgl-popup {
   max-width: 280px !important;
 }

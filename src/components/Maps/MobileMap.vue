@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="map__mobile">
     <ListButton />
     <div id="map_mobile"></div>
   </div>
@@ -118,8 +118,8 @@ export default {
           filter: ["!", ["has", "point_count"]],
           paint: {
             "circle-color": "#364259",
-            "circle-radius": 9,
-            "circle-stroke-width": 2,
+            "circle-radius": 10,
+            "circle-stroke-width": 2.5,
             "circle-stroke-color": "#fff",
           },
         });
@@ -159,20 +159,32 @@ export default {
           new mapboxgl.Popup(e)
             .setLngLat(coordinates)
             .setHTML(
-              `<div id="${id}" class="mappopup">
-                <section class="pop__content">
-                  <img class="pop__image" src="${image}" />
-                  <p class="pop__subtitle">
+              `<div id="${id}" class="mob__mappopup">
+                <section class="pop__mobile__left">
+                  <img class="pop__mobile__image" src="${image}" />
+                 </section>
+              <section class="pop__mobile__right>
+                <section class="pop__mobile__content">
+                  <p class="pop__mobile__subtitle">
                     ${type} · ${price}
                   </p>
-                  <p class="pop__title" id="title_${id}">${name}</p>
-                  <p class="pop__description">
+                  <p class="pop__mobile__title" id="title_${id}">${name}</p>
+                  <p class="pop__mobile__description">
                     ${description}
                   </p>
                 </section>
+              </section>
               </div>`
             )
             .addTo(map);
+
+          document
+            .querySelector(".mapboxgl-popup")
+            .classList.add("pop__mobile");
+
+          document
+            .querySelector(".mapboxgl-popup")
+            .classList.remove("mapboxgl-popup-anchor-right");
 
           this.configurePop();
         });
@@ -185,7 +197,7 @@ export default {
       });
     },
     configurePop() {
-      // document.querySelector(".mappopup").addEventListener("click", (e) => {
+      // document.querySelector(".mob__mappopup").addEventListener("click", (e) => {
       //   this.$store.state.locations.forEach((l) => {
       //     if (l.id === e.target.offsetParent.firstChild.id) {
       //       this.showPanel(l);
@@ -208,39 +220,63 @@ export default {
 };
 </script>
 
+
 <style lang="scss">
 @import "../../styles/variables";
 @import "../../styles/mixins";
+
+.map__mobile {
+  display: flex;
+  z-index: 99998;
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+}
+
+.mapboxgl-popup-content {
+  background: white;
+  box-shadow: rgb(0 0 0 / 16%) 0px 8px 28px !important;
+  padding: 0 !important;
+}
+
+.mop__pop__content {
+  background: red !important;
+}
 
 .mapboxgl-map {
   height: calc(100vh - 72px);
   width: 100vw;
 }
-.pop__image {
+.pop__mobile__image {
   width: 100%;
   height: 160px;
-  border-radius: 5%;
   object-fit: cover;
   object-position: 25% 20%;
-  border-radius: 5px;
+  border-radius: 0 !important;
 }
 
-.pop__rating {
-  margin: 16px 0 8px;
+.pop__mobile__subtitle {
+  font-size: 13px;
+  color: $colorFontLight;
+  padding: 0 16px;
+  margin: 12px 0 8px 0;
 }
 
-.pop__title {
+.pop__mobile__title {
   font-size: 16px !important;
   font-weight: 600;
+  padding: 0 16px;
+  line-height: 1.4;
   margin: 0;
   color: $colorFontDark;
 }
 
-.pop__description {
-  font-size: 13px;
-  color: $colorFontDark;
-  opacity: 0.8;
+.pop__mobile__description {
+  margin: 8px 16px 20px;
+  font-size: 14px !important;
+  color: $colorFontMedium;
   display: -webkit-box;
+  line-height: 1.5;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -249,5 +285,45 @@ export default {
 
 .mapboxgl-popup-close-button {
   display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .mob__mappopup {
+    display: flex;
+    flex-direction: row;
+    .pop__mobile__left {
+      width: 30%;
+    }
+    .pop__mobile__right {
+      width: 70%;
+    }
+  }
+  .mapboxgl-popup {
+    top: 0px !important;
+    left: 0px !important;
+    transform: none !important;
+  }
+
+  // .mapboxgl-popup-anchor-top .mapboxgl-popup-tip,
+  // .mapboxgl-popup-anchor-bottom .mapboxgl-popup-tip,
+  // .mapboxgl-popup-anchor-center .mapboxgl-popup-tip,
+  // .mapboxgl-popup-anchor-left .mapboxgl-popup-tip,
+  // .mapboxgl-popup-anchor-right .mapboxgl-popup-tip,
+  // .mapboxgl-popup-anchor-bottom-right .mapboxgl-popup-tip,
+  // .mapboxgl-popup-anchor-bottom-left .mapboxgl-popup-tip,
+  // .mapboxgl-popup-anchor-top-right .mapboxgl-popup-tip,
+  // .mapboxgl-popup-anchor-top-left .mapboxgl-popup-tip {
+  //   display: none !important;
+  // }
+
+  .mapboxgl-popup-content {
+    width: 96vw !important;
+    min-width: 96vw !important;
+    max-width: 96vw !important;
+    margin: 2vw !important;
+  }
+  .mapboxgl-popup-tip {
+    display: none !important;
+  }
 }
 </style>
