@@ -74,7 +74,7 @@
                 :zoom="12"
               >
                 <MglMarker
-                  color="#1B998B"
+                  color="#272F3F"
                   :key="$store.state.activeLocation.id"
                   :coordinates="$store.state.activeLocation.coordinates"
                 >

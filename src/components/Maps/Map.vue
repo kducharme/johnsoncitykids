@@ -148,13 +148,7 @@ export default {
           });
       });
       this.map.on("click", "unclustered-point", (e) => {
-        const id = e.features[0].properties.id;
         const coordinates = e.features[0].geometry.coordinates.slice();
-        const name = e.features[0].properties.name;
-        const image = e.features[0].properties.image;
-        const description = e.features[0].properties.description;
-        const type = e.features[0].properties.type;
-        const price = e.features[0].properties.price;
 
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
           coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
