@@ -162,7 +162,7 @@ export default {
               `<div id="${id}" class="mob__mappopup">
                 <div class="pop__mobile__left">
                     <img class="pop__mobile__image" src="${image}"/>
-                 <div>
+                 </div>
                  <div class="pop__mobile__right">
                     <p class="pop__mobile__subtitle">${type} · ${price}</p>
                     <p class="pop__mobile__title" id="title_${id}">${name}</p>
@@ -242,7 +242,7 @@ export default {
 }
 .pop__mobile__image {
   width: 100%;
-  height: 180px;
+  height: 150px;
   object-fit: cover;
   object-position: 25% 20%;
   border-radius: 0 !important;
@@ -251,25 +251,25 @@ export default {
 .pop__mobile__subtitle {
   font-size: 13px;
   color: $colorFontLight;
-  padding: 0 16px;
-  margin: 12px 0 8px 0;
 }
 
 .pop__mobile__title {
+  margin: 8px 0 12px;
   font-size: 16px !important;
   font-weight: 600;
-  padding: 0 16px;
-  line-height: 1.4;
-  margin: 0;
   color: $colorFontDark;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1 !important;
 }
 
 .pop__mobile__description {
-  margin: 8px 16px 20px;
-  font-size: 14px !important;
+  font-size: 13px !important;
   color: $colorFontMedium;
   display: -webkit-box;
-  line-height: 1.5;
+  line-height: 1.4;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
@@ -291,16 +291,17 @@ export default {
   .mob__mappopup {
     display: flex;
     flex-direction: row;
-    // width: 100%;
-    .pop__mobile__left {
-      width: 30%;
-    }
+    width: 100% !important;
+  }
+  .pop__mobile__left {
+    width: 35%;
+  }
 
-    .pop__mobile__right {
-      width: 70%;
-      display: flex;
-      flex-direction: column;
-    }
+  .pop__mobile__right {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
   }
 }
 .mapboxgl-popup {
@@ -334,7 +335,7 @@ export default {
 .mapboxgl-popup-content {
   // width: 96vw !important;
   min-width: 96vw !important;
-  height: 180px;
+  height: 150px;
   // max-width: 96vw !important;
   margin: 2vw !important;
   // transform: none !important;
