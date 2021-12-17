@@ -160,20 +160,14 @@ export default {
             .setLngLat(coordinates)
             .setHTML(
               `<div id="${id}" class="mob__mappopup">
-                <section class="pop__mobile__left">
-                  <img class="pop__mobile__image" src="${image}" />
-                 </section>
-              <section class="pop__mobile__right>
-                <section class="pop__mobile__content">
-                  <p class="pop__mobile__subtitle">
-                    ${type} · ${price}
-                  </p>
-                  <p class="pop__mobile__title" id="title_${id}">${name}</p>
-                  <p class="pop__mobile__description">
-                    ${description}
-                  </p>
-                </section>
-              </section>
+                <div class="pop__mobile__left">
+                    <img class="pop__mobile__image" src="${image}"/>
+                 <div>
+                 <div class="pop__mobile__right">
+                    <p class="pop__mobile__subtitle">${type} · ${price}</p>
+                    <p class="pop__mobile__title" id="title_${id}">${name}</p>
+                    <p class="pop__mobile__description">${description}</p>
+                 </div>
               </div>`
             )
             .addTo(map);
@@ -229,7 +223,6 @@ export default {
   display: flex;
   z-index: 99998;
   position: fixed;
-  height: 100vh;
   width: 100vw;
 }
 
@@ -249,7 +242,7 @@ export default {
 }
 .pop__mobile__image {
   width: 100%;
-  height: 160px;
+  height: 180px;
   object-fit: cover;
   object-position: 25% 20%;
   border-radius: 0 !important;
@@ -289,58 +282,64 @@ export default {
 
 @media screen and (max-width: 600px) {
   .map__mobile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
 
   .mob__mappopup {
     display: flex;
     flex-direction: row;
+    // width: 100%;
     .pop__mobile__left {
       width: 30%;
     }
+
     .pop__mobile__right {
       width: 70%;
+      display: flex;
+      flex-direction: column;
     }
   }
-  .mapboxgl-popup {
-    top: 0px !important;
-    left: 0px !important;
-    max-width: 96vw !important;
-    right: 0px!important;
-    transform: none!important;
-  }
+}
+.mapboxgl-popup {
+  top: 0px !important;
+  left: 0px !important;
+  max-width: 96vw !important;
+  right: 0px !important;
+  transform: none !important;
+}
 
-  .mapboxgl-popup-anchor-top,
-  .mapboxgl-popup-anchor-bottom,
-  .mapboxgl-popup-anchor-center,
-  .mapboxgl-popup-anchor-left,
-  .mapboxgl-popup-anchor-right,
-  .mapboxgl-popup-anchor-bottom-right,
-  .mapboxgl-popup-anchor-bottom-left,
-  .mapboxgl-popup-anchor-top-right,
-  .mapboxgl-popup-anchor-top-left {
-    -webkit-transform: none !important; /* Safari and Chrome */
-    -moz-transform: none !important; /* Firefox */
-    -ms-transform: none !important; /* IE 9 */
-    -o-transform: none !important; /* Opera */
-    transform: none !important;
-  }
-    .mapboxgl-popup-anchor-right {
-      margin-left: 4vw;
-      transform: none!important;
-    }
+.mapboxgl-popup-anchor-top,
+.mapboxgl-popup-anchor-bottom,
+.mapboxgl-popup-anchor-center,
+.mapboxgl-popup-anchor-left,
+.mapboxgl-popup-anchor-right,
+.mapboxgl-popup-anchor-bottom-right,
+.mapboxgl-popup-anchor-bottom-left,
+.mapboxgl-popup-anchor-top-right,
+.mapboxgl-popup-anchor-top-left {
+  -webkit-transform: none !important; /* Safari and Chrome */
+  -moz-transform: none !important; /* Firefox */
+  -ms-transform: none !important; /* IE 9 */
+  -o-transform: none !important; /* Opera */
+  transform: none !important;
+}
+.mapboxgl-popup-anchor-right {
+  margin-left: 4vw;
+  transform: none !important;
+}
 
-  .mapboxgl-popup-content {
-    width: 96vw !important;
-    min-width: 96vw !important;
-    max-width: 96vw !important;
-    margin: 2vw !important;
-    transform: none !important;
-  }
-  .mapboxgl-popup-tip {
-    display: none !important;
-  }
+.mapboxgl-popup-content {
+  // width: 96vw !important;
+  min-width: 96vw !important;
+  height: 180px;
+  // max-width: 96vw !important;
+  margin: 2vw !important;
+  // transform: none !important;
+}
+.mapboxgl-popup-tip {
+  display: none !important;
 }
 </style>
