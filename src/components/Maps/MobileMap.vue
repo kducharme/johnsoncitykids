@@ -1,6 +1,7 @@
 <template>
   <div class="map__mobile">
     <ListButton />
+    <!-- <Filters /> -->
     <div id="map_mobile"></div>
   </div>
 </template>
@@ -8,14 +9,16 @@
 
 <script>
 import ListButton from "./ListButton";
+// import Filters from "../Filters/Filters";
 
 export default {
   components: {
     ListButton,
+    // Filters
   },
   data() {
     return {
-      hoveredStateId: null,
+      clickedMarkerId: null,
     };
   },
   methods: {
@@ -64,6 +67,7 @@ export default {
           cluster: true,
           clusterMaxZoom: 10,
           clusterRadius: 50,
+          generateId: true,
         });
 
         map.addLayer({
@@ -111,8 +115,9 @@ export default {
           },
         });
 
+        // Static Layer
         map.addLayer({
-          id: "unclustered-point",
+          id: "unclustered-point-static",
           type: "circle",
           source: "locationData",
           filter: ["!", ["has", "point_count"]],
@@ -122,6 +127,33 @@ export default {
             "circle-stroke-width": 2.5,
             "circle-stroke-color": "#fff",
           },
+        });
+
+        // Active Layer (On Click)
+        map.addLayer({
+          id: "unclustered-point-active",
+          type: "circle",
+          source: "locationData",
+          filter: ["!", ["has", "point_count"]],
+          paint: {
+            "circle-radius": 10,
+            "circle-stroke-width": 2.5,
+            "circle-stroke-color": "#fff",
+            "circle-color": [
+              "case",
+              ["boolean", ["feature-state", "click"], false],
+              "#1B998B",
+              "#364259",
+            ],
+          },
+        });
+
+        map.on("click", "unclustered-point-active", (e) => {
+          this.clickedMarkerId = e.features[0].id;
+          map.setFeatureState(
+            { source: "locationData", id: this.clickedMarkerId },
+            { click: true }
+          );
         });
 
         map.on("click", "clusters", (e) => {
@@ -220,7 +252,6 @@ export default {
 @import "../../styles/mixins";
 
 @media screen and (max-width: 600px) {
-
   // Core mapbox components
   .mapboxgl-popup {
     top: 0px !important;
@@ -243,13 +274,15 @@ export default {
   }
   .map__mobile {
     display: flex;
+    flex-direction: column;
     z-index: 99998;
     position: fixed;
     width: 100vw;
+    top: 0px !important;
   }
 
   .mapboxgl-map {
-    height: calc(100vh - 72px);
+    height: 100vh;
     width: 100vw;
   }
   .pop__mobile__image {
