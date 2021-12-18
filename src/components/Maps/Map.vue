@@ -400,6 +400,16 @@ export default {
 .mapboxgl-popup:hover {
   cursor: pointer;
 }
+.mapboxgl-popup-content {
+  background: white;
+  box-shadow: rgb(0 0 0 / 16%) 0px 8px 28px !important;
+  padding: 0 !important;
+}
+
+.pop__content {
+  // display: flex;
+}
+
 .pop__image {
   width: 100%;
   height: 160px;
