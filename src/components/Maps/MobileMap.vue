@@ -1,6 +1,7 @@
 <template>
   <div class="map__mobile">
     <ListButton />
+    <!-- <Filters /> -->
     <div id="map_mobile"></div>
   </div>
 </template>
@@ -8,14 +9,17 @@
 
 <script>
 import ListButton from "./ListButton";
+// import Filters from "../Filters/Filters";
 
 export default {
   components: {
     ListButton,
+    // Filters
   },
   data() {
     return {
-      hoveredStateId: null,
+      lastMarkerId: null,
+      activeMarkerId: null,
     };
   },
   methods: {
@@ -64,6 +68,7 @@ export default {
           cluster: true,
           clusterMaxZoom: 10,
           clusterRadius: 50,
+          generateId: true,
         });
 
         map.addLayer({
@@ -84,7 +89,7 @@ export default {
             "circle-radius": [
               "step",
               ["get", "point_count"],
-              20,
+              22,
               100,
               30,
               750,
@@ -111,17 +116,89 @@ export default {
           },
         });
 
+        // Static Layer
         map.addLayer({
-          id: "unclustered-point",
+          id: "unclustered-point-static",
           type: "circle",
           source: "locationData",
           filter: ["!", ["has", "point_count"]],
           paint: {
             "circle-color": "#364259",
-            "circle-radius": 10,
-            "circle-stroke-width": 2.5,
+            "circle-radius": 9.5,
+            "circle-stroke-width": 3,
             "circle-stroke-color": "#fff",
           },
+        });
+
+        // Active Layer (On Click)
+        map.addLayer({
+          id: "unclustered-point-active",
+          type: "circle",
+          source: "locationData",
+          filter: ["!", ["has", "point_count"]],
+          paint: {
+            "circle-radius": 11,
+            "circle-stroke-width": 2.5,
+            "circle-stroke-color": "#fff",
+            "circle-color": [
+              "case",
+              ["boolean", ["feature-state", "click"], false],
+              "#1B998B",
+              "#364259",
+            ],
+          },
+        });
+
+        map.on("click", "unclustered-point-active", (e) => {
+          // Reset style for the previous marker
+          if (this.lastMarkerId) {
+            map.setFeatureState(
+              { source: "locationData", id: this.lastMarkerId },
+              { click: false }
+            );
+          }
+
+          // Add style for new marker
+          this.activeMarkerId = e.features[0].id;
+          this.lastMarkerId = e.features[0].id;
+          map.setFeatureState(
+            { source: "locationData", id: this.activeMarkerId },
+            { click: true }
+          );
+
+          // Zoom to new marker
+          map.easeTo({
+            center: e.features[0].geometry.coordinates,
+          });
+
+          //
+
+          map.on("click", () => {
+            if (document.querySelector(".mapboxgl-popup") === null) {
+              map.setFeatureState(
+                { source: "locationData", id: this.activeMarkerId },
+                { click: false }
+              );
+              map.setFeatureState(
+                { source: "locationData", id: this.lastMarkerId },
+                { click: false }
+              );
+            }
+          });
+
+          // document
+          //   .querySelector("#map_mobile")
+          //   .addEventListener("click", () => {
+          //     console.log('ho')
+          //     map.setFeatureState(
+          //       { source: "locationData", id: this.lastMarkerId },
+          //       { click: false }
+          //     );
+          //     map.setFeatureState(
+          //       { source: "locationData", id: this.activeMarkerId },
+          //       { click: false }
+          //     );
+          //   });
         });
 
         map.on("click", "clusters", (e) => {
@@ -141,7 +218,7 @@ export default {
             });
         });
 
-        map.on("click", "unclustered-point", (e) => {
+        map.on("click", "unclustered-point-static", (e) => {
           const id = e.features[0].properties.id;
           const coordinates = e.features[0].geometry.coordinates.slice();
           const name = e.features[0].properties.name;
@@ -182,12 +259,6 @@ export default {
 
           this.configurePop();
         });
-        map.on("mouseenter", "clusters", () => {
-          map.getCanvas().style.cursor = "pointer";
-        });
-        map.on("mouseleave", "clusters", () => {
-          map.getCanvas().style.cursor = "";
-        });
       });
     },
     configurePop() {
@@ -220,7 +291,6 @@ export default {
 @import "../../styles/mixins";
 
 @media screen and (max-width: 600px) {
-
   // Core mapbox components
   .mapboxgl-popup {
     top: 0px !important;
@@ -243,13 +313,15 @@ export default {
   }
   .map__mobile {
     display: flex;
+    flex-direction: column;
     z-index: 99998;
     position: fixed;
     width: 100vw;
+    top: 0px !important;
   }
 
   .mapboxgl-map {
-    height: calc(100vh - 72px);
+    height: 100vh;
     width: 100vw;
   }
   .pop__mobile__image {

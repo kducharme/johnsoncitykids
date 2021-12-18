@@ -12,7 +12,7 @@
       "
     />
     <div class="content__top" v-if="this.$store.state.panelMobile === false">
-      <Nav />
+      <Nav v-if="this.$store.state.mobileMap === false" />
     </div>
     <div
       class="content__bottom"
