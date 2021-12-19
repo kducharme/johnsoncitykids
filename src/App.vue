@@ -1,54 +1,27 @@
 <template>
-  <div class="content">
-    <Panel
-      v-if="
-        this.$store.state.mobile === false && this.$store.state.panel === true
-      "
-    />
-    <PanelMobile v-if="this.$store.state.panelMobile === true" />
-    <div class="content__top" v-if="this.$store.state.panelMobile === false">
-      <Nav />
-    </div>
-    <div
-      class="content__bottom"
-      id="content_bottom"
-      v-if="this.$store.state.panelMobile === false"
-    >
-      <div class="content__bottom__left">
-        <MobileMap v-if="this.$store.state.mobileMap === true" />
-        <Listings v-show="this.$store.state.mobileMap === false"/>
+  <div class="app">
+    <nav>
+      <div class="navigation">
+        <div class="navigation__left">
+          <img class="logo" src="./assets/logo__final.png" />
+          <p class="logo__text">JC KIDS</p>
+        </div>
+        <div class="navigation__right">
+          <router-link to='/' exact>Outings </router-link>
+          <router-link to="/about" exact>About </router-link>
+          <button class="btn__contact" @click="addListing()">Contact us</button>
+        </div>
       </div>
-      <div
-        class="content__bottom__right"
-        v-if="this.$store.state.panelMobile === false"
-      >
-        <Map />
-      </div>
-    </div>
+    </nav>
+    <router-view />
   </div>
 </template>
 
 <script>
-import Listings from "./components/Structure/Listings";
-import Map from "./components/Maps/Map";
-import Nav from "./components/Structure/Nav";
-import Panel from "./components/Panel/Panel";
-import PanelMobile from "./components/Panel/PanelMobile";
-// import MapButton from "./components/Maps/MapButton";
-import MobileMap from "./components/Maps/MobileMap";
-
 export default {
   name: "App",
 
-  components: {
-    Nav,
-    Listings,
-    Map,
-    Panel,
-    PanelMobile,
-    // MapButton,
-    MobileMap,
-  },
+  components: {},
   methods: {
     initialMobileCheck() {
       if (window.innerWidth <= 760) {
@@ -73,6 +46,57 @@ export default {
 @import "./styles/mixins";
 @import "./styles/global";
 
+// Nav styling
+
+.navigation {
+  background: #fff;
+  height: 72px;
+  box-shadow: rgb(0 0 0 / 8%) 0px 1px 12px !important;
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  z-index: 9999999 !important;
+
+  .navigation__left {
+    width: 50vw !important;
+    display: flex;
+    align-items: flex-start;
+    align-items: center;
+  }
+  .navigation__right {
+    width: 50vw !important;
+    display: flex;
+    justify-content: flex-end;
+    .btn__contact {
+      color: white;
+      padding: 12px 16px;
+      background: $colorFontDark;
+      border: none;
+      font-weight: $weightMedium;
+      border-radius: 3px;
+      transition-property: opacity;
+      transition-duration: 0.5s;
+      transition-delay: 0s;
+      opacity: 1;
+    }
+
+    .btn__contact:hover {
+      opacity: 0.8;
+      transition-property: opacity;
+      transition-duration: 0.5s;
+      transition-delay: 0s;
+    }
+  }
+  .logo {
+    width: 44px;
+    margin-right: 8px;
+  }
+  .logo__text {
+    font-weight: $weightBlack;
+    letter-spacing: 0.8px;
+  }
+}
+
 .content {
   background: #fff;
   display: flex;
@@ -91,24 +115,6 @@ export default {
     .content__bottom__right {
       width: 40vw;
       // height: calc(100vh - 72px);
-    }
-  }
-}
-
-.hideMobileMap {
-  visibility: none !important;
-}
-
-// mobile styling
-
-@media screen and (max-width: 760px) {
-  .content__bottom {
-    width: 100vw !important;
-    .content__bottom__left {
-      width: 100vw !important;
-    }
-    .content__bottom__right {
-      display: none !important;
     }
   }
 }
