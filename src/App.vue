@@ -5,9 +5,11 @@
         <img class="logo" src="./assets/logo__final.png" />
         <p class="logo__text">JC KIDS</p>
       </section>
+      <section class="nav__middle">
+        <router-link class="nav__link" to="/" exact>Outings </router-link>
+        <router-link class="nav__link" to="/about" exact>About </router-link>
+      </section>
       <section class="nav__right">
-        <router-link to="/" exact>Outings </router-link>
-        <router-link to="/about" exact>About </router-link>
         <button class="btn__contact" @click="addListing()">Contact us</button>
       </section>
     </nav>
@@ -56,14 +58,28 @@ export default {
   box-shadow: rgb(0 0 0 / 8%) 0px 1px 12px !important;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 24px;
-  // z-index: 9999999 !important;
 
   .nav__left {
     width: 50vw !important;
     display: flex;
     align-items: flex-start;
     align-items: center;
+  }
+  .nav__middle {
+    display: flex;
+    .nav__link {
+      margin: 0 8px;
+      padding: 24px 12px;
+      // font-weight: $weightMedium;
+    }
+    .router-link-active {
+      font-weight: $weightMedium;
+      border-bottom: 2px solid $colorPrimary;
+      // padding: 18px;
+      // text-decoration: underline;
+    }
   }
   .nav__right {
     width: 50vw !important;
