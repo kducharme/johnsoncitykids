@@ -70,6 +70,7 @@ export default {
   position: fixed;
   height: 100vh;
   width: 100vw;
+  top: 0;
   .loader__background {
     width: 45%;
     background-color: #33475b;

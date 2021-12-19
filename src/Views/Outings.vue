@@ -1,26 +1,28 @@
 <template>
-  <section class="content">
+  <section class="outings">
+    <!-- Overelay content -->
     <Panel
       v-if="
         this.$store.state.mobile === false && this.$store.state.panel === true
       "
     />
     <PanelMobile v-if="this.$store.state.panelMobile === true" />
+
+    <!-- Left column (list of outings) -->
     <section
-      class="content__bottom"
-      id="content_bottom"
+      class="outings__left"
       v-if="this.$store.state.panelMobile === false"
     >
-      <section class="content__bottom__left">
-        <MobileMap v-if="this.$store.state.mobileMap === true" />
-        <Listings v-show="this.$store.state.mobileMap === false" />
-      </section>
-      <section
-        class="content__bottom__right"
-        v-if="this.$store.state.panelMobile === false"
-      >
-        <Map />
-      </section>
+      <MobileMap v-if="this.$store.state.mobileMap === true" />
+      <Listings v-show="this.$store.state.mobileMap === false" />
+    </section>
+
+    <!-- Right column (map) -->
+    <section
+      class="outings__right"
+      v-if="this.$store.state.panelMobile === false"
+    >
+      <Map />
     </section>
   </section>
 </template>
@@ -62,23 +64,13 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../Styles/variables";
-@import "../Styles/mixins";
-@import "../Styles/global";
-
-.content__top {
-  position: fixed;
-  top: 0;
-  width: 100vw;
-}
-.content__bottom {
+.outings {
   display: flex;
   margin-top: 72px;
-  .content__bottom__left {
+  .outings__left {
     width: 60vw;
-    height: calc(100vh - 72px);
   }
-  .content__bottom__right {
+  .outings__right {
     width: 40vw;
   }
 }
@@ -87,18 +79,13 @@ export default {
   visibility: none !important;
 }
 
-// mobile styling
-
 @media screen and (max-width: 760px) {
-  .content__bottom {
+  .outings__left {
     width: 100vw !important;
-    .content__bottom__left {
-      width: 100vw !important;
-    }
-    .content__bottom__right {
-      display: none !important;
-    }
+  }
+
+  .outings__right {
+    display: none !important;
   }
 }
-
 </style>
