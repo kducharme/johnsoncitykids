@@ -96,7 +96,6 @@ export default {
     },
     hidePriceFilter() {
       const priceFilter = document.querySelector("#structure__price");
-      console.log(priceFilter);
       if (priceFilter !== null) {
         priceFilter.classList.add("hide");
         if (this.$store.state.activeFilters.price === undefined) {
@@ -107,12 +106,9 @@ export default {
     },
     hideFenceFilter() {
       const fenceFilter = document.querySelector("#structure__fenced");
-      console.log(fenceFilter);
       if (fenceFilter !== null) {
-        console.log("first step");
         fenceFilter.classList.add("hide");
         if (this.$store.state.activeFilters.fenced === undefined) {
-          console.log("second");
           const fenceInput = document.querySelector("#input__fenced");
           fenceInput.classList.remove("input__active");
         }

@@ -124,8 +124,8 @@ export default {
           filter: ["!", ["has", "point_count"]],
           paint: {
             "circle-color": "#364259",
-            "circle-radius": 9.5,
-            "circle-stroke-width": 3,
+            "circle-radius": 10,
+            "circle-stroke-width": 2.5,
             "circle-stroke-color": "#fff",
           },
         });
@@ -137,7 +137,7 @@ export default {
           source: "locationData",
           filter: ["!", ["has", "point_count"]],
           paint: {
-            "circle-radius": 11,
+            "circle-radius": 10,
             "circle-stroke-width": 2.5,
             "circle-stroke-color": "#fff",
             "circle-color": [
@@ -171,7 +171,7 @@ export default {
             center: e.features[0].geometry.coordinates,
           });
 
-          //
+          // Reset marker styling when map is clicked
 
           map.on("click", () => {
             if (document.querySelector(".mapboxgl-popup") === null) {
@@ -185,20 +185,6 @@ export default {
               );
             }
           });
-
-          // document
-          //   .querySelector("#map_mobile")
-          //   .addEventListener("click", () => {
-          //     console.log('ho')
-          //     map.setFeatureState(
-          //       { source: "locationData", id: this.lastMarkerId },
-          //       { click: false }
-          //     );
-          //     map.setFeatureState(
-          //       { source: "locationData", id: this.activeMarkerId },
-          //       { click: false }
-          //     );
-          //   });
         });
 
         map.on("click", "clusters", (e) => {
@@ -262,13 +248,13 @@ export default {
       });
     },
     configurePop() {
-      // document.querySelector(".mob__mappopup").addEventListener("click", (e) => {
-      //   this.$store.state.locations.forEach((l) => {
-      //     if (l.id === e.target.offsetParent.firstChild.id) {
-      //       this.showPanel(l);
-      //     }
-      //   });
-      // });
+      document.querySelector(".mob__mappopup").addEventListener("click", (e) => {
+        this.$store.state.locations.forEach((l) => {
+          if (l.id === e.target.offsetParent.firstChild.id) {
+            this.showPanel(l);
+          }
+        });
+      });
     },
     showPanel(location) {
       this.$store.commit("showPanel", {
@@ -321,8 +307,9 @@ export default {
   }
 
   .mapboxgl-map {
-    height: 100vh;
+    height: calc(100vh - 72px);
     width: 100vw;
+    top: 72px;
   }
   .pop__mobile__image {
     width: 100%;
