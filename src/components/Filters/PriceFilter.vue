@@ -70,6 +70,7 @@ export default {
       this.$store.commit("filterLocations", {
         price: undefined,
       });
+      this.$root.$refs.Map.removeMarkers();
     },
 
     displayPriceFilter() {

@@ -82,6 +82,7 @@ export default {
       this.$store.commit("filterLocations", {
         fenced: undefined,
       });
+      this.$root.$refs.Map.removeMarkers();
     },
 
     displayFenceFilter() {
@@ -139,5 +140,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>;

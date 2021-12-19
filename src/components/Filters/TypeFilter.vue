@@ -78,6 +78,7 @@ export default {
       this.$store.commit("filterLocations", {
         type: undefined,
       });
+      this.$root.$refs.Map.removeMarkers();
     },
 
     displayTypeFilter() {
