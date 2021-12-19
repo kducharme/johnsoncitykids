@@ -5,14 +5,9 @@
         this.$store.state.mobile === false && this.$store.state.panel === true
       "
     />
-    <PanelMobile
-      v-if="
-        this.$store.state.mobile === true &&
-        this.$store.state.panelMobile === true
-      "
-    />
+    <PanelMobile v-if="this.$store.state.panelMobile === true" />
     <div class="content__top" v-if="this.$store.state.panelMobile === false">
-      <Nav v-if="this.$store.state.mobileMap === false" />
+      <Nav />
     </div>
     <div
       class="content__bottom"
@@ -21,7 +16,7 @@
     >
       <div class="content__bottom__left">
         <MobileMap v-if="this.$store.state.mobileMap === true" />
-        <Listings />
+        <Listings v-show="this.$store.state.mobileMap === false"/>
       </div>
       <div
         class="content__bottom__right"

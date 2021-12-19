@@ -1,7 +1,7 @@
 <template>
   <div>
     <PanelMobileLoader v-if="this.$store.state.panelMobile" />
-    <section id="panel_main" class="panel__mob" v-if="$store.state.panelMobile">
+    <section id="panel_main" class="panel__mob">
       <span
         id="panel_close"
         class="material-icons panel__mob__close"
@@ -123,11 +123,7 @@ export default {
   right: 0;
   margin: 12px;
 }
-.panel__mob__close:hover {
-  color: #33475b;
-  cursor: pointer;
-  background: #eaf0f6;
-}
+
 .panel__mob {
   display: flex;
   z-index: 99998;

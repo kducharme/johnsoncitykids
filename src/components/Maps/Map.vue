@@ -22,6 +22,8 @@ export default {
       featureCollection: [],
       map: undefined,
       panel: false,
+      lastMarkerId: null,
+      activeMarkerId: null,
     };
   },
   methods: {
@@ -33,7 +35,8 @@ export default {
     removeMarkers() {
       this.map.removeLayer("cluster-count");
       this.map.removeLayer("clusters");
-      this.map.removeLayer("unclustered-point");
+      this.map.removeLayer("unclustered-point-active");
+      this.map.removeLayer("unclustered-point-static");
       this.map.removeSource("locationData");
       this.featureCollection = [];
       this.addFilteredMarkers();
@@ -76,6 +79,7 @@ export default {
         cluster: true,
         clusterMaxZoom: 10,
         clusterRadius: 50,
+        generateId: true,
       });
       this.map.addLayer({
         id: "clusters",
@@ -120,8 +124,10 @@ export default {
           "text-color": "#ffffff",
         },
       });
+
+      // Static Layer
       this.map.addLayer({
-        id: "unclustered-point",
+        id: "unclustered-point-static",
         type: "circle",
         source: "locationData",
         filter: ["!", ["has", "point_count"]],
@@ -131,6 +137,57 @@ export default {
           "circle-stroke-width": 2,
           "circle-stroke-color": "#fff",
         },
+      });
+      // Active Layer (On Click)
+      this.map.addLayer({
+        id: "unclustered-point-active",
+        type: "circle",
+        source: "locationData",
+        filter: ["!", ["has", "point_count"]],
+        paint: {
+          "circle-radius": 9,
+          "circle-stroke-width": 2,
+          "circle-stroke-color": "#fff",
+          "circle-color": [
+            "case",
+            ["boolean", ["feature-state", "click"], false],
+            "#1B998B",
+            "#364259",
+          ],
+        },
+      });
+
+      this.map.on("click", "unclustered-point-active", (e) => {
+        // Reset style for the previous marker
+        if (this.lastMarkerId) {
+          this.map.setFeatureState(
+            { source: "locationData", id: this.lastMarkerId },
+            { click: false }
+          );
+        }
+
+        // Add style for new marker
+        this.activeMarkerId = e.features[0].id;
+        this.lastMarkerId = e.features[0].id;
+        this.map.setFeatureState(
+          { source: "locationData", id: this.activeMarkerId },
+          { click: true }
+        );
+
+        // Reset marker styling when map is clicked
+
+        this.map.on("click", () => {
+          if (document.querySelector(".mapboxgl-popup") === null) {
+            this.map.setFeatureState(
+              { source: "locationData", id: this.activeMarkerId },
+              { click: false }
+            );
+            this.map.setFeatureState(
+              { source: "locationData", id: this.lastMarkerId },
+              { click: false }
+            );
+          }
+        });
       });
       this.map.on("click", "clusters", (e) => {
         const features = this.map.queryRenderedFeatures(e.point, {
@@ -147,7 +204,7 @@ export default {
             });
           });
       });
-      this.map.on("click", "unclustered-point", (e) => {
+      this.map.on("click", "unclustered-point-static", (e) => {
         const coordinates = e.features[0].geometry.coordinates.slice();
 
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
@@ -161,10 +218,10 @@ export default {
       this.map.on("mouseleave", "clusters", () => {
         this.map.getCanvas().style.cursor = "";
       });
-      this.map.on("mouseenter", "unclustered-point", () => {
+      this.map.on("mouseenter", "unclustered-point-static", () => {
         this.map.getCanvas().style.cursor = "pointer";
       });
-      this.map.on("mouseleave", "unclustered-point", () => {
+      this.map.on("mouseleave", "unclustered-point-static", () => {
         this.map.getCanvas().style.cursor = "";
       });
     },
@@ -212,6 +269,7 @@ export default {
           cluster: true,
           clusterMaxZoom: 10,
           clusterRadius: 50,
+          generateId: true,
         });
         this.map.addLayer({
           id: "clusters",
@@ -256,8 +314,10 @@ export default {
             "text-color": "#ffffff",
           },
         });
+
+        // Static Layer
         this.map.addLayer({
-          id: "unclustered-point",
+          id: "unclustered-point-static",
           type: "circle",
           source: "locationData",
           filter: ["!", ["has", "point_count"]],
@@ -268,6 +328,59 @@ export default {
             "circle-stroke-color": "#fff",
           },
         });
+
+        // Active Layer (On Click)
+        this.map.addLayer({
+          id: "unclustered-point-active",
+          type: "circle",
+          source: "locationData",
+          filter: ["!", ["has", "point_count"]],
+          paint: {
+            "circle-radius": 9,
+            "circle-stroke-width": 2,
+            "circle-stroke-color": "#fff",
+            "circle-color": [
+              "case",
+              ["boolean", ["feature-state", "click"], false],
+              "#1B998B",
+              "#364259",
+            ],
+          },
+        });
+
+        this.map.on("click", "unclustered-point-active", (e) => {
+          // Reset style for the previous marker
+          if (this.lastMarkerId) {
+            this.map.setFeatureState(
+              { source: "locationData", id: this.lastMarkerId },
+              { click: false }
+            );
+          }
+
+          // Add style for new marker
+          this.activeMarkerId = e.features[0].id;
+          this.lastMarkerId = e.features[0].id;
+          this.map.setFeatureState(
+            { source: "locationData", id: this.activeMarkerId },
+            { click: true }
+          );
+
+          // Reset marker styling when map is clicked
+
+          this.map.on("click", () => {
+            if (document.querySelector(".mapboxgl-popup") === null) {
+              this.map.setFeatureState(
+                { source: "locationData", id: this.activeMarkerId },
+                { click: false }
+              );
+              this.map.setFeatureState(
+                { source: "locationData", id: this.lastMarkerId },
+                { click: false }
+              );
+            }
+          });
+        });
+
         this.map.on("click", "clusters", (e) => {
           const features = this.map.queryRenderedFeatures(e.point, {
             layers: ["clusters"],
@@ -283,7 +396,7 @@ export default {
               });
             });
         });
-        this.map.on("click", "unclustered-point", (e) => {
+        this.map.on("click", "unclustered-point-static", (e) => {
           const id = e.features[0].properties.id;
           const coordinates = e.features[0].geometry.coordinates.slice();
           const name = e.features[0].properties.name;
@@ -324,10 +437,10 @@ export default {
         this.map.on("mouseleave", "clusters", () => {
           this.map.getCanvas().style.cursor = "";
         });
-        this.map.on("mouseenter", "unclustered-point", () => {
+        this.map.on("mouseenter", "unclustered-point-static", () => {
           this.map.getCanvas().style.cursor = "pointer";
         });
-        this.map.on("mouseleave", "unclustered-point", () => {
+        this.map.on("mouseleave", "unclustered-point-static", () => {
           this.map.getCanvas().style.cursor = "";
         });
       });
@@ -404,10 +517,6 @@ export default {
   background: white;
   box-shadow: rgb(0 0 0 / 16%) 0px 8px 28px !important;
   padding: 0 !important;
-}
-
-.pop__content {
-  // display: flex;
 }
 
 .pop__image {
