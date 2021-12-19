@@ -1,7 +1,7 @@
 <template>
   <div id="listings_content">
     <MapButton
-      v-show="
+      v-if="
         this.$store.state.mobile === true &&
         this.$store.state.panelMobile === false
       "
