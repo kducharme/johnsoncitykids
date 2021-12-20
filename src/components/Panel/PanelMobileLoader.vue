@@ -74,6 +74,8 @@ export default {
   height: 100vh;
   width: 100vw;
   overflow: scroll;
+  position: fixed;
+  // top: 0;
 }
 .loader__mob__title {
   height: 14px;

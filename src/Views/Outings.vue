@@ -6,7 +6,7 @@
         this.$store.state.mobile === false && this.$store.state.panel === true
       "
     />
-    <PanelMobile v-if="this.$store.state.panelMobile === true" />
+    <PanelMobile v-show="this.$store.state.panelMobile === true" />
 
     <!-- Left column (list of outings) -->
     <section

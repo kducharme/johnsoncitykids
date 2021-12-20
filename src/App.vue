@@ -5,7 +5,7 @@
         <img class="logo" src="./assets/logo__final.png" />
         <p class="logo__text">JC KIDS</p>
       </section>
-      <section class="nav__middle">
+      <section class="nav__middle" v-if="this.$store.state.mobile === false">
         <router-link class="nav__link" to="/" exact>Outings </router-link>
         <router-link class="nav__link" to="/about" exact>About </router-link>
       </section>
@@ -72,13 +72,10 @@ export default {
     .nav__link {
       margin: 0 8px;
       padding: 24px 12px;
-      // font-weight: $weightMedium;
     }
     .router-link-active {
       font-weight: $weightMedium;
       border-bottom: 2px solid $colorPrimary;
-      // padding: 18px;
-      // text-decoration: underline;
     }
   }
   .nav__right {
