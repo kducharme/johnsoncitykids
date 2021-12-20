@@ -6,7 +6,7 @@ import About from './Views/About'
 Vue.use(Router)
 
 export default new Router({
-    base: '/outings',
+    base: '/',
     routes: [
         {
             path: '/',
