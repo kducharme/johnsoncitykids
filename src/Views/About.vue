@@ -7,10 +7,10 @@
       take your kids to a playground, swimming, or hiking, this website includes
       {{ this.$store.state.locations.length }} different outings that are
       perfect for kids of all ages.
-      <br>
-      <br>
-      Have a question or recommendations for
-      outings? Click below to contact us — we'd love to hear from you!
+      <br />
+      <br />
+      Have a question or recommendations for outings? Click below to contact us
+      — we'd love to hear from you!
     </section>
     <button class="about__button" @click="contactUs()">Contact us</button>
   </section>
@@ -25,6 +25,12 @@ export default {
     contactUs() {
       window.open("https://airtable.com/shr0UlLfVQbS8lOhI", "_blank");
     },
+    resetScroll() {
+      window.scrollTo(0, 0);
+    },
+  },
+  created() {
+    this.resetScroll();
   },
 };
 </script>
@@ -79,7 +85,7 @@ export default {
 
 @media screen and (max-width: 600px) {
   .about {
-      padding: 64px 10vw 0;
+    padding: 64px 10vw 0;
   }
 }
 </style>
