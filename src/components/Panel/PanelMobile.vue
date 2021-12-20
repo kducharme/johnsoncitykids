@@ -32,6 +32,15 @@
             {{ $store.state.activeLocation.description }}
           </p>
         </section>
+        <section class="detail">
+          <p class="detail__mob__title">Website</p>
+          <p
+            class="detail__mob__content detail__website"
+            @click="visitWebsite()"
+          >
+            {{ $store.state.activeLocation.website }}
+          </p>
+        </section>
         <PlaygroundDetails
           v-if="$store.state.activeLocation.type === 'Playground'"
           class="detail__mob__playground"
@@ -119,7 +128,7 @@ export default {
   justify-content: center;
   align-items: center;
   padding: 12px 18px 12px 14px;
-  top: 96px;
+  top: 24px;
   left: 24px;
   background: white;
   border: 2px solid $colorFontDark;
@@ -137,12 +146,14 @@ export default {
 
 .panel__mob {
   display: flex;
-  z-index: 99999;
+  z-index: 999999;
+  position: fixed;
+  height: 100%;
   width: 100vw;
-  overflow: scroll;
-  // position: fixed;
-  margin: 0 0 32px 0;
   top: 0;
+  left: 0;
+  overflow-y: scroll;
+  background: white;
   .details__mob {
     display: flex;
     flex-direction: column;
@@ -178,6 +189,16 @@ export default {
       line-height: 1.6;
       padding: 0 24px;
     }
+    .detail__website {
+      color: #1876f2;
+      // width: 80%;
+      overflow-wrap: break-word;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 1 !important;
+    }
     .mapboxgl-map {
       width: 100vw;
     }
@@ -189,7 +210,7 @@ export default {
       padding: 0 24px;
     }
     .btn__mob__primary {
-      margin: 20px 24px 0;
+      margin: 20px 24px 24px;
       height: 40px;
       background: #009478;
       color: white;

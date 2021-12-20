@@ -9,19 +9,13 @@
     <PanelMobile v-show="this.$store.state.panelMobile === true" />
 
     <!-- Left column (list of outings) -->
-    <section
-      class="outings__left"
-      v-if="this.$store.state.panelMobile === false"
-    >
+    <section class="outings__left">
       <MobileMap v-if="this.$store.state.mobileMap === true" />
-      <Listings v-show="this.$store.state.mobileMap === false" />
+      <Listings />
     </section>
 
     <!-- Right column (map) -->
-    <section
-      class="outings__right"
-      v-if="this.$store.state.panelMobile === false"
-    >
+    <section class="outings__right">
       <Map />
     </section>
   </section>
