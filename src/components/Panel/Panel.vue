@@ -159,6 +159,7 @@ export default {
   position: fixed;
   height: 100vh;
   width: 100vw;
+  top: 0;
   .background {
     width: 45%;
     background-color: #33475b;
@@ -170,7 +171,6 @@ export default {
     background: white;
     top: 0;
     right: 0;
-    box-shadow: rgb(0 0 0 / 8%) 0px 1px 12px !important;
     padding: 32px;
     overflow-y: scroll;
     .details__left {

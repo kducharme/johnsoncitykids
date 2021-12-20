@@ -2,12 +2,12 @@
   <div>
     <PanelMobileLoader v-if="this.$store.state.panelMobile" />
     <section id="panel_main" class="panel__mob">
-      <span
-        id="panel_close"
-        class="material-icons panel__mob__close"
-        @click="closePanel()"
-        >close</span
-      >
+      <section class="close" @click="closePanel()">
+        <span id="panel_close" class="material-icons close__icon"
+          >arrow_back</span
+        >
+        <p class="close__text">Back</p>
+      </section>
       <section class="details__mob">
         <img
           class="details__mob__image"
@@ -30,6 +30,15 @@
           <p class="detail__mob__title">Description</p>
           <p class="detail__mob__content">
             {{ $store.state.activeLocation.description }}
+          </p>
+        </section>
+        <section class="detail">
+          <p class="detail__mob__title">Website</p>
+          <p
+            class="detail__mob__content detail__website"
+            @click="visitWebsite()"
+          >
+            {{ $store.state.activeLocation.website }}
           </p>
         </section>
         <PlaygroundDetails
@@ -92,7 +101,7 @@ export default {
       window.scrollTo(0, 0);
     },
     preventScroll() {
-      document.querySelector('#listings_content').classList.add("noscroll");
+      document.querySelector("#listings_content").classList.add("noscroll");
     },
   },
   created() {
@@ -103,33 +112,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .noscroll {
   overflow: hidden !important;
   overflow-y: hidden !important;
   overflow-x: hidden !important;
 }
-.panel__mob__close {
-  color: #516f90;
+
+.close {
   position: fixed;
-  // z-index: 99999;
+  z-index: 99999;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 40px;
-  width: 40px;
-  border-radius: 100%;
+  padding: 12px 18px 12px 14px;
+  top: 24px;
+  left: 24px;
   background: white;
-  top: 0;
-  right: 0;
-  margin: 12px;
+  border: 2px solid $colorFontDark;
+  border-radius: 5px;
+  .close__icon {
+    color: $colorFontDark;
+    margin-right: 8px;
+    font-size: 19px;
+  }
+  .close__text {
+    font-weight: $weightMedium;
+    color: $colorFontDark;
+  }
 }
 
 .panel__mob {
   display: flex;
-  z-index: 99998;
+  z-index: 999999;
+  position: fixed;
+  height: 100%;
   width: 100vw;
-  overflow: scroll;
-  margin: 0 0 32px 0;
+  top: 0;
+  left: 0;
+  overflow-y: scroll;
+  background: white;
   .details__mob {
     display: flex;
     flex-direction: column;
@@ -165,6 +189,16 @@ export default {
       line-height: 1.6;
       padding: 0 24px;
     }
+    .detail__website {
+      color: #1876f2;
+      // width: 80%;
+      overflow-wrap: break-word;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      -webkit-line-clamp: 1 !important;
+    }
     .mapboxgl-map {
       width: 100vw;
     }
@@ -176,7 +210,7 @@ export default {
       padding: 0 24px;
     }
     .btn__mob__primary {
-      margin: 20px 24px 0;
+      margin: 20px 24px 24px;
       height: 40px;
       background: #009478;
       color: white;
