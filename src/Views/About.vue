@@ -12,7 +12,7 @@
       Have a question or recommendations for outings? Click below to contact us
       — we'd love to hear from you!
     </section>
-    <button class="about__button" @click="contactUs()">Contact us</button>
+    <button class="about__button" @click="contactButton()">Contact us</button>
   </section>
 </template>
  
@@ -22,7 +22,7 @@ export default {
 
   components: {},
   methods: {
-    contactUs() {
+    contactButton() {
       window.open("https://airtable.com/shr0UlLfVQbS8lOhI", "_blank");
     },
     resetScroll() {

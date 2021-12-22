@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <PanelMobileLoader v-if="this.$store.state.panelMobile" />
+  <div v-if="this.$store.state.panelMobile">
+    <PanelMobileLoader v-if="this.$store.state.panelMobile === true" />
     <section id="panel_main" class="panel__mob">
       <section class="close" @click="closePanel()">
         <span id="panel_close" class="material-icons close__icon"

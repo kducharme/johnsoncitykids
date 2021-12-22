@@ -2,15 +2,17 @@
   <div class="app">
     <nav class="nav">
       <section class="nav__left">
-        <img class="logo" src="./assets/logo__final.png" />
-        <p class="logo__text">JC KIDS</p>
+        <router-link to="/" exact class="nav__left--logo">
+          <img class="logo" src="./assets/logo__final.png" />
+          <p class="logo__text">JC KIDS</p>
+        </router-link>
       </section>
       <section class="nav__middle" v-if="this.$store.state.mobile === false">
         <router-link class="nav__link" to="/" exact>Outings </router-link>
         <router-link class="nav__link" to="/about" exact>About </router-link>
       </section>
       <section class="nav__right">
-        <button class="btn__contact" @click="addListing()">Contact us</button>
+        <button class="btn__contact" @click="contactUs()">Contact us</button>
       </section>
     </nav>
     <router-view />
@@ -30,6 +32,9 @@ export default {
       if (window.innerWidth > 760) {
         this.$store.commit("onLargeScreen");
       }
+    },
+    contactUs() {
+      window.open("https://airtable.com/shr0UlLfVQbS8lOhI", "_blank");
     },
   },
   mounted() {
@@ -65,6 +70,10 @@ export default {
     width: 50vw !important;
     display: flex;
     align-items: flex-start;
+    align-items: center;
+  }
+  .nav__left--logo {
+    display: flex;
     align-items: center;
   }
   .nav__middle {
