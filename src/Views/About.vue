@@ -5,7 +5,7 @@
       Welcome 👋! This resoucre was build by a local dad to help parents find
       activities for children in Johnson City, TN. Whether you're looking to
       take your kids to a playground, swimming, or hiking, this website includes
-      {{ this.$store.state.locations.length }} different outings that are
+      more than 50 different outings that are
       perfect for kids of all ages.
       <br />
       <br />
