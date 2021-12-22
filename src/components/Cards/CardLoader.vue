@@ -90,7 +90,6 @@ export default {
       background: $grayLoader;
     }
   }
-
   .placeholder__right {
     width: 70%;
     padding: 0 32px;

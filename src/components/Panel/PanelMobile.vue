@@ -85,9 +85,7 @@ export default {
         this.$store.state.activeLocation.long;
 
       window.open(
-        window.open(
-          "https://waze.com/ul?ll=" + destination + "&navigate=yes&z=10"
-        )
+        "https://waze.com/ul?ll=" + destination + "&navigate=yes&z=10"
       );
     },
     visitWebsite() {

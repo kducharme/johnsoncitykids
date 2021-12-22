@@ -65,6 +65,7 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
+  z-index: 99997!important;
 
   .nav__left {
     width: 50vw !important;

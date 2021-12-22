@@ -243,9 +243,9 @@ export default {
           display: flex;
           justify-content: center;
           align-items: center;
-          height: 40px;
-          width: 40px;
           border-radius: 100%;
+          height: 40px!important;
+          width: 40px!important;
         }
         .right__header__close:hover {
           color: $colorFontMedium;
