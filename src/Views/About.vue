@@ -2,7 +2,7 @@
   <section class="about">
     <section class="about__title">About JC Kids</section>
     <section class="about__body">
-      Welcome 👋! This resource was build by a local dad to help parents find
+      Welcome 👋! This resource was created by a local dad to help parents find
       activities for children in Johnson City, TN. Whether you're looking to
       take your kids to a playground, swimming, or hiking, this website includes
       more than 50 different outings that are
